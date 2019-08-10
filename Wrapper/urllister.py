@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 class WrapperURLHelper(BeautifulSoup):
     def __init__(self, html):
         self.soup = BeautifulSoup(html, "html.parser")
-        self.urlsInA = []
+        self.articlesUrls = []
         self.find_articles_urls()
 
     def is_url(self, url):                              # check if valid url
@@ -15,5 +15,8 @@ class WrapperURLHelper(BeautifulSoup):
             return False
 
     def find_articles_urls(self):
-        self.urlsInA = [a['href'] for a in self.soup.find_all('a', href=True) if self.is_url(a['href'])]
-
+        for tag in self.soup.find_all('article'):       # find every <article> tag and then, find <a> tag with a href
+            for anchor in tag.find_all('a', href=True):
+                self.articlesUrls.append(anchor['href'])
+                break
+        return

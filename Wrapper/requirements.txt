@@ -1,0 +1,4 @@
+beautifulsoup4==4.8.0
+sgmllib3k==1.0.0
+six==1.12.0
+soupsieve==1.9.2

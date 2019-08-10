@@ -5,8 +5,8 @@ sock = urllib.request.urlopen(urllib.request.Request('https://geek.justjoin.it',
 parser = urllister.WrapperURLHelper(sock)
 sock.close()
 
-parser.urlsInA = list(dict.fromkeys(parser.urlsInA))            # remove duplicates
-for i, url in enumerate(parser.urlsInA):
+parser.articlesUrls = list(dict.fromkeys(parser.articlesUrls))            # remove duplicates
+for i, url in enumerate(parser.articlesUrls):
     print(str(i) + " " + url)
 
 
