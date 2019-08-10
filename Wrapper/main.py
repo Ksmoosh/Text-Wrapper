@@ -1,12 +1,24 @@
 import urllib.request
-import urllister
+import URLlister
+import ContentRetriever
 
-sock = urllib.request.urlopen(urllib.request.Request('https://geek.justjoin.it', headers={'User-Agent': 'Mozilla/5.0'}))
-parser = urllister.WrapperURLHelper(sock)
-sock.close()
 
-parser.articlesUrls = list(dict.fromkeys(parser.articlesUrls))            # remove duplicates
-for i, url in enumerate(parser.articlesUrls):
-    print(str(i) + " " + url)
+def create_socket(url):
+    return urllib.request.urlopen(urllib.request.Request(url,
+                                                         headers={'User-Agent': 'Mozilla/5.0'}))
 
+
+if __name__ == '__main__':
+
+    sock = create_socket('https://geek.justjoin.it')
+    MainPage = URLlister.WrapperURLHelper(sock)
+    sock.close()
+
+    for i, url in enumerate(MainPage.articlesUrls):
+        sock = create_socket(url)
+
+        print(url)
+        article = ContentRetriever.WrapperArticleParser(sock)
+
+        sock.close
 
