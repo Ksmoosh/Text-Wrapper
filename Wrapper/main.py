@@ -15,10 +15,17 @@ if __name__ == '__main__':
     sock.close()
 
     for i, url in enumerate(MainPage.articlesUrls):
-        sock = create_socket(url)
+        if i == 2:
+            sock = create_socket(url)
 
-        print(url)
-        article = ContentRetriever.WrapperArticleParser(sock)
+            print(url)
+            article = ContentRetriever.WrapperArticleParser(sock.read())
 
-        sock.close
+            sock.close
+
+            for cat in article.articleCategories:
+                print(cat)
+            for text in article.articleText:
+                print(text[0])
+            break
 
