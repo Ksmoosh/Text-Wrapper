@@ -13,6 +13,7 @@ class WrapperArticleParser(BeautifulSoup):
         self.soup = BeautifulSoup(html, "html.parser")
         self.articleCategories = []
         self.articleText = []
+        self.articleTitle = ""
         self.get_categories()
         self.get_content()
 
@@ -26,6 +27,9 @@ class WrapperArticleParser(BeautifulSoup):
     def get_content(self):
         # below are some phrases that appear in every article when web scraping with chosen tags, those are unwanted
         useless_text = ['Patronujemy', 'Zdjęcie główne artykułu pochodzi z', 'See also']
+
+        # get title of the article
+        self.articleTitle = self.soup.find('h1', {'class': "entry-title title"}).getText()
 
         # search for tags that have article's main content
         for tag in self.soup.find_all(['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul'],  {'class': None}):
