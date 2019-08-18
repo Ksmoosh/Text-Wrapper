@@ -70,9 +70,9 @@ if __name__ == '__main__':
         write_string_to_json(articles, 'articles.json')
 
     else:
-        # artText = open_json_to_string("articlesSepWords.json")
-        # glove = GloveMaker.Glove(artText)
-        articles = open_json_to_string("articles.json")
-        save_articles(articles)
+        articlesSeparatedWords = open_json_to_string("articlesSepWords.json")
+        glove = GloveMaker.Glove(articlesSeparatedWords)
+        # articles = open_json_to_string("articles.json")
+        # save_articles(articles)
 
 
