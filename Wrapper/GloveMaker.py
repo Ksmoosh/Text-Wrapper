@@ -1,7 +1,6 @@
 import json
 import re
 import os
-from subprocess import call
 
 
 def open_json_to_string(filename):
@@ -37,8 +36,6 @@ class BagOfWords:
             articleParagraphed.append([w.lower() for w in words if w not in self.stopWords and right_word(w)])
         # join sentences separated in different lists to one list of strings for whole article
         self.articleExtracted = [j for sub in articleParagraphed for j in sub]
-        # sort alphabetically
-        # self.articleExtracted = sorted(list(set(self.articleExtracted)))
 
 
 class Glove:
