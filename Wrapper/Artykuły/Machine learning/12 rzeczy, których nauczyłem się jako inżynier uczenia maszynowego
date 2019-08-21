@@ -1,0 +1,83 @@
+Jest duża szansa, że ktoś, kto z reguły nie ma pojęcia jak wygląda praca w IT, na sam dźwięk tych dwóch sylab — “aj-ti” — wyobraża sobie hackera w czarnej bluzie z kapturem, który stuka nerwowo na klawiaturze, podczas gdy linie kodu migają mu przed oczami na ciemnym ekranie komputera. Od jego pracy zależy bowiem życie prezydenta USA… ten obraz (lub też ta propaganda) w dużej mierze zawdzięczamy amerykańskim filmom. 
+
+Daniel Bourke. Inżynier, przedsiębiorca i youtuber mieszkający w Australii. Po ukończeniu licencjatu z żywienia i dietetyki na Uniwersytecie w Queensland postanowił rozpocząć samodzielną naukę uczenia maszynowego za pomocą kursów internetowych oferowanych m.in. na Coursera. W 2017 założył firmę mrdbourke Studios, gdzie tworzy artykuły oraz video na tematy związane z technologią, zdrowym trybem życia oraz sztuką.  
+Przykro obalać ten mit, ale praca w IT z reguły wygląda inaczej. Często zdarza się, że pracownicy szybko się wypalają, tracą chęć i motywację do pracy. Powodów jest wiele, m.in. fakt, iż oczekiwania nijak się mają do rzeczywistości, polityka firmy, wewnętrzne układy między pracownikami, a także praca w wyizolowanych zespołach. W tym artykule Daniel opisuje 12 rzeczy, których nauczył się na początku swojej kariery w IT. Polecamy go każdemu, kto również rozpoczyna swoją podróż z branżą artificial intelligence. Poniższy tekst został przetłumaczony za zgodą autora. 
+Zarówno uczenie maszynowe, jak i data science są niezwykle szerokimi pojęciami, gdyż kompetencje specjalistów danej dziedziny mogą niezwykle różnić się między sobą. To co potrafi jeden specjalista wybranej dziedziny może bardzo różnić się od kompetencji innego specjalisty w tej samej dziedzinie. Łączy ich między innymi to, że używają przeszłości, tj. danych, do zrozumienia i przewidywania przyszłości, czyli budowania modeli. 
+Aby powyższe przykłady uzyskały jakiś kontekst najpierw wyjaśnię na czym polegała moja praca. 
+Otóż mieliśmy mały zespół konsultingowy do spraw uczenia maszynowego. Zajmowaliśmy się wszystkim, od zbierania danych po manipulację, budowanie modeli i świadczenie usług w każdym przemyśle o jakim tylko możesz pomyśleć. Mówię o tym w czasie przeszłym ponieważ od tamtego momentu porzuciłem pracę jako inżynier uczenia maszynowego i założyłem swój business. Stworzyłem na ten temat osobne video. 
+Typowy dzień
+Kiedy jeszcze pracowałem jako inżynier uczenia maszynowego, codziennie o 9 rano wchodziłem do biura, wymieniałem się powitaniami, wkładałem jedzenie do lodówki, zalewałem kubek kawy i podchodziłem do mojego biurka. Siadałem, spoglądałem na notatki z dnia poprzedniego i uruchamiałem Slacka. Czytałem zaległe wiadomości, sprawdzałem linki, którymi podzielił się zespół. Zazwyczaj udawało mi się znaleźć coś, co mogło mi pomóc z projektem, którym w danym czasie się zajmowałem. Jeśli zbliżały się jakieś deadliny, skracałem czas poświęcony na czytanie artykułów i zabierałem się za projekt. 
+Najpierw przeglądałem moją pracę z poprzedniego dnia i sprawdzałem notatnik w poszukiwaniu następnych kroków, które wcześniej po kolei rozpisałem. Pomagały jeśli zdarzyło się utknąć z projektem. Następnie, przez większość czasu upewniałem się, że dane były w formacie, który nadawał się do modelowania. 
+I tak czas mijał, aż do czwartej po południu, kiedy to nastawał czas na stopniowe kończenie zadań na ten dzień. Uwzględniało to m.in. czyszczenie kodu tak, aby ten był czytelny, dodawanie komentarzy itp. Przy tym procesie zawsze zadawałem sobie pytania, np. “co jeśli ktoś inny miałby to przeczytać?”. Zazwyczaj byłem to ja. Niesamowite jak szybko można zgubić wątek.  
+Przed 5 po południu mój kod był już na GitHubie, a notatki na następny dzień były przygotowane. Jednak nie każdy dzień układał się tak idealnie. Bywało bowiem, że wpadłem na jakiś super pomysł o 4:37 po południu i pracowałem nad nim tyle, ile trzeba. 
+Macie już zatem zarys mojej codziennej rutyny jako inżynier uczenia maszynowego. Zanurkujmy teraz w szczegóły dotyczące tego, czego nauczyłem się podczas pierwszego roku pracy jako inżynier uczenia maszynowego:
+1. Zawsze chodzi o dane
+Jeśli jesteś zaznajomiony z niektórymi z pierwszych zasad data science to może wydawać Ci się to wręcz banalne. Zaskakujące jednak jak łatwo o tym zapominam. Zbyt wiele razy skupiałem się na budowaniu lepszego modelu, aniżeli na ulepszaniu danych, o które ten model był oparty. 
+Kiedy po raz pierwszy angażujesz się w projekt spędź anormalną ilość czasu zaznajamiając się z danymi. Mówię “anormalną” ponieważ z reguły musisz pomnożyć swoje pierwsze szacowanie trzy razy. Na dłuższą metę zaoszczędzi ci to jednak sporo czasu.
+Twoim celem z jakimkolwiek nowym zbiorem danych powinno być zostanie ekspertem w tej sprawie. Sprawdź dystrybucję, znajdź różne rodzaje features, gdzie są outliers, czemu są to outliers? Jeśli nie jesteś w stanie opowiedzieć historii o danych, z którymi pracujesz, to w jaki sposób oczekujesz, że twój model tego dokona?
+Przykładowy cykl eksploracyjnej analizy danych (co masz zrobić za każdym razem gdy spotkasz się z nowym zestawem danych). Więcej na ten temat w A Gentle Introduction to Exploratory Data Analysis. 
+2. Problemy z komunikacją są trudniejsze niż problemy techniczne
+Większość problemów, z którymi spotkałem się nie były natury technicznej, a raczej komunikacyjnej. Nigdy nie podważaj wagi komunikacji, zarówno zewnętrznej, jak i wewnętrznej. Nie ma nic gorszego jak rozwiązanie technicznego problemu tylko po to, by dowiedzieć się, że był to nie ten problem, który trzeba było rozwiązać. 
+Jak coś takiego w ogóle może mieć miejsce? Zewnętrznie było to nieporozumienie między tym, czego szukał klient, a tym co uczenie maszynowe było w stanie zaoferować. Wewnętrznie natomiast było to spowodowane brakiem pewności, że cały zespół pracował ku wspólnemu celowi. 
+Jak można to naprawić?
+Regularnie sprawdzaj co się dzieje. Czy twój klient rozumie co twój zespół może mu zaoferować? Czy rozumiesz problem klienta? Czy rozumie on co uczenie maszynowe może zaoferować, a czego nie może? W jaki sposób możesz mu zakomunikować wyniki?
+A wewnętrznie?
+Jak bardzo poważnym problemem jest komunikacja jesteś w stanie powiedzieć po liczbie narzędzi, które starają się temu zaradzić: Asana, Jira, Trello, Slack, Basecamp, Monday, Microsoft Teams. 
+Jeden z najskuteczniejszych sposobów, jakie znalazłem na ulepszenie komunikacji w zespole to wysłanie krótkiej wiadomości na kanale projektu pod koniec dnia.
+Update:
+
+3-4 punkty o tym, co dzisiaj zrobiłem i dlaczego
+
+Następnie:
+
+Co mam zamiar zrobić w oparciu o powyższe
+
+Czy było to idealne? Nie. Ale sprawiało wrażenie, że działa. Dało mi to okazję do refleksji nad tym, co robiłem i chciałem robić. Ponadto, moja praca była dzięki temu podejściu upubliczniona, co oznaczało, że mogła zostać skrytykowana jeśli coś było z nią nie tak. 
+Nie ma to znaczenia jak dobrym inżynierem jesteś. Twoja umiejętność utrzymywania i pozyskiwania nowego biznesu koreluje z twoją umiejętnością komunikowania twoich umiejętności.
+3. Stabilność > stan techniczny
+Napotkaliśmy problem związany z klasyfikowaniem tekstu w różne kategorie. Celem było wysłanie fragmentu tekstu do serwisu i automatyczna klasyfikacja do jednej z dwóch kategorii. Jeśli model nie był pewny co do przewidywań wtedy należało przekazać tekst human classifier. Z reguły zdarzało się 1000-3000 request każdego dnia – ani zbyt dużo, ani zbyt mało. 
+Do tego celu, zamiast rekomendowanego BERT, użyliśmy metody ULMFiT, która była o wiele prostsza w użytku. 
+4. Dwie gapy w uczeniu maszynowym
+Po wyszukaniu uczenia maszynowego w internecie pojawiają się setki wyników. Sam użyłem wielu z nich, aby stworzyć własny program studiów magisterskich z AI. 
+Jednakże nawet po zakończeniu wielu najlepszych takich kursów, kiedy zacząłem pracę jako inżynier uczenia maszynowego, moje umiejętności były w całości oparte o kurs. Brakowało specyficznej wiedzy. Umiejętności, których nie nauczysz się na kursie – jak kwestionować dane, co należy eksplorować, a co eksploatować. 
+Jakie było na to rozwiązanie?
+Miałem szczęście, bo znajdowałem się w pobliżu najbardziej utalentowanych ludzi w Australii. Jednakże byłem również gotów uczyć się i popełniać błędy. Oczywiście, mylenie się nie było moim celem, ale zanim zrobisz coś poprawnie musisz odkryć co jest nie tak. 
+Jeśli uczysz się uczenia maszynowego przez kurs, ucz się dalej, ale również uzbrój się w specyficzną wiedzę poprzez zastosowanie tego, czego się uczysz do praktyki poprzez pracę nad swoimi projektami.
+A co z procesem wdrażania?
+Ciągle nie jestem w tym dobry, jednak zauważyłem pewien trend. Uczenie maszynowe i inżynieria oprogramowania scalają się. Z serwisami takimi jak Seldon, Kubeflow and Kubernetes uczenie maszynowe wkrótce będzie częścią tej grupy. 
+Jedną rzeczą jest wybudowanie modelu w Jupyter Notebook, a inną udostępnienie tego modelu tysiącom, a nawet milionom ludzi. Sądząc po ilości odsłon ostatnich prezentacji na eventach Cloud Native niewiele ludzi spoza dużych firm wie jak to zrobić. 
+5. 20% czasu
+20% naszego czasu mogliśmy spędzić na nauce nowych rzeczy ze świata uczenia maszynowego, a wiedzy jest mnóstwo. 20% czasu oznaczało, że 80% czasu byłoby spędzone na core projektach. Nie zawsze dzieliło się to dokładnie tak, ale dobrze jest mieć jakiś konkretny target. Jeśli przewagą twojego biznesu jest bycie najlepszym w tym, co teraz robisz to twój przyszły biznes polega na twojej kontynuacji w byciu najlepszym w tym, co robisz. Oznacza to ciągłą naukę. 
+6. 1 na 10 artykułów są czytane, jeszcze mniej używane
+To przybliżona metryka, jednak gdy przyjrzysz się jakimkolwiek zestawom danych szybko przekonasz się, że zdarza się to wszędzie. Jest to prawo Zipf’a lub prawo Price’a. Prawo Price’a twierdzi, że połowa publikacji pochodzi od pierwiastka kwadratowego liczby wszystkich autorów. Innymi słowy, z tysięcy zgłoszeń każdego roku może być około 10 przełomowych artykułów. Z tych 10 przełomowych artykułów 5 może pochodzić z tego samego instytutu lub osoby.
+Wniosek?
+Nie ma sposobu na to, abyś był w stanie dotrzymać kroku coraz to nowym osiągnięciom. Lepiej uzyskać solidną wiedzę podstawowych zasad, a potem zaaplikować je. To właśnie one wytrzymały test czasu. To właśnie do nich odnoszą się te nowsze osiągnięcia. 
+Wtedy pojawia się problem eksploracji versus eksploatacji. 
+7. Bądź swoim największym sceptykiem
+Z problemem eksploracji versus eksploatacji możesz poradzić sobie poprzez bycie swoim największym sceptykiem. 
+Problem eksploracji versus eksploatacji to dylemat pomiędzy spróbowaniem czegoś nowego, a zastosowaniem czegoś sprawdzonego.
+Eksploatacja
+Łatwo jest uruchomić model, który już używałeś i otrzymać numer o wysokiej dokładności, a wtedy zgłosić to zespołowi jako nowy benchmark. Nawet jeśli otrzymujesz dobry rezultat pamiętaj, aby sprawdzić swoją pracę jeszcze raz, jeszcze raz i jeszcze raz. Poproś twój zespół o to samo. 
+Eksploracja
+Pomaga w tym zasada 20% czasu, ale 70/20/10 mogłoby zadziałać jeszcze lepiej. Być może spędzasz 70% czasu na core produkcie, 20% na pracę wokół głównego produktu i 10% na moonshots, tj. rzeczy, które bardzo prawdopodobnie nie zadziałają. 
+Nigdy nie stosowałem tego w mojej pracy, ale jest to coś do czego zmierzam.
+8. Niewielkie usprawnienia
+Niewielkie usprawnienia naprawdę działają. Szczególnie pomagają zrozumieć nowy koncept. Zbuduj coś małego, nawet podzbiór twoich danych lub niepowiązanych zbiorów danych.
+9. Gumowa kaczka
+Jeśli utknąłeś z jakimś problemem, samo siedzenie i gapienie się na kod może nie pomóc ci go rozwiązać. Zamiast tego, przegadaj ten problem z kolegą z zespołu. Udawaj, że to twoja kaczka z gumy. 
+10. Dbaj o aktualność swojej wiedzy
+Ten punkt odnosi się do punktu o scalaniu się uczenia maszynowego i software engineeringu. Serwisy takie jak AutoML Google i Microsoft udostępniają uczenie maszynowego każdemu, kto jest w stanie załadować zestaw danych i wybrać zmienną docelową. 
+Po stronie developera masz takie biblioteki jak fast.ai, które tworzą supernowoczesne modele dostępne w kilku linijkach kodu, a także zestawy gotowych modeli, jak np. PyTorch hub i TensorFlow hub. 
+Co to oznacza? 
+Znajomość podstawowych zasad data science oraz uczenia maszynowego wciąż jest wymagana. Jednak wiedza jak je zaaplikować do twojego problemu jest jeszcze bardziej cenna. 
+Nie ma więc powodu, dla którego twój baseline nie powinien też być supernowoczesny. 
+11. Matma czy kod?
+Nad problemami klienta pracowaliśmy jedynie za pomocą kodu. Całe uczenie maszynowe i data science były napisane w Pythonie. Bywały czasy, kiedy pobawiłbym się trochę matematyką i prób replikowania jej, ale 99.9% czasu zajmowały mi istniejące frameworki. 
+Mówiąc to nie mam na myśli, że matematyka jest niepotrzebna. Uczenie maszynowe i deep learning są w końcu formami matematyki stosowanej. Znajomość mnożenia macierzy, algebry liniowej i analizy matematycznej, szczególnie wzór na pochodną liczby złożonej, jest w tej branży powszechnie stosowana.
+Pamiętaj, że moim celem nie było wynalezienie nowego algorytmu uczenia maszynowego, ale zademonstrowanie klientowi jakie możliwości oferowało (lub nie) uczenie maszynowe dla ich biznesu. 
+12. Praca z zeszłego roku pewnie będzie bezwartościowa w następnym roku
+To jest wręcz gwarantowane i staje się coraz bardziej powszechne z powodu scalania się inżynierii oprogramowania i inżynierii uczenia maszynowego. Ale na to właśnie zapisałeś się kiedy wybrałeś tę ścieżkę kariery. Co zostaje takie samo?
+Frameworki się zmienią, biblioteki też, ale statystyki, prawdopodobieństwo, matematyka – wszystko to, co leży u podstaw nie ma terminu przydatności. 
+Największe wyzwanie to jak je zaaplikujesz.
+Co teraz?
+Mógłbym podać jeszcze więcej przykładów, ale 12 wydaje mi się wystarczające. Praca w Max Kelsen była najlepszą robotą, jaką kiedykolwiek miałem. Problemy, z którymi się zmagałem były interesujące, ale ludzie byli jeszcze lepsi. Sporo się tam nauczyłem. Decyzja o zmianie miejsca pracy nie była łatwa, ale na własną rękę chciałem przetestować to, czego się nauczyłem. Jeśli macie jakieś pytania, moje DM na Twitterze jest otwarte. Możecie również zasubskrybować mój newsletter.

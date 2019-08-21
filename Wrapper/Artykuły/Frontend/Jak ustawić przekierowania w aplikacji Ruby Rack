@@ -1,0 +1,58 @@
+Najczęściej migruje się aplikacje webowe napisane w przestarzałych technologiach do nowych frameworków albo nawet zupełnie innych technologii. Przyczyn jest kilka: po pierwsze praca z nowszą technologią jest dużo mniej problematyczna, niż szukanie deweloperów mających doświadczenie z czymś przestarzałym. Po drugie, starsze aplikacje dużo trudniej rozszerzać i utrzymywać. Dzisiaj opiszemy jak ustawić przekierowania w aplikacji Ruby Rack.
+
+Piotr Jaworski. Ruby on Rails & JavaScipt Developer, z zamiłowania tworzy techniczne teksty dla krakowskiego software house Nopio. Obecnie pracuje w Londynie. Programowanie to nie tylko jego sposób na życie, ale przede wszystkim pasja. Uwielbia podróżować i aktywnie spędzać czas. Fan sportu, głównie siatkówki i futbolu.
+Głównym problemem przy wykonywaniu migracji jest zachowanie spójności pomiędzy starymi ścieżkami/linkami a nowymi. Utrzymanie strony internetowej na górze wyników wyszukiwania Google jest dość istotne, trzeba także pamiętać, że powinno zachować spójność starych linków, które mogą być nadal w użyciu. 
+Przyjmijmy, że twoja strona internetowa została zbudowana wiele lat temu tylko w PHP lub ASPX — bez żadnego współczesnego frameworku. Prawdopodobnie wiele adresów wygląda w tym przypadku tak: 
+
+mywebpage.com/contact.php
+mywebpage.com/form.php?email=something&process=true
+mywebpage.com/about.aspx
+
+W przypadku przeniesienia się na nowy framework, np. Rails, nie będzie możliwe użycie rozszerzeń typu .php lub .aspx, a ścieżki w Twojej aplikacji będą wyglądać zupełnie inaczej.
+Z pomocą przychodzi bardzo przydatny gem Ruby o nazwie rack-rewrite, dzięki któremu nie będziesz musiał martwić się o przekierowania. Implementacja jest bardzo prosta i nie zajmuje dużo czasu. Największym plusem tej biblioteki jest to, że można jej użyć w aplikacji Ruby bez Rails. 
+Przyjrzymy się bliżej temu, jak można wykonać tę migrację i ustawić przekierowania w aplikacjach Ruby, które używają Rack.
+Instancja
+Przy instalowaniu jedyne, co trzeba zrobić to dodać ten gem do naszego Gemfile’a: 
+gem 'rack-rewrite', '~> 1.5.0'
+Potem uruchomić bundler: 
+$ bundle install
+Jeśli używasz tylko Racka, dodaj do config.ru: 
+Jeśli używasz którejś z wersji Rails 4+, musisz dodać następujący kod w pliku swojej aplikacji application.rb: 
+Jeśli używasz wersji Rails 3 lub starszej, użyj tego kodu: 
+W tym bloku kodu musisz dodać swoje przekierowania (omówimy je w dalszej części artykułu). Pamiętaj, że po każdej modyfikacji w application.rb powinieneś zrestartować swój serwer rails. 
+Przekierowania obsługiwane przez gem
+Ten gem obsługuje przekierowania o czterech różnych statusach kodu HTTP: 
+
+301 (trwale przeniesiony),
+302 (znaleziono),
+303 (zobacz inne),
+307 (tymczasowe przekierowanie),
+301.
+
+301
+Jeśli chcesz użyć przekierowania z kodem statusowym 301, jedyne co musisz zrobić to dodać tę linijkę kodu: 
+moved_permanently ‘old_url’, ‘new_url’
+302
+Sprawa wygląda praktycznie tak samo przy 302, przekierowanie będzie wyglądać w ten sposób: 
+found ‘old_url’, ‘new_url’
+Możesz też użyć aliasu r302. 
+303
+Przy znalezieniu innego kodu statusowego HTTP, przekierowanie wygląda tak: 
+see_other ‘old_url’, ‘new_url’
+Alias dla tej metody to r303. 
+307
+W przypadku tymczasowego przekierowania, wygląda to w ten sposób: 
+temporary_redirect ‘old_url’, ‘new_url’
+Ta metoda ma dwa aliasy — r307 i t. 
+Poza tymi czterema metodami, istnieje jeszcze jedna, zwana rewrite. Składnia wygląda tak: 
+rewrite ‘old_url’, ‘new_url’
+Główną różnicą pomiędzy rewritem a innymi metodami jest to, że rewrite przepisuje wartości nagłówków HTTP dla PATH_INFO i REQUEST_URI na nowy url, podczas gdy URL w przeglądarce nie zostaje zmieniony. 
+Nie trzeba się ograniczać do tworzenia przekierowań o zahardkodowanych URL, możesz też używać wyrażeń regularnych, żeby złapać więcej URLi: 
+moved_permanently %r{/wiki/(.*)}, 'http://www.google.com/?q=$1'
+Ustawianie większej liczby przekierowań
+W którymś momencie czytania tego artykułu pewnie wpadła Ci do głowy myśl: wow, a czy dałoby się ustawić wiele przekierowań? 
+Załóżmy, że chcesz dodać ponad 2000 przekierowań. W tej sytuacji możesz przechować je w pliku, wykonać iterację i wtedy dodać wszystkie przekierowania w każdej pętli wewnątrz application.rb. Dla przykładu możesz przechować przekierowania w pliku YAML, w ten sposób: 
+Jeśli chcesz załadować ten plik i dodać przekierowania, jedyne co musisz zrobić to: 
+Alternatywą byłoby przechowanie wszystkich informacji o przekierowaniu w pliku YAML z kodem statusowym i starymi, i nowymi ścieżkami, następnie załadowanie: 
+Następnie utwórz plik o nazwie called my_file.yaml:
+Jeśli chcesz dowiedzieć się więcej o tym gemie i poznać wszystkie możliwe opcje, najlepiej będzie jeśli odwiedzisz jego stronę na GitHubie. Tam znajdziesz odpowiedzi na wszystko. 

@@ -1,0 +1,75 @@
+Jednym z podstawowych i najczęściej wystepujących problemów współczesnego programowania jest czynność przekazania projektu innemu programiście. Odkąd zaczęto używać technologii zapisywania zależności pomiędzy wykorzystywanymi w projekcie bibliotekami (Composer dla PHP, Maven, Ant dla Javy), a także wersjonowania kodu, sam program przestał być głównym źródłem wszelkiego zła.
+
+Paweł Kamiński. Absolwent Politechniki Białostockiej, programista z ponad 8-letnim doświadczeniem zawodowym. Zajmuje się frontendem (sass, React) i backendem (Laravel). Pracował przy projektach o różnej skali — przy ugruntowanych serwisach, ale także przy aplikacjach tworzonych w start-upach. Jest nauczycielem przedmiotów zawodowych w technikum informatycznym. W życiu stawia na stały rozwój. Poza programowaniem, jego hobby to wszystko, co można uznać za retro w informatyce: gry, czasopisma, ślady po pionierach komputeryzacji w naszym kraju.
+Na pierwsze miejsce wysunęło się jednak środowisko uruchomieniowe – system operacyjny, w przypadku PHP wersja interpretera, bazy danych czy też innych usług. Oznacza to, że przekazując nasz kod innemu programiście, nie zawsze możemy być pewni, że będzie działał w sposób identyczny, jak na naszym komputerze. Czasem, mimo nawet dokładnej analizy porównawczej środowisk, brak jednej biblioteki może zdecydowanie opóźnić lub też uniemożliwić szybkie rozpoczęcie pracy w nowym projekcie.
+Osobiście, podobny problem napotkałem kilka tygodni temu, gdy otrzymałem do analizy projekt, który został napisany w Laravelu 4.2. Domyślnie, moje środowisko serwera oparte o interpreter PHP w wersji 7.2, nie pozwalało na uruchomienie przekazanego mi kodu. Problemem okazał się brak rozszerzenia Mcrypt, które to w wersji PHP 7.2 zostało całkowicie usunięte. Co prawda, rozszerzenie to zostało przeniesienione do biblioteki PECL i przy odrobienie wysiłku, można byłoby się pokusić o jego instalację, to jednak postanowiłem, iż by jak najlepiej odwzierciedlić środowisko produkcyjne, użyję konteneryzacji i całkowicie uniezależnie się od mojego środowiska opartego o PHP 7.2.
+I właśnie w tym wpisie spróbujemy stworzyć nowe kontenery dla aplikacji laravelowej przy użyciu Dockera.
+Czym jest sam Docker? Jest to technologia umożliwiająca umieszczenie w kontenerach poszczególnych elementów aplikacji (serwer aplikacyjny – Nginx, Apache, interpretera PHP, czy też bazy danych), kontenery te są następnie uruchamiane i dzięki dokładnej specyfikacji wymienionych wyżej składowych systemu, wszędzie, na każdym systemie operacyjnym, uruchamiane  i prezentowane w ten sam sposób. Oznacza to w praktyce, że jeśli stworzymy kontener PHP w wersji 7.3 to mamy pewność, że każdy jego użytkownik będzie posiadał właśnie tą wersję. Jeśli dodamy do tego wszelkie ustawienia konfiguracyjne, biblioteki, narzędzia, skrypty, automatyzację, to otrzymujemy potężne narzędzie, które zapewnia nas, że raz zdefiniowany kontener (i wgrana w nim aplikacja), wszędzie będzie uruchomiona na tym samym środowisku.
+W celu instalacji samego Dockera, należy pobrać go za pomocą jednego z linków:
+
+wersja Windows,
+wersja OSX.
+
+Pora stworzyć pierwszy projekt. Do przechowywania plików Dockera możemy używać tego samego folderu, w którym jest projekt lub też zastosować inny folder. Od samego umiejscowienia plików zależą jedynie ścieżki, które będziemy musieli podać podczas konfigurowania kontenerów. W przykładzie poniżej, wszystkie z użytych plików umieszczone zostały razem z aplikacją:
+
+
+aplikacja umiejscowiona została w folderze “i”,
+jak standardowa aplikacja laravelowa, w głównym folderze mamy do dyspozycji katalogi “app”, “boostrap”, “public” i “vendor”,
+pliki konfiguracyjne umiejscowione są w głównym katalogu “i”.
+
+Które z zaprezentowanych wyżej plików odpowiadają za konfigurację Dockera? Są to:
+
+app.docker,
+docker-compose.yml,
+vhost.conf,
+web.docker.
+
+Najważniejszym, centralnym z nich jest oczywiście docker-compose.yml. W nim będziemy definiować wszystkie używane kontenery. Początek pliku to zdefiniowanie wersji i listy usług:
+Następnie definiujemy pierwszy kontener o nazwie “app”. Będzie nam on służył jako miejsce na naszą aplikację laravelową.
+Kolejno:
+
+za pomocą dyrektywy “context” zdefiniowaliśmy kontekst aplikacji, czyli wybraliśmy aktualną ścieżkę jako domyślne umiejscowienie plików konfiguracyjnych kontenerów,
+za pomocą “dockerfile” defniujemy plik konfiguracyjny, który będzie przechowywał informacje o interpreterze PHP, a także wykona czynności przygotowawcze (o czym za chwilę),
+“working_dir”, to zdefiniowanie miejsca, w których będzie osadzona nasza aplikacja. Wybraliśmy “var/www” jako najczęstsze miejsce do wgrania naszej aplikacji – warto zauważyć, iż ta ścieżka odnosi się bezpośrednio do kontenera, nie ma ona nic wspólnego z naszym lokalnym komputerem,
+w kolejnej dyrektywie “volumes” mapujemy naszą lokalną ścieżkę na ścieżkę w kontenerze. Dzięki temu w kontenerze w katalogu “var/www” widoczne będą te same pliki, co w katalogu “./” lokalnego komputera (czyli pliki w naszym katalogu “i” będą widoczne w katalogu “var/www” kontenera”).
+
+Druga z usług, to zdefiniowanie kontenera z serwerem aplikacyjnym (Nginx).
+Ostatania z usług to “db”, czyli baza danych. Tu, już na pierwszy rzut oka widoczne jest użycie nowej dyrektywy “image”. Dzięki niej możliwe jest wykorzystanie gotowych obrazów usług – w tym wypadku zdefiniowano użycie serwera bazodanowego Mysql w wersji 5.6. Pliki obrazu pobierane są z oficjalnego repozytorium Dockera.
+
+nazwy bazy – homestead,
+użytkownika – homestead,
+hasła – secret,
+hasła do root’a – secret.
+
+Niezwykle ważnym jest, by podane tutaj loginy i hasła pokrywały się z tymi, które mamy w aplikacji (plik .env dla Laravela 5 i plik “app/config/database” dla mojej aplikacji opartej o Laravel 4.2). Co więcej, w ostatniej dyrektywie “ports” dokonujemy kolejnego mapowania. Domyślny port bazy danych kontenera “3306” zostanie zmapowany na “33061” komputera lokalnego. Raz jeszcze w celu uniknięcia konfliktów uzyto mapowania dwóch portów.
+W ten oto sposób stworzyliśmy nasz pierwszy plik docker-compose.yml, który w całości prezentuje się tak, jak poniżej:
+I właśnie drugie polecenie RUN to uruchomienie instalatora dla rozszerzeń “mcrypt”, “mysql-client”, po czym ich instalacja. Są to polecenia wykonywane bezpośrednio w kontenerze, czyli naszym zwirtualizowanym systemie operacyjnym. Oczywiście plik konfiguracyjny może być znacznie obszerniejszy, wszystko zależne jest od ilości rozszerzeń i wymaganych bibliotek. W naszym przypadku – prostej aplikacji laravelowej, taka ilość rozszerzeń będzie wystarczająca.
+Czas zajrzeć do pliku konfiguracyjnego serwer aplikacyjny, web.docker:
+
+w pierwszej linii definiujemy wybraną wersję serwera aplikacyjnego – Nginx 1.10,
+następnie do kontenera dodajemy lokalny plik “vhost.conf”, który umiejscawiamy w katalogu “/etc/nginx/conf.d/default.conf” kontenera (dzięki temu nadpisujemy lokalną konfigurację serwera na naszą, którą zdefiniujemy za chwilę),
+na końcu ponownie ustawiamy katalog roboczy kontenera na “/var/www”.
+
+Ostatnie czynności, to przede wszystkim stworzenie pliku “vhost.conf”:
+Plik ten zawiera wszelkie dane konfiguracyjne serwera Nginx:
+
+port nasłuchiwania (80),
+plik, który ma być indexem witryny,
+root – domyślny katalog serwera. W opisywanym przypadku będzie to oczywiście podkatalog “public” aplikacji (czyli dzięki mapowaniu zdefiniowanemu wcześniej katalog “/var/www/public” kontenera (usługi) będzie odpowiadał katalogowi lokalnemu komputera “./public”, czyli folderowi Laravela,
+reszta ustawień to domyślne ustawienia serwera Nginx, warto tylko zauważyć, iż w jednym z nich użyty został alias (link “app”) stworzony kilka minut wcześniej.
+
+Na koniec musimy się tylko upewnić, czy dane dostępowe do bazy, wpisane w aplikacji pokrywają się z tymi zdefiniowanymi w kontenerze “db”. W przypadku aplikacji napisanej w Laravel 4.2 zaglądamy do pliku “app/config/database.php” i sprawdzamy tablicę z kluczami:
+Pozostaje nam już tylko z terminala bądź wiersza poleceń przejść do katalogu z aplikacją i plikami konfiguracyjnymi i uruchomić polecenie:
+
+A my śmiało możemy teraz uruchomić w przeglądarce adres “0.0.0.0:8080”, który to powinien wyświetlić ekran powitalny aplikacji laravelowej.
+Jeśli chcemy wyłączyć kontenery, wystarczy, że użyjemy polecenia “docker-compose stop”:
+
+Poniżej przedstawiona została tabela z najpopularniejszymi poleceniami Dockera:
+
+docker-compose up – uruchomienie kontenerów,
+docker-compose stop – zatrzymanie kontenerów,
+docker container ls – wyświetlenie listy kontenerów,
+docker system prune -a – usunięcie wszystkich danych (włączając w to pobrane obrazy),
+docker rm -f {container id} – usunięcie zbudowanego kontenera.
+
+Wszystkie źródła przedstawione w powyższym wpisie dostępne są w tym repozytorium.

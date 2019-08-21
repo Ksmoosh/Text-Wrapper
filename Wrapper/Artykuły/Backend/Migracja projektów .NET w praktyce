@@ -1,0 +1,44 @@
+Dług technologiczny w świecie programowania jest znanym zjawiskiem. Część firm zna konsekwencje zastania się i na bieżąco usprawnia kod, chociaż “nie przynosi” to korzyści biznesowi. Z drugiej strony mamy od groma rozwiązań i firm, które zostają przy starych zasadach i boją się ruszyć kod, bo coś może pójść nie tak. Dzisiaj opiszę jak można w łatwy i prosty sposób migrować projekty od .NET Framework 2.0 do .NET Framework 4.8, .NET Standard 2.0 i .NET Core 2.2 za pomocą jednego kliknięcia, zarazem zachowując kompatybilność wsteczną.
+
+Piotr Czech. Konsultant w firmie VLOG, gdzie wspiera rozwój oprogramowania u klientów. Budował systemy oparte o RODO oraz mobilne systemy telemetryczne zbierające i przetwarzający dane o kierowcach w celu obniżenia ubezpieczeń, między zadaniami na poprawianie bugów. Entuzjasta podejść architektonicznych w systemach oraz budowania wydajnych rozwiązań opartych o platformę .NET poprzez eksplorację nowych technik oraz uczenie innych… i gonienie ich, jeśli nie przykładają się do kodu.
+Geneza
+Przed pojawieniem się Visual Studio 2017 projekty, które tworzyliśmy miały pewien standard (w tym wypadku zaszłości .NET Frameworka) wpisane w pliki .csproj.
+Przykładowy plik .csproj zaczynał się tak: 
+Taki plik mógł mieć ponad 1000 lini kodu, jeśli na przykład tworzyliśmy aplikacje typu SPA, sama wydajność takiego projektu była tragiczna, jeśli chodzi o indeksowanie ogromnych ilości plików.
+Taki plik posiadał wiele magicznych sformułowań i plików jak Microsoft.Common.props, z rozszerzeniami .targets czy ustawień, które nie mówią nic.
+Nowe podejście
+Jako, że wielkimi krokami zbliża się .NET 5 to trzeba było podjąć decyzje o uproszczeniu tego procesu, integracji trzech środowisk oraz zmienienia podejścia do zarządzania paczkami nugetowymi. Pierwsze szlaki przetarły rozwiązania zawarte w Visual Studio 2017.
+M.in:
+Nowy format
+Nowy format plików został uproszczony i dla bibliotek wygląda on tak:
+Dla aplikacji konsolowych:
+A dla projektów z testami:
+Przy okazji testów już widać nowy system paczek. Zaletą nowego podejścia jest to, że działają jak wirus, jeśli jeden projekt się zaraził to każdy inny, który go używa również go ma. 
+Dzięki temu wystarczy tylko raz dodać paczkę, a ona będzie dostępna w każdym projekcie, który używa tego konkretnego projektu. To samo tyczy się referencji do projektów.
+Idąc dalej za ciosem, jesteśmy w stanie dzięki nowego formatowi zbudować projekt, który będzie targetował naraz trzy platformy!
+Przykładowy format projektu, który agreguje zewnętrzne paczki:
+Newtonsoft.Json będzie dostępny dla każdej platformy a reszta paczek według platformy.
+To co się zmieniło to TargetFramework stał się TargetFrameworks.
+Projekty ASP.NET nie są komaptybilne z nowym formatem ze względu na zaszłości!
+To oznacza, że dla nich zostaje stary format.
+Masowa migracja i standaryzacja kodu
+Nie ma sensu wykonywać kodu migracji ręcznie, więc powstał CsprojToVs2017. Pójdźmy jednak o krok dalej.
+Poza samą migracją przydałby się:
+Wszystko zrobić za jednym zamachem.
+W takim celu istnieje mechanizm, który składa się z dwóch plików Directory.Build.props oraz Directory.Build.targets. 
+Zadaniem pierwszego jest zdefiniowanie ustawień takich jak wersja języka, załączonych plików czy załączonych paczek. Zadaniem drugiego jest zdefiniowanie skryptów, które się uruchomią podczas budowania projektu.
+Directory.Build oznacza tyle, że plik umiejscowiony na poziomie solucji zdefiniuje dla każdego projektu takie same reguły i zostaną one dołączone do pliku .csproj bez potrzeby ręcznego kopiowania ich do każdego projektu.
+Przykład Directory.Build.props:
+Przykład Directory.Build.targets:
+DeploymentSettings.props dla współdzielonej biblioteki:
+DeploymentSettings.props dla standardowych solucji:
+nuget.config:
+Kopiujemy Directory.Build.props, Directory.Build.targets, DeploymentSettings.props oraz nuget.config do folderu z solucją. Przed budowaniem projektu system szuka paczki Xeinaemm.Analyzer, z której pobiera pliki konfiguracyjne zdefiniowane w folderze content i build. Buduje projekt a potem jeśli chcemy wdrażać paczki do lokalnego repozytorium to wykonuje paczkowanie.
+Sama w sobie migracja projektów znajduje się w Visual Studio pod komendą “Clean” lub “Clean Solution”. Po migracji trzeba pamiętać o przestawieniu flagi w DeploymentSettings.props, aby nie wykonywał za każdym razem migracji projektów.
+Wsteczna kompatybilność
+Aby zapewnić wsteczną kompatybilność większość wymienionych funkcjonalności jest wyłączona, jeśli znajdzie w projekcie plik packages.config, ponieważ stary i nowy system nie może działać naraz w tym samym projekcie.
+Aby zapewnić centralne zarządzanie paczkami nugetowymi, warto pomyśleć o stworzeniu projektów, które zawierają tylko paczki np. Xeinaemm.Nuget.Autofac. W moim wypadku jest to agregat dla wszystkich paczek pod nazwą Xeinaemm.Nuget.
+Dzięki takiemu zabiegowi nowy system jest w stanie korzystać z wirusowego zaciągania paczek, są one zdefiniowane w jednym miejscu, a zarazem stary system dostaje wersje paczek ustalone z góry, dzięki czemu eliminujemy problem różnych wersji tej samej paczki.
+Dodatkowo taki podział paczek na grupy pozwala na zaciąganie tylko potrzebnych zależności w starych projektach. Dla nowego formatu wszystko może być w jednym miejscu, ponieważ i tak nie zauważymy tych zależności, gdyż zmieniony system nie zaciąga czegoś czego nie używamy, chociaż mamy sposobność używania (można to zauważyć przy rozwinięciu dowolnego projektu lub paczki w sekcji Dependencies dla nowego formatu).
+Podsumowanie
+Całe rozwiązanie znajduje się pod Xeinaemm.Standard dla współdzielonej biblioteki oraz SpaTemplate dla standardowej solucji. Znajdziesz tam również rozwiązania jak automatyczne generowanie kodu dzięki temu rozwiązaniu. Tymczasem mam nadzieję, że wyniosłeś coś dla siebie, do następnego!

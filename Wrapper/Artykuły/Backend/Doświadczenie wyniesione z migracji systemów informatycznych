@@ -1,0 +1,77 @@
+Jakiś czas temu na łamach Just Geek IT opisałem migracje systemów informatycznych opartych o .NET z czysto technicznego punktu widzenia. Dzisiaj opiszę ten sam proces z punktu widzenia biznesu oraz technologii. Mam nadzieję, że będzie to dla Was ciekawe!
+
+Piotr Czech. Konsultant w firmie VLOG, gdzie wspiera rozwój oprogramowania u klientów. Budował systemy oparte o RODO oraz mobilne systemy telemetryczne zbierające i przetwarzający dane o kierowcach w celu obniżenia ubezpieczeń, między zadaniami na poprawianie bugów. Entuzjasta podejść architektonicznych w systemach oraz budowania wydajnych rozwiązań opartych o platformę .NET poprzez eksplorację nowych technik oraz uczenie innych… i gonienie ich, jeśli nie przykładają się do kodu.
+Cel migracji
+Celem całej migracji było podniesienie bezpieczeństwa systemów informatycznych oraz danych, które przetwarza klient. Jednym z aspektów było podniesienie wersji usług, z których on korzysta, od baz danych aż po rozwiązania wykorzystywane po stronie interfejsu użytkownika. Trzeba było zapewnić ciągłość wsparcia produktów, z których korzysta oraz zweryfikować systemy pod kątem bezpieczeństwa, aby mysz się nie prześlizgnęła. 
+Sama migracja spowodowała, że cała praca wytwórcza musiała zostać wstrzymana na 6 tygodni. Patrząc przez pryzmat całego działu IT, koszty takiego przedsięwzięcia są ogromne, zatem trzeba było mieć powód, aby to zrobić.
+W związku z obowiązującym RODO i faktem, że należymy do grupy, w której znajduje się instytucja finansowa bezwzględnie trzeba było zapewnić bezpieczeństwo systemów.
+Wyzwania technologiczne
+Wyzwaniem była integracja systemów między sobą, gdyż zmiana jednego systemu wpływała na systemy, które z niego korzystały. Przy okazji nastąpiła eliminacja rozwiązań nie wspieranych przez klienta, przepisanie konfiguracji oraz części w systemach, które odpowiadają za logowanie zdarzeń czy inicjalizacji samego w sobie systemu.
+Innym aspektem migracji było ulepszenie automatyzacji procesów dostarczania rozwiązań, sprawdzania ich pod kątem bezpieczeństwa, wydajności oraz standardów tworzenia obowiązujących w firmie.
+Dzięki temu powstał system, który:
+
+automatycznie dostarcza paczki NuGet’owe do lokalnych i firmowych repozytoriów razem ze wsparciem wszelkiego rodzaju serwerów NuGet’owych.
+automatycznie tworzy i wdraża usługi Windows’owe, ponieważ na obecną chwilę nie istnieje taka możliwość od strony rozwiązań opartych o silnik .NET Core.
+podczas ciągłej integracji (ang. continuous integration) sprawdza kod pod kątem luk bezpieczeństwa, standardów tworzenia kodu oraz wydajności za pomocą analizatorów.
+upraszcza zarządzanie solucjami, ponieważ został przygotowany panel sterowania w którym zdefiniowane są wersje paczek, flagi do sterowania procesami oraz ustawienia stricte przygotowane pod dynamiczne zarządzanie solucjami bez potrzeby uruchamiania Visual Studio, tak aby na maszynie na której znajduje się silnik .NET Core można było wykonać potrzebne zmiany.
+wykorzystuje format tworzenia współdzielonych bibliotek w oparciu o standard architektury .NET Core SDK, dzięki czemu integracja z projektami, które tworzymy w firmie jest szybka i bezbolesna, tak samo jak aktualizacja zależności w wielu projektach.
+
+W firmie działają na nim 23 systemy (20 należących do mojego zespołu) z ponad 50. Szkielet takiego systemu opisałem w artykule Migracja projektów .NET w praktyce.
+Moje subiektywne spostrzeżenia związane z procesem migracji:
+1. Częsta komunikacja i uderzanie do źródła problemu
+Chcesz wysłać email, a adresat siedzi 50 metrów od Ciebie? Podejdź i zagadaj. Nieważne, że należy do innego zespołu. Dzięki temu usuwamy bariery i nie dochodzi do pyskówek czy przerzucania winy na drugą stronę barykady. Ewentualnie można zastosować wojskową zasadę pisania maili znaną pod skrótem BLUF (ang. Bottom Line Up Front).
+2. Używasz Scrum’a? Rozszerz Daily Scrum o międzyzespołowe Daily Scrum
+Poza zwykłymi DS’ami mamy wyjątkowo DS’y między zespołowe, które wyglądają tak samo jak te zespołowe, jednak ich celem jest wymiana wiedzy, problemów i dalszej ścieżki działania, dzięki czemu jako departament wiemy gdzie jesteśmy i dokąd zmierzamy.
+3. Wykonaj minimum pracy, ale za to zrób to jak najlepiej
+Migrujesz projekt? Dobrze. Pamiętaj jednak, aby nie wykonywać refaktoringu kodu jeśli nie ma takiej potrzeby, bo stracisz czas. Jest jednak jedna rzecz – posprzątaj okolice jak zmieniasz daną część systemu. Oznacza to tyle, że jak zmieniasz konfiguracje to sprawdź czy przypadkiem nie ma w kapitule zdefiniowanych aktualnych wzorców postępowania. Dzięki temu nie będziesz musiał wracać do tego projektu. Sprzątanie po kimś jest nadwyraz… denerwujące.
+4. Między zespołami można mieć różne zdania, ale jako zespół zawsze jedno
+Jako zespół podjęliśmy decyzję, że idziemy ścieżką, którą stworzyłem, czyli wprowadzimy nowy system zarządzania projektami. Zespół zaufał mi, inne nie. Dzięki takiej decyzji zmigrowaliśmy wszystkie systemy podległe pod nas (nawet te, których nie musieliśmy) do aktualnych standardów w firmie. Profit? Szkielet systemów wszędzie jest taki sam, więc jako zespół możemy wykonywać masowe aktualizacje naszych projektów bez obawy, że coś pójdzie nie tak. Dzięki temu mamy przewidywalne zachowanie każdej usługi (teoria sterowania).
+5. Problem w zespole zawsze jest ważniejszy niż ten między zespołowy
+Każdy zespół ma swoje zadania do wykonania, więc jeśli któryś członek zespołu ma problem to najpierw mu pomagamy. Nieważne, że inni proszą o Twój czas. Pomagasz innym jak swoją i zespołową pracę masz skończoną.
+6. Nie obrażaj się
+Były dni, gdy dostawałem informacje o tym, jak bardzo komuś się nie podoba decyzja, którą podjąłem. Nie oceniam czy słusznie, czy nie – ważne, aby się nie zrażać. Ilość możliwych ścieżek, gdzie coś może pójść nie tak jest ogromna, a jesteśmy przecież tylko ludźmi. Samo wprowadzanie standardów powoduje, że inni muszą oduczyć się swoich nawyków, a to nie zawsze jest proste i przyjemne.
+7. P…. biurokracje i formalizmy
+Ten punkt bardzo mocno wiążę się z pierwszym punktem – nie wszyscy muszą wiedzieć wszystko. Nie ma potrzeby wprowadzać szumu informacyjnego, tylko należycie wykonać swoją pracę bazując na wiedzy osób najlepiej znających dany temat.
+8. Jeśli wykonujesz jakąś czynność dwukrotnie, zautomatyzuj ją
+Menedżer jak usłyszy, że wprowadziłem kolejny automat to zalewa go zimny pot, bo to znaczy kolejny automagiczny system, który robi coś o czym inni programiści nie mają pojęcia jak działa. Z czasem takie podejście opłaca się, bo ilość zaoszczędzonego czasu jest nieproporcjonalnie większa niż przeszukiwanie dokumentacji “A jak coś zrobić?” lub klepanie n-ty raz te same komendy.
+Jak przychodziłem do klienta pierwszy raz to ilość niepisanych zasad była dla tak mnie przytłaczająca, że wyglądałam jak dziecko we mgle. Definiujesz zestaw reguł już w samym automacie i osoba, która tego użyje nie musi znać systemu, aby kliknąć “Buduj”, a on magicznie wdrożył cały system i zaczął pracę. Z czasem nauczy się jak on działa.
+9. Nie wykonuj ustaleń, jeśli znajdziesz wydajniejszy i korzystniejszy sposób na wykonanie pracy
+Każdy jest omylny i podejmuje decyzje według posiadanej wiedzy i informacji. Nie ma prawdy objawionej, więc jak widzisz, że decyzja kogoś z góry jest nietrafna to traktujesz ją jako opinie – więcej czasu stracisz na przekonywanie i pracę w nieefektywnym podejściu niż na faktyczne dowiezienie rozwiązania.
+10. Nie proś o zgodę, ale o wybaczenie
+Ten punkt bardzo mocno wiążę się z poprzednim – praca ma zostać wykonana, politykę zatem zostaw ludziom, którzy chcą się w nią bawić. Pytanie co jest bardziej szkodliwe dla firmy. Słuchanie się, nie zadawanie pytań i szukanie przychylności osoby nad tobą czy wykonanie pracy najlepiej jak potrafisz mimo zawracania kijem Wisły?
+11. Pierwszy wygrywa
+Ktoś rozwiązał problem i zbudował rozwiązanie, które rozwiązuje część Twoich problemów? Dostosuj się niżeli wynajduj koło na nowo.
+12. Zawracaj kijem Wisłę, ale tylko gdy masz 100% pewność
+Osoby są przeciwko Tobie, część jest niepewna, ale jesteś pewny, że masz racje? Pokazuj, edukuj, ewangelizuj. 
+13. Eksperymentuj
+Tak naprawdę cały system, który pokazałem u klienta był moim autorskim rozwiązaniem – poza testami na swoich systemach nigdy go produkcyjnie nie wprowadziłem. Patrząc przez pryzmat 6 tygodni pracy z nim i ponad 20-stoma systemami dalej, mogę powiedzieć, że był to udany eksperyment.
+14. Nie bądź wąskim gardłem
+Dlaczego tylko trochę ponad 20 systemów? Nie byłem w stanie przekazać wystarczająco szybko całej potrzebnej wiedzy wszystkim zespołom. Szybciej było mi napisać artykuł niż tłumaczyć każdemu z osobna. Innym aspektem jest to czy ktoś go przeczytał.
+15. Pain Driven Development
+Nie lubię wykonywać monotonnej pracy, więc ją automatyzuje, jednak czasami specyfika zadania wymaga grzebania się w szambie. Im bardziej coś na Ciebie wywiera wpływ tym bardziej wracasz do korzeni, podstaw programowania, dobrych praktyk. Zaciskasz zęby i pchasz wózek przed siebie do momentu, aż przestaniesz czuć ból, a tylko błogi spokój i ukojenie. Staram się wykonywać pracę, której nikt nie chce zrobić, bo wiem, że to przyniesie największy wkład w rozwój firmy i każdej osoby, która w niej pracuje.
+16. Nie przywiązuj się do swojej roli i obowiązków
+Osobiście uważam za idiotyzm przywiązywanie się do swojej roli i obowiązków – oznaczałoby to, że się ograniczam. Kiedy trzeba być kimś innym, niż programistą to przejmuję zadania lidera naszego zespołu, testerów czy analityków. Zespół działa jako całość i bez różnicy, że kogoś brakuje, reszta zespołu przejmuje jego obowiązki. Dlatego nierzadko u nas zdarza się, że analitycy przyjmują rolę testerów, programiści i analitycy rolę lidera, a testerzy wspomagają analityków w swojej pracy.
+17. Wykonuj egzekucje
+Maklerzy na Wall Street każdą inwestycje nazywają egzekucją, w prawie natomiast można nazwać to sprawiedliwością Pizona. Oznacza to tyle, że nie ma odwrotu od podjętej decyzji. Kiedy decyzja została podjęta nie ma sensu się nad tym rozwodzić i martwić co się stanie, tylko iść do przodu. Czas pokaże jak dana decyzja wpłynie na sytuację. 99% czarnych scenariuszy nie wydarzy się, więc po co się nimi przejmować?
+18. Atakuj problem a nie ludzi
+Deadliny powodują nerwy, a nerwy powodują, że wyżywamy się na innych, bo wyobrażamy sobie te 99% sytuacji, które prawdopodobnie się nie wydarzą. Paradoksalnie, im więcej stresu tym bardziej jesteśmy na niego odporniejsi i z czasem wygrana czy przegrana nie robi już większej różnicy – jest to jedynie kolejny epizod w naszym w życiu. Dlatego też nie warto wyżywać się na współpracownikach z powodu narastających problemów – problemy wkrótce znikną, a z ludźmi będziesz widywać się codziennie.
+19. Jasno ustalaj podział prac i poinformuj o fakcie
+Zmieniasz część systemu, która nie przynależy do Twojego zespołu? Pobieżnie coś nie działa? Poinformuj właścicieli o fakcie lub zostaw im kod, aby zaakceptowali go. Ich odpowiedzialnością jest wprowadzenie poprawki nawet jak blokuje to Twój proces przy integracji z ich usługą. Zdarzyła się sytuacja, że zespół korzystający z naszego rozwiązania nie poinformował nas o nie wykonaniu pełnej migracji i dowiedzieliśmy się o tym na dwa dni przed końcem ostatniego, szóstego sprintu (moment oddania systemów do testów UAT). 
+Migracja tego wycinka systemu była przypisana do tamtego zespołu ze względu na to, że odpowiedzialność za system należała do dwóch zespołów, a system był uznawany jako całość mimo podzielenia go na dwie części. Migracja tego systemu była wykonana dwa sprinty wcześniej.
+20. Uśmiechaj się i zawsze szukaj pozytywów
+Patrząc przez pryzmat całego życia, po co się przejmować, nieważne jak nisko upadniesz zawsze warto się zreflektować i poszukać, co dana sytuacja nas nauczyła. Jak nie drzwiami to oknem, a jak nie oknem to wykorzystaj buldożer.
+Moje subiektywne spostrzeżenia jeśli chodzi o środowisko .NET i samą w sobie migrację
+1. Stwórz listę używanych technologii i paczek NuGet’owych
+Rozwiązanie Microsoft.Build.CentralPackageVersions pozwala na zdefiniowanie listy paczek, które wykorzystujemy w projektach, zmiana pliku packages.props podmienia wersje we wszystkich projektach z niego korzystających.
+2. Tak buduj współdzielone biblioteki, aby zmiany były jak najmniej inwazyjne i nie wprowadzały piekła “DLL’ek”
+Chodzi o to, aby budować współdzielone biblioteki wraz ze wsteczną kompatybilnością oraz najlepiej utrzymywać niezmienioną wartość AssemblyVersion. Eliminuje to potrzebę przekierowywania paczek na inne wersje biblioteki w plikach app.config czy web.config oraz powoduje mniej nerwów przy zmianach w projektach.
+3. Jak migrujesz aplikacje Winforms, WPF, XBAP na nowy format to przygotuj się na napisanie własnego systemu do wdrażania takich aplikacji
+Co tu dużo mówić, na obecną chwilę nie wszystkie rozwiązania wspiera w pełni silnik .NET Core, więc jeśli chcesz migrować coś poza zwykłymi bibliotekami przygotuj się na napisanie swoich własnych rozwiązania do wdrożenia takiej aplikacji.
+4. Ostrożnie z redukowaniem długu technologicznego i upiększaniem kodu
+Wszystkiego rodzaju automaty do upiększania kodu są fajną rzeczą, jednak z umiarem. Osobiście zdarza mi się, że się zagalopuje i zmienię za dużo przez co inni cierpią.
+5. NuGet’owe repozytoria oparte o foldery zamiast serwerów i zbyt duże uprawnienia to zło w czystej postaci
+Pewnego dnia podczas zwykłej pracy jeden z deweloperów zgłasza, że nie działa mu nuget.org. Oho, znowu Azure padł – myślę. Zaraz zgłasza się drugi z tym samym problemem. No to klapa z pracą na dzisiaj – myślę. Okazało się, że jeden z deweloperów wszedł na dysk, na którym znajdują się paczki NuGet’owe i otworzył jedną z nich. Windows uznał, że zablokuje paczkę i wszystkie jej podległe. Co na to NuGet? Zablokował procesy budujące i maszyny developerskie.
+6. Skrypty budujące z dopiskiem “All” to system z odroczoną karą
+Czekasz dwie godziny na opublikowanie się całego systemu, aby przetestować mały wycinek rozwiązania, gdy ktoś nagle wrzuca drobną zmianę, która wysypuje cały proces. Najlepiej jeszcze jak zdarzy się to w piątek przed wyjściem z pracy. Najlepiej publikować system partiami – wysypie się dana część systemu to ponowna publikacja danego wycinka zajmuje mniej niż 15 minut. Rollback jednego podsystemu jest mniej kosztowny niż rollback całego rozwiązania.
+Część wskazówek może się wydawać się nad wyraz niestosowna, niekorporacyjna czy innego rodzaju niepoprawna politycznie. Patrząc jednak przez pryzmat jakimi osobami wolę się otaczać to jednak zespoły, w których członkowie nie boją się mówić o problemach, stawiają na swoim kiedy trzeba oraz dobrze się bawią.
+Dzięki temu każdy się rozwija, nie jest nudno oraz co najważniejsze, nikt nie daje sobie wejść na głowę. A tymczasem, do następnego!

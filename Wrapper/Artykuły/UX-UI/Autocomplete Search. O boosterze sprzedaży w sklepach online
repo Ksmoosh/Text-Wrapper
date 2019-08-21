@@ -1,0 +1,85 @@
+Wyobraź sobie, że jesteś w markecie budowlanym i szukasz wałka do malowania. Nie znasz sklepu, więc kierujesz się znakami. W oddali widzisz duży baner “Dział budowlany”. W połowie drogi do celu, po prawej stronie wyłania się kolejna wskazówka – szyld “Narzędzia”. Zmieniasz trasę, spacerujesz chwilę i dostrzegasz alejkę 38 opisaną “Narzędzia malarskie”. Po chwili – udało się, w końcu znalazłeś! Taki sposób docierania do produktów w sklepie online jest odpowiednikiem nawigacji. Można także od razu pójść do punktu informacji i zapytać, gdzie znajdują się wałki do malowania. To jest odpowiednik wyszukiwarki. 
+
+Damian Góra. WordPress Developer w Netizens i niezależny twórca popularnych wtyczek do WordPressa. Jest zafascynowany ogromną społecznością użytkowników i deweloperów skupionych wokół tego CMSa. Ze szczególną uwagą przygląda się rozwojowi WooCommerce’a. Zwolennik technik skutecznego stawiania celów i strategii LEAN Software Development. W branży IT od 2011 roku.
+Gdyby od samego wejścia do sklepu towarzyszył ci pracownik, który zaprowadzi cię do każdego produktu, o który go zapytasz, a pod drodze opowie o szczegółach, to byłby to odpowiednik wyszukiwarki produktów z podpowiedziami (ang. autocomplete suggestions).
+Podpowiedzi usprawniają proces wyszukiwania produktu. Pojawiają się, gdy użytkownik zaczyna wpisywać zapytanie i pomagają mu doprecyzować czego szuka. 82 proc. najbardziej dochodowych sklepów online na świecie ma zaimplementowane podpowiedzi w swoich wyszukiwarkach produktów. 
+Z pozoru dość prosta funkcjonalność jest jednak bardzo złożona. Istnieje wiele czynników, które wpływają na skuteczność takiego rozwiązania. Poznajcie kilka dobry praktyk, które pozwolą lepiej zrozumieć przydatność podpowiedzi w wyszukiwarkach e-commerce.  Pierwsza część dotyczy strony wizualnej i interakcji użytkownika z wyszukiwarką i podpowiedziami, a w drugiej części poruszane są zagadnienia związane z przetwarzaniem i optymalizacją zapytań.
+Frontend
+W niektórych sklepach lepiej sprawdzi się nacisk na wyszukiwanie z podpowiedziami, a w innych np. z branży modowej, lepiej zadziała nacisk na optymalizację nawigacji. Opisany dalej zestaw kilku dobrych praktyk wyjaśnia znaczenie miejsca osadzenia wyszukiwarki
+i form prezentacji podpowiedzi. 
+Miejsce
+Wygląd i umiejscowienie wyszukiwarki może zupełnie zmienić podejście użytkowników do wyszukiwania produktów w sklepie. Jeżeli głównym sposobem wyszukiwania powinna być nawigacja, pole wyszukiwania musi być stonowane. Wyróżnione pole wyszukiwania spowoduje spadek zainteresowania użytkowników nawigacją.
+Gdy użytkownicy wiedzą czego chcą lub katalog produktów jest bardzo duży, należy promować korzystanie z wyszukiwarki. Można to zrobić manipulując pozycją, kontrastem i rozmiarem. 
+Dobrym miejscem do wyróżnienia wyszukiwarki jest środkowy obszar w górnej części strony, lub miejsce obok paska nawigacji. Zwiększenie kontrastu pola wyszukiwania, np. obramówki oraz jego rozmiaru, pozwoli wyróżnić moduł na tle innych.
+
+Wyeksponowanie pole wyszukiwania (środkowy obszar w górnej części strony) na przykładzie sklepu empik.com.
+Zakres
+Nazwy produktów mogą być zbieżne niezależnie od kontekstu, w którym występują. Problem dotyczy głównie dużych sklepów. W sklepie online Empik po wpisaniu frazy “the beatles” wyświetlają się podpowiedzi produktów z dodatkową informacją o kategorii, w jakiej się znajdują. Ta jedna fraza pasuje aż do 8 niezależnych kategorii.
+
+Przykład wyświetlania dodatkowej informacji o kategorii produktu, w przypadku, gdy dana fraza ma więcej niż jedno znaczenie. W wyszukiwarce na empik.com fraza “the beatles” pasuje do produktów znajdujących się aż w 8 różnych kategoriach.
+Częstym rozwiązaniem dla sklepów, w których produkty o podobnych nazwach znajdują się w wielu kategoriach, jest wyświetlenie dodatkowego pola umożliwiającego zawężenie wyników do kategorii głównej. Użytkownik przed wpisaniem frazy świadomie zawęża wyniki wyszukiwania do wybranego działu.
+Specialiści od UX z instytutu Baymarda przeprowadzili testy, w których podważają skuteczność ręcznego zawężania wyników przez wybór kategorii. Użytkownicy z reguły korzystają z tego narzędzia dopiero jak za pierwszym wyszukaniem pojawią się zbyt ogólne podpowiedzi. O wiele skuteczniejszym narzędziem jest wyświetlanie informacji o zakresie obok podpowiedzi. Tym samym zmniejszy się liczba czynności, których musi dokonać użytkownik, aby znalazł to czego szuka. Dobrze jest również połączyć te dwa podejścia.
+Brak pasujących podpowiedzi i co dalej?
+Fraza, która nie pasuje do żadnych produktów to zupełnie normalne zjawisko. W dalszej części artykułu są wskazówki co zrobić, aby zwiększyć szanse na lepsze dopasowanie produktów do frazy. To kilka dobrych praktyk w sytuacji, gdy zapytanie nie zwraca żadnych podpowiedzi. 
+Podstawową i najprostszą zmianą, która zadziała w niektórych przypadkach to wyświetlenie numeru telefonu do działu sprzedaży. Można także wyświetlić kilka fraz zwracających wynik, które najbardziej pasowałyby do zapytania. Dodatkowo można sprawdzić, czy szukana fraza pasuje do kategorii. Wtedy zamiast podpowiedzi z produktami można wyświetlić pasujące kategorie. Dobrym pomysłem jest także zaproponowanie produktów lub fraz, które aktualnie są popularne w sklepie lub dobranie ich na podstawie spersonalizowanych informacji o użytkowniku.
+
+Zamiast prostej podpowiedzi “Brak wyników”, wyszukiwarka w sklepie made.com wyświetla również popularne produkty, popularne frazy oraz kilka linków informacyjnych.
+Zanim użytkownik zacznie pisać
+Niektóre sklepy wykorzystują moment, w którym użytkownik kliknął pole wyszukiwania, ale jeszcze nie zaczął pisać. Sklep Media Expert w takim przypadku wyświetla spersonalizowane informacje o produktach, kategoriach i markach na podstawie historycznych wyszukiwań użytkownika na stronie.
+
+Informacje dodatkowe, wyświetlane zanim użytkownik zacznie pisać frazę. Przykład pochodzi ze sklepu  www.mediaexpert.pl.
+Kiedy podpowiedzi jest za dużo
+Nikt nie lubi zbyt dużego wyboru. Lepsze efekty osiągnie się ustawiając limit podpowiedzi do maksymalnie 10 pozycji. Zbyt duża ich liczba może powodować szum informacyjny. Użytkownicy będą zdezorientowani i mogą zacząć ignorować podpowiedzi albo spędzać zbyt dużo czasu na ich analizie.
+Podpowiedzi powinny mieścić się w aktywnym widoku strony. Częstym błędem jest wyświetlanie zbyt wielu podpowiedzi w przypiętym do górnej części ekranu pasku wyszukiwania (ang. fixed). W takim przypadku podpowiedzi mogą zostać przycięte od dołu na stałe i przewijanie ekranu w dół nie rozwiąże problemu. Problem narasta, kiedy ostatnią pozycją jest link “zobacz wszystkie”.
+Warto też unikać paska przewijania wewnątrz elementu z podpowiedziami. Wprowadza to dodatkową i zbędną interakcje użytkownika z narzędziem.
+Nie tylko nazwa produktu
+Najprostsza i najczęściej spotykana forma podpowiedzi sprowadza się do wyświetlania samych tytułów produktu. Można jednak spotkać bardziej rozbudowane formy zawierające dodatkowo jego zdjęcie produktu, krótki opis, cenę, kod produktu, kategorię, markę i inne cechy ułatwiające dokonanie trafniejszego wyboru. Nie wszystkie elementy będą konieczne. To zależy od specyfiki branży. W niektórych użytkownicy szukają głównie np. po kodzie produktu. 
+Warto poinformować użytkownika, dlaczego pojawiające się podpowiedzi są związane z wpisywaną frazą. Najczęściej robi się to poprzez zmianę grubości lub koloru fonta w tych częściach nazwy produktów, które zawierają wpisywaną frazę. Jeżeli poza nazwą produktu wyświetlane są inne elementy, np. skrócony opis lub kod produktu, warto również wyróżnić wspólne z frazą fragmenty tekstu. W innym przypadku istnieje szansa, że wyniki będą pozornie trafne i użytkownik straci zaufanie do wyszukiwarki. Może się to przydarzyć, gdy fraza będzie pasowała np. tylko do opisu produktu. Jeżeli nie wyświetli się fragmentu opisu z podświetlaną frazą, użytkownik nie będzie wiedział, dlaczego taka odpowiedź jest istotna.
+Pod maską
+Dobrze zoptymalizowany interfejs wyszukiwarki musi być oparty na szybkich i istotnych podpowiedziach. Poniżej kilka dobrych praktyk, które pomogą zwiększyć konwersję sprzedaży, jednocześnie zmniejszając irytację użytkowników. 
+Podpowiedzi szybsze od preloadera
+Czas oczekiwania na podpowiedzi powinien być mniejszy niż 0.1 s. W tym przedziale czasowym wyeliminowane zostaje wrażenie oczekiwania na wyniki. Nie najlepszym, ale jeszcze akceptowalnym czasem oczekiwania na wyniki jest przedział między 0.1s a 1s. Tutaj zauważalna jest zbędna reakcja interfejsu z serwerem. Czas oczekiwania powyżej 1s jest niedopuszczalny i może powodować zagubienie i irytację użytkownika.
+Jednym z najszybszych metod wyszukiwania informacji są listy inwersyjne (ang. inverted index). Ta metoda pozwala otrzymywać bardzo krótkie czasy odpowiedzi na zapytania do dużych baz danych, nawet z milionami produktów. Listy inwersyjne zaimplementowane są m.in w silnikach ElasticSearch oraz Apache Solr.
+
+W księgarni Helion podpowiedzi do zapytania “PHP” pojawiły się po 23 milisekundach. Jest to bardzo dobry wynik
+Użytkownicy nie wpisują dokładnych fraz
+Produkt można opisać na wiele sposobów i nie zawsze to, co wpisują użytkownicy w wyszukiwarce rezonuje z opisem produktu w sklepie. Dysonans może być spowodowany literówkami, fleksją (szczególnie uciążliwa w języku polskim), synonimami, inną kolejnością wpisywanych słów, używaniem skrótów, używaniem pauz, kropek, spacji i innych znaków specjalnych. 
+
+Należy przygotować się na to, że użytkownicy będą szukać produktów używając słów, których nikt się nie spodziewa. Przykład podpowiedzi z wyszukiwarki google.com
+Frazy z prostymi błędami nie powinny zwracać pustych wyników. Większość z tych problemów można rozwiązać, dzięki czemu użytkownicy będą mogli łatwiej znaleźć te produkty, których szukają.
+Literówki
+Tak długo jak jesteśmy ludźmi, będziemy się mylić. Literówki i błędy ortograficzne można opanować wdrażając funkcjonalność fuzzy search lub Did you mean?. 
+Fuzzy search pozwala zwrócić relewantne produkty, które nie spełniają kryteriów dokładnego dopasowania, ale są bardzo zbliżone do szukaj frazy. Wykorzystywany jest tutaj m.in algorytm Levenshteina, który zwraca liczbę działań (dystans), jakie trzeba wykonać, aby ze słowa A otrzymać słowo B. Optymalny dystans wynosi 1 lub 2 przekształcenia. Inaczej wyniki będa zbyt przypadkowe. 
+
+Przykład działania fuzzy search w podpowiedziach w wyszukiwarce produktów na allegro.pl
+Did you mean wykorzystuje mechanizm fuzzy search. W przypadku braku dokładnego dopasowania, szuka podobnej frazy, która zwraca produkty i wyświetla ją jako podpowiedź typu “Czy chodziło ci o {dokładna fraza}?”. W kontekście podpowiedzi w wyszukiwarkach produktów to rozwiązanie nie jest najlepsze, bo wymaga dodatkowego działania użytkownika. Lepiej od razu wyświetlić właściwe produkty pomimo literówki lub połączyć te dwa rozwiązania i wyświetlić zarówno poprawną frazę, jak i pasujące produkty.
+Normalizacja frazy
+Wpisana przez użytkownika fraza wymaga formatowania. W tym celu używa się m.in. tokenizera, który rozbija frazę na pojedyncze słowa, wyrównuje wielkość liter, wycina niepotrzebne znaki i usuwa słowa ze stop listy (ang. Stop-Words) .
+
+Pomimo wpisania frazy HP-F6V25AE (z łącznikiem), system wyświetlił w podpowiedziach odpowiedni tusz, który w nazwie miał spację zamiast łącznika. Przykład pochodzi z mediaexpert.pl
+Dzięki tokenizacji znika problem z niewłaściwą kolejnością słów. Nie ma znaczenia, czy użytkownik wpisze monitor graficzny 4k, graficzny monitor 4k czy 4k monitor graficzny. Podpowiedzi powinny być takie same. Szczególnie przydaje się to w branżach, w których asortyment posiada złożone nazwy, np. elektronika i AGD. W takich sklepach trzeba wpisać więcej niż jedno słowo, aby zobaczyć bardziej trafne podpowiedzi.
+Stemming, czyli uwzględnienie fleksji
+Stemming to proces zamiany końcówek fleksyjnych pozostawiając tylko temat wyrazu. Jeżeli zakres wyszukiwania obejmuje także opisy produktów, to jest duże prawdopodobieństwo, że te same słowa będą użyte w różnych odmianach. Dąży się do tego, aby w indeksie wyszukiwawczym zapisać tylko jedną formę wyrazu, a podczas wyszukiwania mapować na nią wszelkie odmiany.
+Słowa systemy, systemowy, systemem, systemach i reszta odmian, poddane stemmingowi powinny dać jeden termin: system.
+Synonimy
+Według Instytutu Baymarda wśród 60 największych sklepów internetowych na świecie, tylko 30 proc. uwzględniało poprawnie synonimy w procesie wyszukiwania. Wdrożenie synonimów może w znacznym stopniu zwiększyć konwersję sprzedaży.
+Poza słownikowymi synonimami warto również zadbać o alternatywne terminy wynikające ze specyfiki branży. Dobrym przykładem może być polichlorek winylu, którego oficjalna nazwa to PVC lub PCW, ale powszechnie stosuje się również niepoprawną nazwę PCV. 
+
+Przykład wykorzystania synonimów w podpowiedziach w wyszukiwarce twojemeble.pl
+Monitoring
+Kluczowym elementem, który pomoże podjąć słuszne decyzje w optymalizacji wyszukiwarki jest analiza wpisywanych przez użytkowników fraz i zwracanych podpowiedzi. Śledzenie wpisywanych fraz pozwala poznać preferencje użytkowników. Dzięki dobrej analityce można odpowiednio zareagować w przypadku, gdy spory procent wpisywanych fraz nie wyświetla żadnych podpowiedzi lub gdy podpowiedzi nie mają znaczenia. 
+34 proc. wyszukiwań nie dotyczy produktów
+Nie wszyscy użytkownicy wpisują do wyszukiwarki nazwy produktów. Analizując frazy wpisywane przez użytkowników można przygotować zestaw słów, które nie są związane z produktami, a które należałoby uwzględnić w podpowiedziach i wynikach wyszukiwania. Zazwyczaj są to terminy związane ze zwrotami, reklamacjami czy anulowaniem zamówienia.
+Sztuczna inteligencja NLP
+W ostatnich latach sztuczna inteligencja (AI) wkracza do coraz większych obszarów życia człowieka. Dzięki niej można łatwiej zautomatyzować i usprawnić wiele procesów.
+W systemach wyszukiwania informacji sztuczna inteligencja już teraz odgrywa znaczącą rolę. Pomaga rozpoznawać kontekst wyszukiwania na podstawie wpisanej frazy. Znając lepiej znaczenie frazy oraz motyw i historię użytkownika, pomaga lepiej dobierać i sortować wyniki wyszukiwania. Interakcja użytkownika z wyszukiwarką staje się swobodniejsza i bardziej naturalna.
+W większości sklepowych wyszukiwarek użytkownik musi wpisać słowa kluczowe, które zostały użyte do opisania produktu. Zazwyczaj jest to tytuł, opis, atrybuty i kod produktu. Lepiej dopasowane wyniki można osiągnąć stosując wcześniej opisane zabiegi typu fuzzy search, normalizacje, stemming, synonimy i inne. Wykorzystanie AI to dla użytkowników zupełnie nowe doświadczenie wyszukiwania. 
+Przetwarzanie języka naturalnego (ang. natural language processing, NLP) oraz sztuczną inteligencję wykorzystuje narzędzie Twiggle. Twórcy Twiggle deklarują, że produkty można wyszukiwać używając naturalnej dla ludzi składni językowej. System potrafi przekształcić wpisaną frazę na szereg danych osadzonych w kontekstach. 
+
+Przykład tłumaczenia frazy na format JSON z uwzględnieniem kontekstu. Grafika pochodzi ze strony https://twiggle.com/search-enhancement
+Bardzo trudno budować tego typu rozwiązania w oparciu o języki fleksyjne, do których zalicza się m.in. język polski. Czasy, kiedy będzie można wpisać do wyszukiwarki “czekolada o niskiej zawartości cukru” albo “dodatki do błękitnej sukienki” i spodziewać się najlepszym możliwych wyników, chyba jeszcze przed nami.
+Jednym z ciekawszych zastosowań AI w wyszukiwarkach produktów jest rozpoznawanie obrazów i filmów. Taką technologię wykorzystuje Clarifai. Clarifai potrafi rozpoznać ze zdjęć i filmów szereg terminów, które opisują scenografię, obiekty, nastroje i inne elementy. Baza terminów jest zamknięta i obecnie zawiera ponad 11 tysięcy fraz. Frazy dostępne są także w języku polskim. 
+W kontekście sugestii produktów wyświetlanych podczas wpisywania frazy, AI może przydać się do podpowiadania właściwych produktów dla mniej literalnych fraz. Analizując dane takie jak informacje o użytkownikach, wyszukiwania historyczne, informacje o zamówieniach, sezonowość, czas, lokalizację, trendy i inne, można wyróżnić w podpowiedziach te produkty, które najprawdopodobniej zostaną zakupione przez użytkownika dla danego wyszukiwania.
+Dokąd zmierza e-commerce?
+Podpowiedzi w wyszukiwarkach produktów są praktycznym dodatkiem, który można wykorzystać jako jeden z wielu elementów poprawiających konwersję sprzedaży i ogólny odbiór sklepu jako całości. Jeżeli są przygotowane zgodnie z dobrymi praktykami, mogą dać korzyści od razu po wdrożeniu.
+Prawie wszystkie największe sklepy online w Polsce posiadają podpowiedzi w swoich wyszukiwarkach. Formy są różne. Niektóre sklepy posiadają proste autouzupełnianie nazw produktów, a inne skomplikowane systemy podpowiedzi ze zdjęciami, opisami, cenami i innymi informacjami ułatwiającymi użytkownikom dokończenie procesu wyszukiwania. Interesujące jest przyglądanie się w jaką stronę zmierzają systemy wyszukiwania w świecie e-commerce, szczególnie w kontekście rozwoju sztucznej inteligencji i przetwarzania języka naturalnego.

@@ -1,0 +1,22 @@
+Kolejny tydzień i kolejne wydanie naszej Prasówki Technologicznej. Tym razem przedstawiamy materiały dotyczące wydajności frontendu, a także rozważania dotyczące backendowych języków programowania, które mogą mieć określoną datę przydatności do spożycia. Wszystkim zainteresowanych technologią i jej wpływem na nasze codzienne życie polecamy tekst o nowej ustawie dotyczącej walki z uzależnieniem od mediów społecznościowych, a także o najnowszym wynalazku naukowców pracujących dla Pentagonu. 
+Frontend
+1. Każdy nowy feature dla JavaScript musi przejść przez cztery etapy, zanim zostanie oficjalnie zawarty w języku. W tym artykule przeczytasz o najbardziej oczekiwanych propozycjach, które mają dużą szansę zostać zawarte w JavaScript.
+Więcej na ten temat tutaj.
+2. Kompozycja funkcji to jedna z cech, które pozwalają na odróżnieniepodejściem funkcjonalnego od object-oriented w JavaScript. W tym artykule zostanie wyjaśniona różnica pomiędzy hierarchią klasy i funkcji złożonej, demonstrując tym samym korzyści wynikające z odpowiedniej kompozycji funkcji i programowania funkcjonalnego w JavaScript.
+Więcej na ten temat tutaj. 
+3. W lipcu Mozilla wypuściła na rynek Firefox 68, zawierający kilka interesujących zmian dla tej przeglądarki, m.in. ciemny ekran dla trybu czytania, ulepszenie kontrastu i procedur bezpieczeństwa. Ponadto, Firefox 68 wprowadziła również parę nowych features dla CSS, w tym CSS Scroll Snapping. W tym artykule dowiesz się czego należy się spodziewać po zmianach w CSS Firefoxa 68. 
+Więcej na ten temat tutaj.
+Backend
+1. Java Development Kit (JDK) 13, kolejnej wersja Javy, przeszedł niedawno do kolejnej fazy (tzw. “rampdown”). Oznacza to, że zestaw nowych cech, które zostaną wprowadzone do Javy jest już skompletowany i nie ulegnie zmianom. W tym artykule przeczytacie jakich zmian i unowocześnień należy się spodziewać w JDK 13, które już we wrześniu tego roku zawita na rynku.  
+Więcej na ten temat tutaj.
+2. Nie każdy język programowania może trwać wiecznie. Nawet te najbardziej popularne mogą z czasem popaść w niepamięć w momencie, w którym nowe pokolenia developerów zaczynają sięgać po inne języki i frameworki, z którymi łatwiej się im pracuje. W poniższym tekście dowiecie się, jakie pięć języków programowania prawdopodobnie są skazane na wymarcie.
+Więcej na ten temat tutaj.
+W ciągu ostatnich lat nastąpiło duże zróżnicowanie w zakresie narzędzi oraz technologii stosowanych w obszarze aplikacji internetowych. Na skutek tego zróżnicowania wielu deweloperów zaczęły nękać pytania i wątpliwości co do wyboru rozwiązań. Przeczytajcie poniższy tekst, aby dowiedzieć się na co zwracać uwagę przy doborze odpowiedniej technologii. 
+Więcej na ten temat tutaj. 
+Inne
+1. Kudelski Security, firma oferująca usługi IT, ma w planach wdrożenie celowo naszpikowanej podatnościami technologii opartej na blockchainie. Tym sposobem chce ona zwiększyć świadomość użytkowników blockchaina i wspomóc deweloperów w kreacji ulepszeń systemów bezpieczeństwa.
+Więcej na ten temat tutaj.
+2. Debata na temat szkodliwego wpływu mediów społecznościowych na nasze zdrowie psychiczne nie jest niczym nowym. Jednakże ostatnio Senat Stanów Zjednoczonych powziął konkretne działania zapobiegawcze – nowa ustawa nawołuje do zniesienia “uzależniających i zwodniczych technik”, które stosowane są przez social media w celu jak najdłuższego podtrzymania uwagi użytkowników. Projekt ten może w znacznej skali zmienić oblicze social media.
+Więcej na ten temat tutaj.
+3. Naukowcy pracujący dla Pentagonu ostatnio zaczęli opracowywać innowacyjną technikę biometryczną. W oparciu o unikalność bicia naszych serc stworzono laser będący w stanie rozpoznać konkretnych ludzi z odległości 200 metrów. A to dopiero początek pracy nad tzw. Jetsonem.
+Więcej na ten temat tutaj.

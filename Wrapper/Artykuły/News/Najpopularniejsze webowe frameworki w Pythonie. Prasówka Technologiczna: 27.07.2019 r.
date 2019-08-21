@@ -1,0 +1,61 @@
+Co przygotowaliśmy tym razem? Frontendowców zainteresuje relacja z bardzo ciekawej konferencji, która odbyła się w Wilnie, backendowcy dowiedzą się co nieco na temat migracji danych, a wszyscy zainteresowani wpływem technologii na ludzkie życie poczytają o wielkich wyciekach danych w USA i Bułgarii oraz dowiedzą się, ile jest warta nasza prywatność według Google’a.
+Frontend
+1. Framer Motion to biblioteka napędzająca animacje we Framerze, ciekawym narzędziu do interaktywnego designu. Od niedawna jest dostępna jako samodzielna paczka, którą można używać w aplikacjach React. Poznaj jej zalety i zrób pierwszy setup.
+
+Więcej na ten temat tutaj.
+
+2. Abstrakcje polegają na ograniczeniu cech obiektów do tych absolutnie kluczowych. Bywają bardzo pomocne, ale czasami mogą zwieść nawet najbardziej doświadczonego developera. Dowiedz się, jakie niespodziewane sytuacje mogą czekać na Ciebie, a przy okazji: dlaczego autor tekstu woli Angular od Reacta.
+
+Więcej na ten temat tutaj. 
+
+3. Jeśli dopiero zaczynasz swoją przygodę z Reactem, to dobrym pomysłem będzie zapoznanie się z tym świetnym tutorialem. Dowiesz się m.in. jak wygląda identyfikacja stanu oraz poznasz Higher Order Components, które… wcale nie są komponentami.
+
+Więcej na ten temat tutaj.
+
+4. Odkąd przedstawiono API React Hooks, sporo osób zastanawia się, czy Hooks mają szansę zastąpić Redux. Dowiedz się, co na ten temat sądzi Eric Elliott, który jest entuzjastą zarówno React, jak i Redux.
+
+Więcej na ten temat tutaj. 
+
+5. W maju w Wilnie odbyła się dwudniowa konferencja You Gotta Love Frontend 2019. Prelegenci postarali się odpowiedzieć na klasyczne pytania: Kim jesteśmy? Skąd przychodzimy? Dokąd zmierzamy? Relacja z wydarzenia zawiera sporo ciekawostek – wspomina m.in. o projektowaniu strony najgorszego hotelu w Amsterdamie.
+
+Więcej na ten temat tutaj.
+Backend
+1. Jak wynika z badania 2018 Jetbrains Python Developers Survey, Django i Flask to najpopularniejsze webowe frameworki w Pythonie. Popularność Flaska nie dziwi w kontekście zrozumiałego trendu polegającego na skłanianiu się ku niewielkim frameworkom, mikroserwisom i platformom typu serverless. Poniższy tekst pozwoli zdecydować, który framework lepiej odpowie na potrzeby związane z konkretnymi zadaniami.
+
+Więcej na ten temat tutaj. 
+
+2. Migracja danych to zagadnienie, które sporą część developerów napawa lękiem. Przy odpowiednim podejściu może to być jednak względnie bezbolesny proces. W poniższym tekście Piotr Czech, konsultant w firmie VLOG, opisuje migrację systemów opartych o .NET z punktu widzenia biznesu i technologii.
+
+Więcej na ten temat tutaj. 
+
+3. Nikogo nie trzeba przekonywać, że w dobie popularyzujących się zagadnień ze sfery big data i data science odpowiednie podejście do analityki i wizualizacji danych staje się coraz ważniejsze. Poznaj 5 najlepszych kursów online dotyczących obsługi Tableau, ciekawego narzędzia do wizualizacji.
+
+Więcej na ten temat tutaj. 
+
+4. Django REST Framework oferuje funkcjonalność wyszukiwania, która jest dość nietypowa. Poniższy tutorial dokładnie opisuje kroki, które należy odtworzyć, aby móc w pełni z niej się cieszyć.
+
+Więcej na ten temat tutaj.
+
+5. Java EE Security to jedno z nowych API w Java EE 8. Java EE właśnie przechodzi rebranding i niedługo będzie się nazywało Jakarta EE, a jego API – Jakarta Security. To część Payara Platform, która nie wymaga specjalnej konfiguracji do użycia i jest przystępnym, ale bardzo efektywnym rozwiązaniem.
+
+Więcej na ten temat tutaj.
+Inne
+1. Facebook musi zapłacić 5 miliardów kary, a ponadto wprowadzić zmiany w podejściu do prywatności użytkowników – tak wynika z orzeczenia amerykańskiej Federalnej Komisji Handlu (FTC). To finał dochodzenia w sprawie niewłaściwego wykorzystywania danych użytkowników.
+
+Więcej na ten temat tutaj.
+
+2. Bułgarskie media ogłosiły sensacyjną wiadomość. Anonimowy haker pochwalił się kradzieżą wrażliwych danych niemal wszystkich obywateli kraju. Zatrzymano podejrzewanego o czyn 20-letniego Kristiana Bojkowa, który zawodowo związany jest z cyberbezpieczeństwem. Pobudki nim kierujące nie są jasne.
+
+Więcej na ten temat tutaj.
+
+3. Alibaba.com, potentat w sektorze sprzedaży B2B, otwiera się na amerykańskiego klienta. Można to potraktować jako wyzwanie rzucone rodzimej potędze e-commerce, Amazonowi. Alibaba wchodzi w skład powołanego w 1999 roku holdingu, którego częścią jest też AliExpress.
+
+Więcej na ten temat tutaj. 
+
+4. Dwa lata temu miał miejsce jeden z większych wycieków danych w historii Stanów Zjednoczonych. W wyniku poważnych zaniedbań w niepowołane ręce trafiły dane prawie 148 milionów klientów firmy Equifax. Fatalne zaniedbanie może kosztować przedsiębiorstwo nawet 700 milionów dolarów.
+
+Więcej na ten temat tutaj. 
+
+5. Najnowszy pomysł Google’a, najpewniej związany ze zbliżającą się premierą nowych smartfonów linii Pixel, to pięciodolarowa opłata, która ma zachęcać przechodniów do użyczania wizerunku. Zebrane dane mają przyczynić się do rozwoju konkurencji dla Face ID. 
+
+Więcej na ten temat tutaj.  

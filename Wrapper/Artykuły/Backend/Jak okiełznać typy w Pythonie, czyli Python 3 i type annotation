@@ -1,0 +1,63 @@
+Jedną z charakterystycznych cech Pythona jest dynamiczne typowanie. Dla wielu programistów mających doświadczenie w językach takich jak C czy Java jest to powód do niepokojów, napadowych bólów głowy czy nawet komentarzy takich jak “kiedyś to było, jak zaczynałem w 1993 w C, nie to co teraz!”. Z kolei dla wielu początkujących deweloperów, którzy nie mają doświadczenia w statycznie typowanych językach, może być to wielka zaleta (nawet jeśli nie wiedzą, że można typować statycznie!). W tym artykule spróbuję zachęcić Was do wprowadzenia w dynamicznie typowanym Pythonie niektórych praktyk przypominających typowanie statyczne i pokazać jak mogą nam ułatwić życie.
+
+Artur Patoka. Senior QA automation engineer w firmie Finastra, która tworzy oprogramowanie dla instytucji finansowych. Na co dzień posługuje się Pythonem i zajmuje się pisaniem automatyzujących skryptów z nastawieniem na minimalizowanie nakładu ludzkiej, manualnej pracy. Poza biurem zajmuje się też uczeniem programowania w Kiwi learning, którego jest współzałożycielem. Wolne chwile spędza na rowerze, w podróżach i na śledzeniu newsów w temacie eksploracji kosmosu.
+Czym jest typowanie?
+Każdy język programowania musi mieć opisany system typów. System typów to w dużym uproszczeniu zestaw reguł, które przypisują typ różnym strukturom (np. zmiennym, wyrażeniom czy funkcjom). Taki typ jednoznacznie określa jakiego rodzaju operacje mogą zostać wykonane na strukturze danego typu. Najprościej wytłumaczyć to na przykładzie:
+
+Tworzymy dwie nowe zmienne. Przypisujemy im wartości. Interpreter wie już, że obie są typu ‘str’. Oznacza to, że na tych zmiennych możemy wykonywać wszystkie operacje dozwolone dla zmiennych typu ‘str’, np. operację split.
+
+Zwróćmy uwagę, że podobnej operacji nie możemy wykonać na zmiennej typu int.
+
+Interpreter w momencie wykonywanie skryptu (albo w czasie interaktywnej sesji, tak jak tutaj) przypisuje zmiennej typ i traktuje ją jako zmienną tego właśnie typu aż do momentu, kiedy wartość tej zmiennej zostanie zmieniona na inną, innego typu. Prostym sposobem na podejrzenie metod i atrybutów dostępnych dla danej struktury (np. zmiennej konkretnego typu) jest polecenie dir(). Poniżej porównanie dostępnych operacji dla txt1 i my_int:
+
+Po krótkiej analizie widać, że na zmiennej typu ‘str’ możemy wykonać operację upper() (zmienienie wszystkich małych znaków alfabetu na wielkie, np. “a” na “A”), ale nie możemy zrobić tego na zmiennej typu liczbowego (logicznie nie miałoby to sensu, cyfry nie mogą być wielkie ani małe, tak jak litery).
+Jeśli w tym momencie macie nadal wrażenie, że nie do końca rozumiecie czym są typy i dlaczego istnieją, proponuję rzucić okiem na wikipedię żeby dobrze zrozumieć ciąg dalszy. Obszerne wyjaśnienia można znaleźć w tym artykule na angielskiej wiki: https://en.wikipedia.org/wiki/Type_system. 
+Typowanie statyczne i dynamiczne
+Wiemy już mniej więcej czym są typy i jak ogranicza to operacje na zmiennych. Ale jakie właściwie ma to praktyczne znaczenie? Czym różni się Python od wspomnianego C w kwestii typowania?
+Podstawową definicją typowania dynamicznego jest przypisywanie typów do zmiennych w trakcie egzekucji (wykonywania) programu czy skryptu, tak jak dzieje się to w przykładach powyżej w Pythonie. Przy samym uruchomieniu skryptu interpreter nie wie jeszcze jakiego typu będą zmienne. Określa to w momencie przypisania pierwszej wartości. A co jeśli kilka linijek niżej do tej samej zmiennej przypisana jest wartość innego typu? Nie ma problemu, od tego momentu ta zmienna jest już innego typu. Zupełnie inaczej ma się to w przypadku języków typowanych statycznie, np. w C – nadawanie typów zmiennym odbywa się w czasie kompilacji programu. Zmienna musi zostać zadeklarowana jako zmienna konkretnego typu i przez cały swój czas życia ta zmienna będzie mogła przyjmować tylko wartości tego typu.
+Oba podejścia mają swoje zalety i ograniczenia. Typowanie statyczne ma wiele zalet – ułatwia optymalizację i zapewnia większą możliwość wykrycia błędów. Kompilator uraczy nas błędem jeśli do ‘txt1’ przypiszemy wartość 123.420 już w trakcie kompilacji, podczas kiedy interpreter Pythona z pokorą przyjmie zmianę i od momentu przypisania wartości liczbowej będzie traktował ‘txt1’ jak liczbę. Wymaga jednak zdecydowanie więcej kodu, nie jest bardzo elastyczne i wymaga od dewelopera bardzo ścisłej kontroli tworzonych zmiennych.
+Języki dynamicznie typowane są z kolei zwykle bardziej elastyczne, pozwalają osiągnąć cel w mniejszej ilości kodu (brak potrzeby długich typów). Są też bardzo wygodne do nauki – w pierwszych dniach nauki Pythona nie musimy nawet wiedzieć o istnieniu typów, wszystko “po prostu działa”. Słabe strony typowania dynamicznego to przede wszystkim większa możliwość wprowadzenia błędów i ich trudniejsze wykrywanie.
+Jak użyć zalet statystycznego typowania w Pythonie? Type annotation na ratunek!
+Znowu zaczniemy od przykładu. Spójrzmy na taką prostą klasę:
+
+Widzimy poprawną definicję klasy i jej dwóch metod. Pierwsza to __init__(), czyli konstruktor. Ta metoda jest wywoływana podczas tworzenia obiektu klasy TestClass i ustawia jedyny atrybut tej klasy, czyli zmienną name. Druga metoda zwraca po prostu zmienną name napisaną wielkimi literami. Przykład użycia tej klasy:
+
+Wynik działania tej metody nie jest raczej zaskoczeniem. Co jednak, jeśli w naszym kodzie przez pomyłkę zainicjalizujemy obiekt klasy TestClass i jako name podamy liczbę, np. 123? Absolutnie nic. Obiekt zostanie utworzony, a błąd zobaczymy dopiero wywołując metodą show_name_uppercase(). Jak w takim razie pomóc sobie z pilnowaniem typów tam, gdzie jest to potrzebne? Rozszerzając naszą testową klasę o type annotation.
+
+Podstawowa korzyść płynąca z takiego podejścia, to zdecydowanie dokładniejsza pomoc od naszego edytora, w moim przypadku PyCharm:
+
+Nie sposób pominąć podkreślenia w kodzie. Po przesunięciu kursora w to miejsce, w lewym dolnym rogu zobaczymy szczegóły błędu. Tutaj widzimy, że oczekiwanym typem jest string, a my próbujemy użyć liczby całkowitej, czyli int. Warto wspomnieć, że to jest tylko ostrzeżenie od edytora. Tak napisany kod nadal się wykona dopóki nie zostanie zawołana metoda show_name_uppercase().
+Drugą wielką zaletą ogłaszania typów są podpowiedzi edytora. Tak wyglądają podpowiedzi metod dla zmiennej bez adnotacji typu:
+
+Podpowiedź upper znajduje się na tej liście tylko dlatego, że użyliśmy jej już w kolejnej metodzie. Tak z kolei wyglądają podpowiedzi w przypadku zmiennej, której typ jest ogłoszony:
+
+Edytor oczekuje, że zmienna name będzie typu str i podpowiada nam wszystkie znane sobie metody dostępne dla zmiennych str.
+Drugi rodzaj ogłaszania typów to określenie typu zwracanej wartości. Zwróćmy uwagę na definicję konstruktora, czyli metody __init__(). Zapis “-> None” oznacza, że ta metoda nie zwraca nic (zwraca None). Ci z Was, którzy z nostalgią westchnęli na wspomnienie C w pierwszym akapicie znają taki typ zwracanej wartości jako void. Metoda zwracająca name w wielkich literach ma z kolei zapis “-> str” oznaczający, że zwróci łańcuch znaków. Jeśli wynik działania tej metody przypiszemy do zmiennej, nasz edytor będzie wiedział, jakiego typu będzie ta zmienna. Trudno przecenić tę funkcjonalność w przypadku większych projektów, szczególnie kiedy pojawia się wielokrotne dziedziczenie i nie wystarczy spojrzeć kilka linijek wyżej, żeby zobaczyć co dokładnie zwróci dana metoda.
+
+Określanie typów poza deklaracjami metod
+Weźmy pod uwagę taki scenariusz: używamy metody z jakiegoś modułu, który nie określa typów. Wiemy jednak, że ta metoda zwraca wartość typu float. W takiej sytuacji możemy zdefiniować typ w taki sposób:
+
+Złożone typy
+Moduł typing (wbudowany w Pythona od wersji 3.5) pozwala nam na bardzo precyzyjne określanie nawet złożonych typów. Cały moduł ma bardzo pomocną dokumentację (https://docs.python.org/3/library/typing.html), więc tutaj skupimy się tylko na kilku przykładach. Typy inne niż liczbowe czy str należy importować z modułu typing. Na przykładzie deklaracja typu zmiennej – słownika, w którym klucze są typu str, a wartości są listami.
+
+W przypadku takich typów można zastosować większe zagnieżdżenie. Załóżmy, że my_dict to słownik, w którym klucze są typu str, a wartości to listy liczb zmiennoprzecinkowych.
+
+Tak szczegółowe typowanie może ochronić nas przed pomyłką w sytuacji, gdzie wymagana jest ściśle określona struktura danych.
+
+Typowanie klas rodziców
+Znowu najłatwiej będzie opisać sytuację na przykładzie. Poświęćmy chwilę na przeanalizowanie kodu poniżej.
+Tworzymy klasę Animal, która reprezentuje dowolne zwierze. Z praktycznych względów tworzymy też klasy, które dziedziczą po klasie Animal – Mammal i Insect. Zwróćmy uwagę, że klasa Mammal wykonuje konstruktor z klasy Animal i dodaje jeden atrybut (walks_on_2_feet) i jedną metodę (uses_all_legs_to_move()). Z kolei konstruktor klasy Insect nie przyjmuje parametru is_scary, bo wiemy, że insekty z zasady “są_scary”. Jeśli teraz utworzymy funkcję, która będzie używała tylko tych atrybutów, które są dostępne w klasie bazowej (tu: Animal), to możemy ogłosić, że typem argumentu naszej funkcji będzie właśnie Animal. I tak nasza funkcja check_how_scary() przyjmuje jako argument obiekt typu Animal, co oznacza, że nie pogardzi ani obiektem typu Animal, ani obiektami klas dzieci, czyli Mammal i Insect.
+
+Sprawdzanie typów (statyczna analiza kodu)
+Istnieje wiele narzędzi, które mogą wesprzeć nas w używaniu type annotation. Na dobry początek podstawowym narzędziem, które w pełni wspiera ogłaszanie typów jest edytor, w moim przypadku to PyCharm, którego wszystkim polecam.
+Poza edytorem istnieją dedykowane narzędzia do statycznej analizy kodu, które – zależnie od konfiguracji – mogą nam wytknąć wszelkie braki adnotacji typów. Jednym z takich narzędzi jest mypy. Mypy można skonfigurować tak, aby pilnował wszystkich deklaracji zmiennych i metod i sprawdzał, czy każda ze zmiennych ma określony typ. Mypy można łatwo i precyzyjnie skonfigurować, co sprawia, że jest to bardzo użyteczne narzędzie do użycia w pre commicie. Osobiście miałem przyjemność pracować w projekcie, gdzie mypy było odpalane przez Jenkinsa po każdym commicie do Gerrita i było to naprawdę dobre pierwsze sprawdzenie. Założeniem projektowym było ogłaszanie typów wszystkich zmiennych i taki jenkinsowy job tego pilnował. Dzięki temu ludzki reviewer patrzył na kod dopiero, kiedy deweloper zastosował adnotację typów na wszystkich zmiennych i kod poprawnie przeszedł weryfikację. Warto dodać, że ogłaszane typy w znaczny sposób ułatwiają code review i ogólnie czytanie kodu innych. Czasem jedna adnotacja typu znaczy więcej niż tysiąc słów w komentarzu!
+Minusy używania type annotation
+Type annotation nie posiada wielu minusów. Na pierwszy z nich natkniemy się wtedy, kiedy jesteśmy uwiązani do Pythona w wersji 3.5 bądź 3.6. W tych wersjach ogłaszanie typów wprowadza narzut performancowy na uruchamianie skryptów. Zostało to naprawione w wersji 3.7, więc w przypadku używania najnowszych dystrybucji nie powinien być to problem.
+Inny przypadek, w którym ogłaszanie typów jest zbędne to proste, krótkie skrypty, gdzie sam kod w wyraźny sposób podpowiada jakiego typu będzie zwracana zmienna. Jeśli piszemy prosty crawler do zarządzania starymi plikami, prawdopodobnie zamkniemy się w stu liniach i nie będziemy mieli wiele użytku z ogłaszania typów zmiennych. Jeśli jednak nasz projekt urośnie i będziemy dzielić go z innymi albo udostępniać jako open source, warto będzie pomyśleć o adnotacji typów!
+Więcej informacji
+Żeby dowiedzieć się więcej na temat adnotacji typów i wykorzystania jej w praktyce polecam przede wszystkim dokumentację Pythona 3. Jest w niej wiele przykładów, wszystko jest opisane dość szczegółowo. Tym, których nie porywa techniczny język dokumentacji Pythona odsyłam do dwóch artykułów:
+
+https://realpython.com/python-type-checking/
+https://medium.com/@shamir.stav_83310/the-other-great-benefit-of-python-type-annotations-896c7d077c6b
+
+W pracy do tej pory pracowałem w projektach, z których niektóre pisane były z pełną adnotacją typów, a w niektórych nie była ona obowiązkowa. W momencie, kiedy projekt rozrastał się dynamicznie i w szybkim tempie pojawiały się nowe moduły pisane przez różne osoby, adnotacja typów (wymuszona testem pre-commit w Jenkinsie za pomocą MyPy) była wielką pomocą w utrzymaniu porządku w kodzie.

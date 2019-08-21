@@ -1,0 +1,58 @@
+Trafiając na ten artykuł prawdopodobnie wiesz czym jest React. Jeżeli obiło ci się o uszy CSS-in-JS, to pewnie słyszałeś o Styled Components. Jeżeli tak to po co pisać kolejny artykuł o tej bibliotece? Inni piszą o samym podejściu css-in-js, pokazują te same przykłady z podstawowego rozdziału dokumentacji lub takie, które nie łączyły się w całość. Brakowało mi w nich głębszego spojrzenia czy analizy, która pomogłaby w podjęciu decyzji czy warto inwestować nasz cenny czas w aplikowaniu tej biblioteki do swojego projektu. Czy Styled Components (w dalszej części SC jako styled components jak oraz SC jako styled component) i praca z tą biblioteką ma jakieś pułapki, które mogłyby okazać się katastrofą? Dlatego też chciałbym się podzielić kilkoma spostrzeżeniami z codziennej pracy z użytkowania SC.
+
+Krzysztof Kuziel. Software Engineer, założyciel firmy Kodern zajmującej się aplikacjami webowymi. Komercyjnie i prywatnie od wielu lat związany z IT. Wśród większych projektów, w których uczestniczył można wymienić m.in. platformę usług streamingu video oraz obieg dokumentów administracji publicznej. Jego motto: “Tyle szans ile odwagi”.
+Na potrzeby tego artykułu stworzyłem mały projekt. Dwie małe aplikacje utworzone z pomocą create-react-app, by dać kompletny obraz dwóch rozwiązań, jak i typowych przyzwyczajeń:
+
+Styled-Components-React — z SC,
+Standard-CSS-React — konwencja BEM, postcss (nested i media query).
+
+Ideą było pokazanie kilku tematów, które zawsze występują, jak do nich można podejść oraz zestawieniem ich w spójną całość. Przyznacie pewnie, że to dosyć proste projekty, lecz zawierają kompletną konfigurację związaną SC, która dotyczy np. Babel i Jest. Nad konfiguracją nieraz trzeba poświęcić kilka godzin, szczególnie gdy są jakieś problemy z paczkami. Do boju!
+1. Komponenty
+Po co w ogóle zawracać sobie głowę SC? Skoro React ma jsx, czyli już łączy html z js no to może dałoby się jeszcze coś więcej z tego wykrzesać. Nie chciałbym się też rozwodzić nad samym faktem czy sam jsx jest the best. Dotychczas staraliśmy się rozdzielać warstwę wizualną od logiki komponentu. No a co jeśli potrzebujemy coś bardziej skomplikowanego i dynamicznego? Jak zapanować nad nazwami klas (globalny konflikt nazw), literówkami, zarządzaniem równolegle css i js? Tu z pomocą przychodzi SC.
+
+Da się zrobić to inaczej? Da:
+Będę pomijał fragmenty kodu, by skupić uwagę na najważniejszych elementach. W powyższym przykładzie deklarujemy komponenty, co przy sprawnym eslincie od razu wykrywa nam potencjalne pomyłki i nie dopuszcza do dalszej pracy. Współczesne IDE mają możliwość autosugestii nazwy klas na podstawie zewnętrznych stylów, jednakże to nie to samo co automatyczny feedback, ponieważ nie zadeklarowaliśmy zmiennej. Komponenty deklarujemy jako dowolne tagi html, możemy je też importować.
+Za pomocą ‘css’ możemy deklarować większe bloki css i importować je w innych komponentach. Na takim prostym przykładzie widać, że rozwiązanie to sprawdza się idealnie. Ja w tym widzę jedno “ale” — bardzo łatwo można wpaść w pułapkę tworzenia wrapperów do komponentów, a do nich kolejnych wrapperów itd.
+Co to spowoduje? No to już zależy od naszej aplikacji, ponieważ za dużo śmieci sprawi, że będzie trudno dostępny np. dla readerów. Zamiast kilku klas dodanych dodatkowo do elementów będziemy mieć dużą ilość wrapperów. Natknąłem się na porównania schludnego kodu HTML z przyjemnymi nazwami klas do napchanego wraperami kodu z SC, gdzie autor porównania atakuje SC twierdząc, że jest tam sam syf. Trudno takie porównania ocenić. Z przykładu powyżej nie można wywnioskować jakie intencje miał autor kodu, czy chciał ostylować sam element czy go faktycznie w coś opakować?
+Na pewno zbyt duża ilość wrapperów mogłaby świadczyć o nieumiejętnym posługiwaniu się SC. Po części w rozwiązywaniu problemu z wraperami przychodzi na pomoc kompozycja.
+Ważne jest, że dzięki temu nie tworzymy kolejnej warstwy/tagu html. W tym momencie warto przyjrzeć się co pokazuje inspektor na naszym projekcie. W obu przypadkach widzimy dokładnie to samo co mamy w kodzie:
+(standard-css-react)
+
+(styled-components-react)
+
+Tutaj klasy to nazwy komponentów oraz hash. Spotkałem się z głosami, że SC jest fajne, bo pokazuje nazwy komponentów. Jest to bardzo przydatne tak samo jak nazwy klas w standardowym podejściu, ale to moim zdaniem powinno być ważne w środowisku developerskim. Na produkcji dla optymalizacji przydałby się hashing co w SC mamy domyślnie, natomiast żeby uzyskać nazwy komponentów, jak na przykładzie powyżej, trzeba zmienić konfiguracje.
+2. Bajery: propsy, atrybuty, animacje, media query
+Kolejnym elementem, który przekonał mnie do używania SC to prosty sposób sterowania stylami za pomocą propsów, możemy też korzystać z wyrażeń warunkowych.
+Przekazujemy propsa, a SC już sobie sprawdza wartość. W przykładzie powyżej, gdy checked będzie true to dodatkowy styl zostanie dodany. Poniżej jedno z moich ulubionych zastosowań:
+Oczywiście można też korzystać ze zmiennych wcześniej zadeklarowanych, jak na przykładzie powyżej “gradient”, a to też daje duże pole do popisu. W świecie Reacta używamy propsów, staramy się tworzyć reużywalne komponenty lub korzystamy z gotowych. Dostajemy do dyspozycji poniższy komponent, komponent którego nie możemy zmienić, możemy podejrzeć jego kod:
+Tutaj sprawa użycia jest dosyć prosta — przekazujemy kolory. Chciałem zwrócić uwagę, że jeżeli używamy SC to kolory i tak mamy zadeklarowane w JS. Co ze standardowym podejściem? Kolory zapewne mamy zdefiniowane w plikach css, dlatego bez sensu je dublować do js. Opcji jest wiele, każdy ma na to swoje patenty. Jednym z brudnych sposobów dostania się do zmiennych z root w trakcie wykonywania kodu jest getPropertyValue. Jak to działa możecie zobaczyć w repo w części standard-css-react. Można by się pokusić, by style parsować na etapie webpacka.
+Następne funkcjonalności SC to zagnieżdżanie oraz media query:
+Powyższy przykład powinien być dosyć jasny, jednakże chciałbym podkreślić, że selektorem też może być SC.
+Animacje. Wystarczy użyć keyframes:
+Czasem trzeba bardziej pokombinować, a kolejną możliwością, którą oferuje SC to dobranie się do atrybutów komponentu. Dobrym przykładem może być tu NavLink:
+Potencjalne wyzwanie mogłoby tutaj stanowić activeClassName. Można by wykorzystać activeStyle jednakże akurat w tym przypadku można skorzystać z attrs:
+Minusem jest generowanie unikatowego identyfikatora klasy, za to według mnie plus jest taki, że nie definiujemy go sami.
+3. Style globalne
+Jeżeli chcemy zrezygnować całkiem z importowania css’ów to w SC istnieją style globalne. Deklarujemy style korzystając createGlobalStyle, a później go używamy jako komponentu:
+
+Moim preferowanym edytorem tekstu jest VSCode, a wśród zainstalowanych dodatków znajduje się jak vscode-styled-components, jednakże przy createGlobalStyle jak i blokach “css” chciałem zauważyć, że mogą się pojawić problemy z kolorowaniem kodu czy intellisense.
+Po lewej style w createGlobalStyle w pliku js, a po prawej zwykły css:
+
+Na ten moment nie jestem w stanie stwierdzić, czy to niedopracowanie dodatku czy coś z moją konfiguracją. Dobrze mieć to na uwadze.
+4. Theme Provider
+SC oferuje także providera do styli. Jest to tak jakby kontekst reactowy. Ciekawą funkcjonalnością jest tzw. variants, gdzie oprócz tematu możemy zdefiniować variant komponentu:
+Plusem jest to, że theme jest dostępne w SC, zatem nie trzeba go osobno przekazywać jako props. Minusem, że jeżeli chcemy mieć dostęp do wartości theme w samym komponencie reactowym to trzeba go opakować w withTeme. Jeżeli chcielibyśmy użyć własnego kontekstu reaktowego to wyjdzie na to samo, ponieważ jeżeli będziemy chcieli go używać to i tak go będziemy opakowywać. Przykład użycia poniżej, a jak zaimplementować własnego ThemeProvider i withLayout można zobaczyć w themeContext.js:
+Podsumowując na ten moment wygodniejsze dla mnie jest korzystanie z reactowego kontekstu, z którego już korzysta się też w innych celach, więc nie trzeba wprowadzać dodatkowych elementów.
+5. Testy jednostkowe
+Implementując SC możemy testować style, a dokładniej react-test-renderer, który posiada toHaveStyleRule, dzięki czemu można sprawdzić czy element posiada dokładnie takie wartości jakie byśmy chcieli:
+W snapshocie mamy zapisane style, co jest bardzo fajne. Bez SC mielibyśmy w snapshocie tylko nazwy klas.
+Do testowania możemy również używać Enzyme. W snapshotach też zapisują się style jednakże nie ma takiej sprytnej metody jak z react-test-renderer. Enzyme spisuje się dość dobrze, jednakże z tego co zauważyłem to autorzy enzyme nie nadążają za nowymi wersjami SC, a i nawet za samym Reactem. Na przykład naturalnym byłoby użycie shallow, a nie mount i zrobienie shallowWithTheme. W momencie pisania tego artykułu SC ver. 3 wszytko będzie ok, ale już przy ver. 4 napotkamy problemy.
+
+6. Kod wynikowy i czas transpilacji
+Nasz przykładowy projekt jest dosyć mały, więc ciężko tutaj zrobić porównanie:
+
+Z powyższej tabeli wynika, że jeżeli nie parsujemy css to projekt buduje się szybciej. Mając styczność z większymi projektami, z miksowanym podejściem raczej bym powiedział, że czas budowania projektu znacząco się nie zmienił, jednakże kod wynikowy waży więcej. Kiedy weźmiemy pod lupę np. aplikację, która służy do budowania stron statycznych na request użytkownika to głównym czynnikiem go interesującym jest czas budowania strony.
+Spotkałem się z przypadkiem, że z dnia na dzień czas tworzenia całego bundla strony zwiększył się prawie czterokrotnie: z 30 s na 2 min. Zmiana nie do przyjęcia. Co się stało?
+Problemem była nowa wersja jednej z paczek związanych z babelem i styled components. Minorowa zmiana o 0.0.1. Nie powinno to nic zmienić a jednak. Pomogło przywrócenie do wcześniejszej wersji. Takie sytuacje mogą się zdarzyć, szczególnie gdy korzystamy z bibliotek open source. Pomaga na pewno fixowanie wersji paczek oraz prywatne repo.
+Podsumowanie
+Każde rozwiązanie ma swoje wady i zalety i to też dotyczy SC. Trzeba wyważyć czy do naszego projektu ta biblioteka będzie pasować. Po jej użyciu świat CSS na pewno stanie się dla nas inny. Dla mnie Styled Components to przyjemniejszy React. Czy użyłbym SC w kolejnym projekcie? Tak.

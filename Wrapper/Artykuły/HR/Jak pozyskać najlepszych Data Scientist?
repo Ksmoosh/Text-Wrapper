@@ -1,0 +1,81 @@
+W czasach, gdy przeżywamy istny renesans nauki o danych (patrz: model 5V), wydaje się, że każda firma chce zatrudnić data scientist, ale identyfikacja, przyciągnięcie, zatrudnienie i utrzymanie odpowiedniego naukowca jest często większym wyzwaniem niż przewidują to menedżerowie HR. Dzieje się tak dlatego, że nauka o danych jest złożoną, wielodyscyplinarną dziedziną z małą (aczkolwiek bardzo zróżnicowaną) pulą talentów do zatrudnienia, a znalezienie odpowiedniego kandydata wymaga starannego połączenia przygotowań, jak i przemyślanego procesu rekrutacyjnego.
+Zatem jak powinien wyglądać proces rekrutacji Data Scientist, aby dotrzeć i zatrudnić najlepszych?
+
+Mateusz Bosek. Founder & CEO Hubranch oraz Dyrektor polskiego oddziału firmy Matic z Dubaju. Były programista z 8-letnim doświadczeniem w branży IT. Zdobyte bogate doświadczenie w relacjach z regionami Europy Zachodniej i Bliskiego Wschodu, aby doprowadzić Hubrancha do pozycji lidera w budowaniu skalowalnych zespołów wewnętrznych dla klientów z całego świata w Polsce i za granicą. Jego wizją jest uczynienie Hubranch wiodącym centrum innowacji w Polsce przez zbudowanie globalnego kampusu, w którym firmy z różnych rynków będą mogły pracować pod jednym dachem, gdzie istotną rolę odegra AI.
+Zanim do tego przejdziemy zacznijmy od podstaw. Niezależnie czy jesteś założycielem startupu lub menadżerem ds. rekrutacji – musisz być pewny, że szukasz odpowiedniej osoby. Data Science to rozległa dziedzina, a każdy obszar jest objęty inną rolą.
+Aby je przedstawić weźmy pod lupę przykładowy projekt – wykorzystanie machine learning do klasyfikacji obrazów. Tak działają m.in. TripAdvisor, Foursquare czy Yelp.
+Miliony zdjęć są umieszczane na tych aplikacjach każdego dnia, ale posortowanie i uzyskanie wglądu wewnątrz konkretnej restauracji może być trudne, gdy wszystkie załadowane zdjęcia należą do tej samej kategorii – być może są to zdjęcia jedzenia lub budynku restauracji z zewnątrz. Holistyczna ocena wyglądu restauracji wymaga różnego rodzaju zdjęć.
+W takiej sytuacji można użyć Image recognition/processing, aby automatycznie kategoryzować, które obrazy należą do poszczególnej kategorii. Dobrze przetrenowany algorytm może stwierdzić, czy zdjęcie pokazuje restauracje wewnątrz/z zewnątrz, czy też jedzenie serwowane w niej.
+
+Data Scientists tworzą model, który ma pomóc komputerowi wskazać drogę, jak wykonać to zadanie. Mogą również zastanowić się jakiego rodzaju danych będą potrzebowali – od ręcznie oznaczonych zdjęć do słów kluczowych w podpisach zdjęć. Jest to zazwyczaj zadanie należące do doświadczonego naukowca – “seniora”, ponieważ to oni często zarządzają danymi od początku do końca i zajmują się wszystkimi naukowymi problemami związanymi z nauką o danych – od wyboru algorytmów do projektowania inżynieryjnego.
+Data Engineers tworzą systemy do pozyskiwania i przechowywania wszystkich danych np. obrazowych, a także implementują niektóre z algorytmów ułożonych przez Data Scientists. Jest to zazwyczaj rola dla osób z silnymi technicznymi umiejętnościami, ale które mogą nie znać tak dobrze teorii matematycznych i statycznych, bądź nie znają zasad funkcjonowania branży dla której robią projekt.
+Data Analysts wyszukują i przedstawiają biznesowe konsekwencje wprowadzanych zmian. Pytania, na które muszą często odpowiedzieć to: Czy zmiana podoba się użytkownikom? Ile więcej ruchu wygenerowała aplikacja/stronia dzięki ostatniej zmianie? Następnie przekazują znalezione informacje dalej. Rola ta jest zazwyczaj zajmowana przez “Juniorów” w Data Science oraz osoby na stanowiskach kierowniczych w biznesie, które uczą się przedstawiać swoje obserwacje na podstawie danych statystycznych.
+
+Jeśli upewniłeś się kogo potrzebujesz do projektu to następnym krokiem jest znalezienie wyjątkowych ludzi, którzy zasilą Twój zespół ekspercką wiedzą i doprowadzą projekt szybciej do szczęśliwego końca.
+Jak pozyskać najlepszych?
+Wcześniej wspomniałem, że znalezienie odpowiedniego kandydata wymaga starannego połączenia przygotowań, jak i przemyślanego procesu rekrutacyjnego.
+Przedstawię Ci proces złożony z pięciu prostych kroków.
+1. “Złap mnie jeśli potrafisz”
+Po pierwsze trzeba odnaleźć “talenty”. Wiele firm popełnia na tym etapie jeden błąd, który wprowadza chaos w organizacji i kosztuje – standardowo – czas i pieniądze. 
+Tym błędem jest szukanie kandydatów dopiero wtedy, gdy jest na to potrzeba. Ktoś zaraz zapyta – hej! Dlaczego miałoby być inaczej? Jest popyt to jest podaż!
+Tak, to prawda, ale co jeśli popyt można wcześniej przewidzieć i podjąć kroki odpowiednio z wyprzedzeniem?
+Sieć kandydatów można rozszerzać przez cały czas. I nie, nie chodzi mi o wpisywanie na Linkedinie frazy “Data Scientist” i robienia baz w Excelu, lecz o tworzenie naturalnej sieć kontaktów przez:
+
+kulturę organizacyjną – zachęcanie pracowników do uczestnictwa w różnych eventach (meetupy, spotkania branżowe, imprezy towarzyskie) i opowiadania o swojej pracy, czyli projektach, w których uczestniczyli lub uczestniczą. Nic tak nie buduje Twojej marki pracodawcy jak marketing szeptany. Jeśli zespół czuje wewnętrzną potrzebę dzielenia się wiedzą – ułatw ten proces przez umożliwienie stworzenia prezentacji w godzinach pracy we współpracy z innymi członkami zespołu. Bycie otwartym na swoją pracę, a zwłaszcza na napotkane problemy w projekcie sprawia, że cała społeczność czuje się zaangażowana, a następnie jest bardziej chętna, aby dołączyć, gdy pojawi się okazja. Uwierz mi, nic tak nie interesuje naukowców jak napotykane problemy.
+newsletter na stronie careers – nawet jeśli nie szukasz obecnie żadnych ludzi do swojego zespołu/projektu – pozwól chętnym zostawić do nich kontakt w formie CV.
+
+Oprócz tradycyjnych form rekrutacji takich jak targi pracy, wynajęcie head hunterów czy zamieszczenie ogłoszenia na portalach takich jak JustJoinIT. Należy pamiętać, że Data Scientist i osoby doświadczone w branży generalnie mają wiele opcji pracy do wyboru, zatem niejednoznaczny opis stanowiska nie dostanie drugiej szansy. Idąc dalej połączenie ich z promocją, jak również docieraniem do potencjalnych kandydatów przez LinkedIn, w dzisiejszych czasach opłaca się testować również bardziej niestandardowe, proaktywne metody takie jak:
+
+organizacja własnego meetup’u lub nawet konferencji Data Science dotyczącej konkretnego obszaru np. Analiza konsumenta w e-commerce dzięki nieustrukturyzowanymi zbiorom danych (oczywiście to tylko przykład – najlepiej gdyby tematyka skupiała się na obszarze, który będzie istotny w planowanym projekcie),
+aktywne uczestnictwo w istniejących meetup’ach (własne wystąpienie, spotkania z innymi prelegentami),
+organizacja własnego Data Hackatonu i wybieranie kandydatów spośród uczestników,
+ogłoszenie konkursu na przeanalizowanie próbek danych lub rozwiązanie istniejącego problemu (miej na względzie, że taki konkurs raczej nie przyciągnie “seniorów”),
+szukanie kandydatów przy projektach open sourcowych,
+wielu dobrych naukowców posiada również swoje personalne strony internetowe gdzie chwalą się ostatnimi osiągnięciami.
+
+2. Pre-screening
+Jest to zazwyczaj kilka prostych pytań dotyczących ogłoszenia, jak również motywacji do zaaplikowania. Po wypełnieniu formularza, zazwyczaj prosi się o dane kontaktowe (rzadko CV, ponieważ ono będzie potrzebne dopiero w następnych etapach). Ten etap jest zawsze opcją dodatkową.
+Niektórzy twierdzą, że jest bardzo przydatny i pozwala zredukować często o 30% ilość nadesłanych formularzy w celu odsiania ludzi, którzy i tak nie są do końca przekonani do oferty (jakość>ilość) i tym samym oszczędzić czas osób odpowiedzialnych za rekrutacje i zoptymalizować dalszy proces rekrutacji. 
+Drudzy z kolei twierdzą, że należy ten etap pominąć i uprościć proces przez podanie jedynie formularza kontaktowego. To również oszczędza cenny czas, ale najważniejszym powodem, aby nie dokonywać wstępnego sprawdzenia, jest usunięcie ogromnego źródła początkowego błędu. Wielu niesamowicie utalentowanych kandydatów nie będzie miało doświadczenia związanego z rekrutacją. Oznacza to, że nie tylko przegrywasz odrzucając na wstępie być może ukryte talenty, ale także zaciekle rywalizujesz o tych kilku kandydatów, którzy dobrze wyglądają na papierze – wszyscy inni też ich chcą.
+3. Tech challenge
+Kandydaci są zapraszani do wykonania niewielkiego wyzwania, które zawiera już pewne cechy charakterystyczne dla pracy, którą będą musieli wykonać. Ma to formę mini “Kaggle”,  wykonywanego przez kandydatów zdalnie. 
+Przykładowy test znaleziony w internecie: docs.google.com/document.
+W trakcie całego procesu kluczowa jest transparentność. Kandydaci, którzy nie wykonali zdania poprawnie, są o tym natychmiast informowani. Ci, którzy wykonali zadanie poprawnie i wiemy, że przejdą do następnego etapu, są informowani o tym z wyprzedzeniem, jak również dostają informację, ilu kandydatów jeszcze pozostało i ilu z nich przejdzie (jeśli posiadamy taką informację).
+Podczas oceny wyników trzeba starać się, aby unikać bądź co bądź nieświadomych uprzedzeń – np. ten/ta kandydat/ka jest z [nazwa uniwersytetu], on/ona musi być dobra! Istotne jest również wcześniejsze zdefiniowanie kryteriów oceny, aby nie zapomnieć o jakimś wymiarze oceny i nie przeceniać innych.
+Co istotne, raczej nie powinno się oceniać kandydatów tylko na podstawie ich kodu, ale także na podstawie ich organizacji pracy, a w szczególności zdolności do przekazywania danych. Kandydaci, którzy są mocni tylko w jednym aspekcie, ale słabi w innych – nie są zazwyczaj wybierani.
+Układając pytania weź pod uwagę ich praktyczność – przeznacz tyle czasu na pytania dotyczące konkretnego obszaru, ile zajmują czasu w rzeczywistości np. pytania dot. modelowania powinno zająć ok. 20% całego testu, ponieważ realistycznie jest to odsetek czasu, jaki naukowcy spędzają wybierając i optymalizując modele.
+4. Wywiad f2f
+Tu również spotykam się z dwoma podejściami. Jedno – tradycyjne, czyli ocenianie przez zadawanie pytań, oraz drugie – rzadziej spotykane, czyli jedno spotkanie na wprowadzenie do działalności firmy i poznanie motywacji kandydata.
+1. Tradycyjne
+Interview powinien zająć ok 1-2 godzin. Interview najczęściej składa się z rozmowy obejmującej aspekty takie jak znajomość modeli statystycznych/matematycznych, programowania, modelowania algorytmów i wizualizacji danych, zachowanie kandydata, dopasowanie do kultury organizacyjnej, rozwiązywanie problemów. 
+Trochę tego jest, ale trzeba pamiętać by wybierać i skupiać się na tylko tych aspektach, które mają największe znaczenie dla branży, firmy i projektu.
+Przydatne porady na tym etapie to:
+
+nie zadawaj zbyt wielu pytań dotyczących jednego obszaru, nawet jeśli jest on dla Ciebie ważny, to bardzo męczy, a gdy kandydat nie zna odpowiedzi na jedno pytanie, powiedz mu, że nie może wiedzieć wszystkiego i zmień kontekst. Unikaj sytuacji, w której kandydat czuje, że rozmowa idzie słabo, ponieważ stan emocjonalny może ograniczyć jego zdolność do dalszych poprawnych odpowiedzi!
+
+Po przykładowe pytania odsyłam do tego zestawienia. Dodam, że zdaję sobie sprawę z niedoskonałości takich zestawień – owszem pytania są dobrze sformułowane, lecz wyobraź sobie, że słyszysz poprawną odpowiedź na jedno z np. technicznych pytań. Czy zatrudnisz tylko na tej podstawie? Czy nie jest to tylko fragment całej układanki?
+Rozwiązaniem tego problemu jest poproszenie kandydata, aby wyjaśnił odpowiedź w sposób bardziej dogłębny lub przeszedł przez proces myślowy przy pomocy np. tablicy, zazwyczaj ten sposób sprawdza się.
+2. Demo day
+Po tym, jak kandydat zaliczył “Tech Challenge”, kolejnym wyzwaniem jest przekonanie go, aby przyszedł na rozmowę kwalifikacyjną “Demo Day”, czyli cały dzień lub kilka godzin pracy spędzony w zespole nad bardziej otwartym wyzwaniem (czyli zupełnie inaczej niż podczas Tech Challenge), kończący się prezentacją swojej pracy całej grupie. Jest to bardzo angażujący proces, ale po tym dwie strony są w 100% pewne, że chcą współpracować ze sobą przez bardzo długi czas. Kolejna inwestycja tu i teraz na przyszłość, pozwala wyeliminować długi i kosztowny proces rekrutacji w momencie kiedy, któraś ze stron nie spełnia wymagań po danym czasie.
+Niestety większość z kandydatów będzie oczekiwać tradycyjnej rozmowy kwalifikacyjnej, podczas której nie spędzą więcej niż dwie godziny w biurze – na pewno nie cały dzień. Konieczne jest, aby przekonać ich, że warto poświęcić im czas.
+Najważniejszym podczas Demo Day to sposób, w jaki łączysz się z kandydatem, w jaki sposób wyrażasz możliwości, które oferujesz oraz jak opisujesz i przygotowujesz aplikanta do Demo Day. Wszystko powinno być ukierunkowane na zbudowanie w nim zainteresowania i entuzjazmu – to nie jest czas na ocenę ich umiejętności!
+Każdy kandydat jest motywowany innymi czynnikami, dlatego ważne jest, abyś uważnie słuchał i kierował rozmowę na tematy, o które dbają najbardziej. Takimi czynnikami są:
+
+Ogólny potencjał produktu i firmy.
+Jak wygląda organizacja projektu Data Science
+Główne szanse, wyzwania i projekty nad którymi dział Data Science będzie pracował w najbliższej przyszłości
+Jak dział Data Science współpracuje z innymi działami
+Rodzaj, wielkość i jakość posiadanych danych i szanse na dalsze ich zdobywanie
+Jak zespół zarządza swoją pracą i współpracuje w zakresie ustalania priorytetów i tworzenia decyzji.
+Konkretne narzędzia i technologie wykorzystywane przez dział Data Science
+
+Docelowo znajdziesz kandydatów, którzy nie są w stanie lub nie chcą umówić się i zaplanować swojego Demo Day.
+Demo Day jest sercem takiego procesu rekrutacji. Dobrze wykonany, zawiera końcową ocenę techniczną, umiejętności kandydata wraz z analizą jego dopasowania do kultury. Z odpowiednim przygotowaniem, można to osiągnąć bez większego zaangażowania czasowego z Twojej strony lub Twojego zespołu, niż byłoby to wymagane przez tradycyjną rozmowę kwalifikacyjną.
+Organizacja dobrego Demo Day jest bardzo rozległym tematem, który z pewnością poruszę w przyszłości.
+5. Selekcja
+W końcu ostateczna selekcja. Najpierw skontaktuj się z najlepszymi kandydatami i upewnij się, że nadal są chętni, aby zostać częścią Twojego zespołu. Powinieneś założyć, że wszyscy kandydaci przeprowadzają rozmowy w wielu firmach jednocześnie, zamiast wierzyć, że masz kandydata na wyłączność, a praca u Ciebie to spełnienie jego marzeń – jeszcze tego nie wie.
+Zaproś najlepszych kandydatów na spotkanie z zespołem i zbierz od nich opinie. Zadaj więcej pytań na temat postrzegania kultury organizacyjnej, wyznawanych wartości jak również osobistych ambicji i ścieżek kariery. Jest to dobry moment na zadanie podchwytliwych pytań np. w tym momencie mógłbyś być na rozmowie o pracę u konkurencji, dlaczego wybrałeś tę ofertę?
+Co istotne, żaden kandydat nie może nigdy, przenigdy odejść bez ostatecznej odpowiedzi. Wszyscy kandydaci otrzymują indywidualną, spersonalizowaną pozytywną lub negatywną informację zwrotną na pytanie, dlaczego nie zostali wybrani. Jeśli traktujesz kandydatów jako zasoby, które od tak można odrzucić, nie zasługujesz na zatrudnianie największych talentów.
+Jeśli traktujesz swoich kandydatów w sposób, w jaki chciałbyś być traktowany, osiągniesz “Everest” kultury zatrudniania: Jednocześnie zatrudniasz najlepszych jak również jesteś rekomendowanym pracodawcą/rekruterem przez ludzi, których starania o to stanowisko odrzuciłeś (profesjonalnie z uzasadnieniem).
+Aplikowanie do firmy jest trudnym, potencjalnie zmieniającym życie procesem, dlatego powinien być traktowany poważnie przez osoby podejmujące ostateczną decyzję.
+Aby znaleźć i zatrudnić utalentowanych Data Scientist na tak konkurencyjnym rynku pracy, gdzie każdy stara się tylko o najlepszych kandydatów trzeba wykazać się proaktywnością i kreatywnością w całym procesie rekrutacyjnym, zaczynając od znalezienia kandydatów, a najefektywniej można tego dokonać bywając tam gdzie są najlepsi – ludzie, którzy poświęcają swój wolny czas na naukę i dzielenia się tym co kochają – swoją pasję. Kończąc na prowadzeniu rozmów rekrutacyjnych na zasadzie partner-partner, a nie pracodawca-pracownik.

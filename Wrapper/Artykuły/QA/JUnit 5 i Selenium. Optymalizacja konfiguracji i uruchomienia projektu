@@ -1,0 +1,75 @@
+Większość projektów, w których automatyzowane są testy aplikacji internetowych, wymaga wykonywania skryptów z wykorzystaniem różnych przeglądarek. Manualne zarządzanie konfiguracją, wersjami sterowników przeglądarek i odpowiednim uruchomieniem testów jest czasochłonne i podatne na błędy, dlatego warto używać narzędzi automatyzujących ten proces. 
+
+Rafał Borowiec. W branży IT od ponad 10 lat, przygodę rozpoczynał jako tester oprogramowania. Oprócz testowania oprogramowania i zapewniania jakości, specjalizuje się w wytwarzaniu oprogramowania oraz zarządzaniu projektami i zespołami. Chętnie dzieli się wiedzą, prowadzi blog dotyczący programowania, jest wykładowcą oraz trenerem IT. Występuje również jako prelegent na wydarzeniach branżowych, dotyczących zarówno zapewnienia jakości, testowania, jak i programowania.
+Mechanizmy biblioteki WebDriverManager oraz frameworku JUnit 5 umożliwiają testowanie na różnych przeglądarkach bez wprowadzania zmian w kodzie, dzięki automatycznemu dobieraniu odpowiedniego sterownika oraz wykorzystaniu zewnętrznej konfiguracji uruchamiania. Skuteczność tych rozwiązań pokażę modyfikując projekt testów aplikacji TodoMVC, w którym wsparcie dla różnych przeglądarek było jak do tej pory całkowicie manualne.
+Kod źródłowy
+Kod źródłowy znajduje się w repozytorium Git: https://gitlab.com/qalabs/blog/junit5-selenium-todomvc-example w branchu 3-page-objects. Zmiany opisywane w tym artykule znajdują się w branchu 4-configuration.
+Java 12
+Kiedy pisałem ten tekst (w maju 2019) najnowszą dostępną wersją Java SDK było 12, dlatego zaktualizujmy do niej stworzony projekt. Jak to zrobić? W celu zmiany wersji Java zmodyfikuj plik build.gradle i zmień wartość właściwości sourceCompatibility na 12. Dla porządku warto przy tym zauważyć, że Java 12 nie jest wersją z długim okresem wsparcia (ang. long time support, LTS), a ostatnia wersja LTS to Java 11.
+Tip: W razie problemów upewnij się, że masz w swoim systemie operacyjnym zainstalowane Java SDK w wersji 12 i że jest ono poprawnie skonfigurowane w IntelliJ. Instrukcje do konfiguracji i weryfikacji środowiska znajdziesz w naszych wcześniejszych artykułach dla systemu Windows: https://blog.qalabs.pl/java/przygotowanie-srodowiska/ oraz macOS: https://blog.qalabs.pl/narzedzia/java-selenium-macos/.
+Gradle Wrapper, JUnit i Selenium
+W kolejnym kroku zaktualizujemy również:
+
+Gradle Wrapper do wersji 5.4.1,
+JUnit do wersji 5.4.2,
+Selenium do wersji 3.141.59.
+
+Żeby ułatwić sobie to zadanie w przyszłości, dokonamy przy tym małego usprawnienia w pliku build.gradle, to znaczy dodamy w nim właściwości z numerami wersji poszczególnych bibliotek, żeby następnie wykorzystać je przy podawaniu nazw zależności w bloku dependencies. W tym celu w pliku build.gradle dodaj następujący blok:
+…a następnie wykorzystaj utworzone w ten sposób właściwości w dalszej części skryptu, zastępując nimi numery wersji:
+Tip: Aby powyższa zmiana została zastosowana w IntelliJ, konieczne jest odświeżenie konfiguracji projektu.
+Podstawowa konfiguracja logowania
+Zanim przejdziemy do głównego tematu tego artykułu, to znaczy automatycznej konfiguracji i uruchomienia testów dla różnych przeglądarek, warto jeszcze dodać w projekcie konfigurację logowania. Do logowania użyjemy biblioteki Logback, która została zaprojektowana jako następczyni popularnej biblioteki Log4j. W tym celu w pliku build.gradle dodaj następujące zależności:
+Aby skonfigurować logera, w katalogu src/test/resources utwórz plik logback.xml z następującą zawartością:
+Powyższa konfiguracja zapewnia logowanie do konsoli na tak zwane standardowe wyjście.
+Tip: Więcej na temat biblioteki Logback oraz jej konfiguracji dowiesz się z oficjalnej dokumentacji projektu: https://logback.qos.ch/.
+Zarządzanie sterownikami przeglądarek
+Wykorzystanie WebDriverManager
+WebDriverManager to biblioteka umożliwiająca automatyczne zarządzanie binariami sterowników do przeglądarek wymaganymi przez Selenium WebDriver.
+Dodanie biblioteki WebDriverManager do projektu jest bardzo proste, ponieważ można ją znaleźć w centralnym repozytorium Maven, dzieki czemu można ją dodać jako zależność w projektach opartych zarówno o Maven, jak i Gradle.
+Na początek dodamy odpowiednie wpisy w pliku build.gradle, wykorzystując opisane wyżej podejście z umieszczeniem numeru wersji w osobnej właściwości:
+Aby skorzystać z funkcjonalności automatycznego zarządzania, należy użyć statycznych metod klasy WebDriverManager, które pozwalają na konfigurację wspieranego przez bibliotekę sterownika. W naszym projekcie podstawową konfigurację przeglądarki na potrzeby testów zawiera klasa Browser, stąd dodamy do niej kod wykorzystujący WebDriverManager:
+Ponieważ statyczny blok jest wykonywany podczas ładowania klasy do pamięci, to powyższy kod wykona się jeszcze przed uruchomieniem testów. To rozwiązanie nie jest docelowe, użyłem go, aby w szybki sposób i z nieznacznymi modyfikacjami w kodzie wykorzystać WebDriverManager. W dalszej części artykułu rozwiązanie zostanie usprawnione.
+Uruchomienie testów
+W tym miejscu warto sprawdzić, jak wprowadzone zmiany wpłynęły na wykonanie testów. W tym celu uruchom testy i obserwuj wpisy w konsoli, a w logach powinna pojawić się informacja pochodząca z klasy WebDriverManager:
+Testy wykonują się poprawnie, chociaż nie trzeba już pobierać sterowników i instalować ich ręcznie w systemie, ponieważ dba o to WebDriverManager.
+Konfiguracja typu przeglądarki
+W aktualnym rozwiązaniu, aby zmienić typ przeglądarki, na której wykonywane są testy (np. Chrome na Firefox) musimy zmodyfikować kod w klasie Browser i uruchomić testy ponownie. Można znacznie ułatwić sobie to zadanie i wyeliminować konieczność modyfikacji kodu testów poprzez przekazanie typu przeglądarki jako parametru konfiguracyjnego przy uruchomieniu testów.
+Typ przeglądarki jako parametr konfiguracyjny
+Parametry konfiguracyjne to pary klucz-wartość, które dostarczymy do silnika testów JUnit 5 za pomocą właściwości systemowej JVM. Niestety, Gradle aktualnie nie dostarcza dedykowanego sposobu na przekazywanie parametrów do silnika testów, trzeba zatem przekazać je bezpośrednio ze skryptu build.gradle.
+Aby to osiągnąć, zmodyfikujemy zadanie test w pliku build.gradle:
+Powyższy kod przekaże do silnika testów JUnit 5 wartość zmiennej systemowej, którą pobierze z parametru projektu. Wartość parametru definiowana jest podczas uruchomienia Gradle za pomocą parametru -P. Dzięki takiemu rozwiązaniu będziemy mogli uruchomić testy przekazując typ przeglądarki jako parametr uruchomienia:
+Ponieważ może się zdarzyć, że wartość parametru nie zostanie przekazana za pomocą zmiennej systemowej, na przykład podczas uruchomienia testów w IDE, dlatego zdefiniujemy wartość domyślną, dodając parametr browser do pliku src/test/resources/junit-platform.properties:
+
+Własne rozszerzenie JUnit 5
+Tak zdefiniowany parametr wykorzystamy w testach z pomocą własnego rozszerzenia JUnit 5, które na podstawie wartości podanej w konfiguracji zainicjuje odpowiedni sterownik (np. ChromeDriver, FirefoxDriver) i udostępni go w testach.
+Istnieje wiele mechanizmów rozszerzeń JUnit 5, w zależności od potrzeb mogą to być między innymi:
+
+Conditional Test Execution – określenie warunków decydujących o uruchomieniu testów
+Parameter Resolution – rozwiązywanie parametrów wstrzykiwanych do testów
+Test Lifecycle Callbacks – “wpinanie się” w odpowiednie kroki cyklu życia testu
+Test Result Processing – przetwarzanie rezultatów wykonania testów
+
+Tworząc to rozszerzenie wykorzystamy mechanizm rozwiązywania parametrów. Zadaniem tego rozszerzenia będzie utworzenie i dostarczenie argumentu typu Browser dla metod @BeforeEach i @AfterEach w klasie testowej. Rozszerzenie będzie również wykorzystywać klasę WebDriverManager, która dostarczy odpowiedni sterownik przeglądarki.
+Klasa pomocnicza WebDriverFactory
+Budowanie rozszerzenia rozpoczniemy od stworzenia klasy pomocniczej WebDriverFactory, która będzie odpowiedzialna za utworzenie obiektu WebDriver na podstawie wartości parametru browser. Dostępne wartości tego parametru wraz z odpowiadającymi im klasami sterownika są z góry zdefiniowane w mapie drivers. Utworzenie instancji odpowiedniej klasy jest realizowane z użyciem klasy pomocniczej ReflectionUtils pochodzącej z JUnit 5. WebDriverFactory jest więc prostą fabryką używającą do realizacji swojego zadania mechanizmów refleksji w Java.
+
+Klasa BrowserParameterResolver
+Na właściwe rozszerzenie składać się będzie klasa BrowserParameterResolver, która będzie wykorzystywać interfejsy tak zwanego Extension API, umożliwiającego rozszerzeniom JUnit 5 definiowanie kodu wykonywanego w określonych momentach cyklu życia testu. Nasze rozszerzenie będzie implementować interfejsy BeforeAllCallback, ParameterResolver oraz AfterEachCallback.
+Metoda interfejsu BeforeAllCallback
+Użycie interfejsu BeforeAllCallback wymaga zaimplementowania metody beforeAll, która zostanie wykonana przez JUnit 5 przed wykonaniem pierwszej metody w klasie testowej. W naszym przypadku metoda ta jest odpowiedzialna za konfigurację sterownika dla właściwego typu przeglądarki. Jest ona rozszerzeniem utworzonego wcześniej statycznego inicjalizatora klasy Browser, który teraz należy z niej usunąć. Wartość parametru konfiguracyjnego określającego typ przeglądarki jest pobierana z tak zwanego kontekstu rozszerzenia przy pomocy prywatnej metody getConfigParameter.
+Metody interfejsu ParameterResolver
+Interfejs ParameterResolver służy dynamicznemu rozwiązywaniu parametrów w trakcie wykonywania testów. W naszym przypadku metoda supportsParameter weryfikuje, czy parametr, który ma zostać rozwiązany przez BrowserParameterResolver, jest typu Browser. Metoda resolveParameter pobiera natomiast z kontekstu rozszerzenia obiekt Browser. Jeżeli obiekt nie istnieje, zostanie utworzony z wykorzystaniem wcześniej utworzonej klasy WebDriverFactory, ale metoda resolveParameter zostanie wykonana tylko jeżeli metoda supportsParameterzwróci wartość true.
+Metoda interfejsu AfterEachCallback
+Metoda afterEach z interfejsu AfterEachCallback zostanie wykonana po każdej metodzie testowej w klasie testowej. W naszym przypadku w metodzie z kontekstu rozszerzenia pobierany jest obiekt Browser, a następnie wywoływana jest na nim metoda quit zamykająca przeglądarkę.
+Pełna implementacja opisanego wyżej kodu jest następująca:
+Tip: Więcej o rozrzerzeniach w JUnit 5 dowiesz się z oficjalnej dokumentacji: https://junit.org/junit5/docs/current/user-guide/#extensions.
+Użycie rozszerzenia w TodoMvcTests
+W celu wykorzystania nowoutworzonego rozszerzenia należy użyć adnotacji @ExtendWith wskazując typ rozszerzenia. Kolejnym krokiem jest usunięcie metody afterEach oraz modyfikacja metody beforeEach:
+Metoda beforeEach akceptuje parametr typu Browser, który zostanie dostarczony przez rozszerzenie BrowserParameterResolver. Metoda afterEach została usunięta, gdyż zamykanie przeglądarki po każdej metodzie testowej zostało już zaimplementowane w rozszerzeniu.
+Uruchomienie testów
+Nadszedł czas na przetestowanie rozszerzenia. W tym celu uruchom wiersz poleceń i w katalogu projektu wykonaj polecenie:
+Dzięki wprowadzonym usprawnieniom w tym przypadku testy powinny uruchomić się w przeglądarce Firefox, a w celu użycia innej przeglądarki nie trzeba nic zmieniać w kodzie, wystarczy tylko zmienić wartość parametru uruchomienia.
+Repozytorium Git projektu
+Kod źródłowy opracowany w artykule znajduje się w repozytorium Git: https://gitlab.com/qalabs/blog/junit5-selenium-todomvc-example w branchu 4-configuration.
+Warsztat JUnit 5 i Selenium WebDriver
+Jeśli zainteresowały cię przedstawione zagadnienia i chcesz dowiedzieć się znacznie więcej w bezpośredniej rozmowie, zapraszamy na nasze warsztaty z automatyzacji testów aplikacji internetowych w technologii Java z użyciem JUnit 5i Selenium WebDriver. Po szczegóły kliknij tutaj.

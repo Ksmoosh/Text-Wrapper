@@ -1,0 +1,190 @@
+Co przygotowaliśmy w ramach najnowszej Prasówki Technologicznej? Frontendowców z zacięciem UI/UX-owym zainteresuje świetne opracowanie tłumaczące związane z nimi zagadnieniami krok po kroku, backendowcy będą mieli okazję porównać Javę i Pythona, a także podszkolić oba języki, a wszystkich zainteresowanych technologią pewnie ucieszy fakt, że roboty Boston Dynamics w końcu trafiają na rynek.
+Frontend
+1. Jeśli chcesz poszerzyć swoją wiedzę związaną z szeroko rozumianym frontendem, w tym zagadnieniami związanymi z user interface i user experience, to może zainteresować Cię to świetne opracowanie. 
+
+Więcej na ten temat tutaj.
+
+2. Zastanawiasz się czasami, czy lepiej użyć React, czy Redux? Tekst napisany przez Georgesa Biaux może pozwolić Ci uświadomić, że niewłaściwy wybór może okazać się bardzo kosztowny.
+
+Więcej na ten temat tutaj.
+
+3. Zadaniem tzw. web workers, czyli dedykowanych wątków roboczych, jest zapewnienie prostego sposobu na uruchamianie skryptów w postaci wątków w tle treści internetowych. Poniższy tekst wyjaśnia, jak stworzyć web workers z Angular CLI i porównuje wydajność bez nich i z nimi.
+
+Więcej na ten temat tutaj.
+4. Promise API niedługo zostanie wzbogacone o dwie nowe metody: Promise.allSettled() orazPromise.any(). Dowiedz się, dlaczego ich temat budzi spore kontrowersje, a Vitaliy Potapov uważa je za całkowicie niespójne z dotychczasowym designem Promise API.
+
+Więcej na ten temat tutaj.
+
+5. Tracking to kluczowe część developmentu produktu, zarówno aplikacji webowych, mobilnych, jak i jakiegokolwiek software’u, z którym się stykamy. Nikogo nie trzeba przekonywać, że zrozumienie użytkowników swojego rozwiązania jest bardzo ważne z perspektywy biznesowej. Poniższy artykuł omawia różne podejścia i wzorce do trackingu przy użyciu JavaScript.
+
+Więcej na ten temat tutaj.
+Backend
+1. Big data to zagadnienie, które cieszy się dużą popularnością, a prawdopodobnie będzie ona tylko rosnąć. Jeśli planujesz poszerzyć swoją wiedzę w tym zakresie, to zestawienie najciekawszych książek dotyczących tej tematyki może się okazać bardzo pomocne.
+
+Więcej na ten temat tutaj.
+
+2. Jeśli zdarza Ci się testować kod napisany w Pythonie, to może zainteresować Cię artykuł Shaya Palachy’ego, który omawia zagadnienia związane z rozszerzonym testowaniem. Autor wyjaśnia, dlaczego warto testować kod na różnych wersjach Pythona, a także na różnych systemach operacyjnych.
+
+Więcej na ten temat tutaj.
+
+3. Osoby aspirujące do zostania developerami często zastanawiają się, który język powinny opanować. Do jednych z najpopularniejszych wyborów należą obecnie Python i Java. Dowiedz się, jakie są wady i zalety każdej z opcji dzięki opracowaniu, w którym porównano m.in. dostępne narzędzia i społeczność.
+
+Więcej na ten temat tutaj.
+
+4. Alpine Linux to skupiona na bezpieczeństwie, lekka dystrybucja Linuksa typu general purpose. Szczególnie sprawdza się u użytkowników, którym zależy na systemie nie zajmującym dużo miejsca. Jednakże developerzy Java mogą napotkać pewne problemy w działaniu aplikacji w kontenerach i o tym jest poniższy tekst.
+
+Więcej na ten temat tutaj. 
+
+5. Jeśli stawiasz pierwsze kroki w programowaniu w Pythonie, to być może nie słyszałeś jeszcze o aplikacja typu multi-threaded i multi-process, bo nie ma na ten temat zbyt wielu materiałów. Poniższy wpis może nieco rozjaśnić te zagadnienia.
+
+Więcej na ten temat tutaj.
+Inne
+1. Internet opanowała nowa moda: publikacja zdjęć portretowych “postarzonych” za pomocą niemłodej już aplikacji FaceApp. Jak się okazuje, popularny program używany do zabawy wzbudza liczne kontrowersje w kwestii bezpieczeństwa i prywatności.
+
+Więcej na ten temat tutaj.
+
+2. Inżynier pracujący dla Xiaopeng Motors, który wcześniej był zatrudniony w Tesli, przyznał się do skopiowania plików związanych z systemem autonomicznej jazdy stworzonym przez firmę Muska. Wcześniej podobna sytuacja dotyczyła byłego pracownika Apple.
+
+Więcej na ten temat tutaj. 
+
+3. Boston Dynamics, firma zajmująca się robotyką znana dotąd głównie z popularnych filmów prezentujących możliwości ich robotów, decyduje się na wprowadzenie swoich urządzeń na rynek. Przedstawiciele firmy mają nadzieję, że ich roboty przysłużą się ludzkości, np. eliminując konieczność wykonywania niektórych prac.
+
+Więcej na ten temat tutaj. 
+
+4. Eksperci do spraw bezpieczeństwa z firmy Symantec wykryli groźne podatności w WhatsAppie i Telegramie. Okazało się, że w stosunkowo prosty sposób da się podmienić pliki graficzne przesyłane przez aplikacje. 
+
+Więcej na ten temat tutaj.
+5. Kontrowersyjny przedsiębiorca i inwestor Peter Thiel skrytykował działania Google. Nie przebierając w słowach oskarżył on technologicznego giganta o szpiegostwo na rzecz obcych krajów. Do sprawy odniósł się prezydent Stanów Zjednoczonych Donald Trump.
+
+Więcej na ten temat tutaj.
+
+
+
+Oferty pracy  z 
+
+
+    var jsonUrl = "https://justjoin.it/external_api/v1/offers"
+    var limit = ""
+    if (limit !== "") {
+    	var offerLimit = "?limit="
+    	jsonUrl = jsonUrl + offerLimit;
+    }
+    else {
+    	jsonUrl = jsonUrl + "?limit=5";
+    }
+     
+    var order = ""
+    if (order !== "") {
+    	order = "&order=newest"
+    	jsonUrl = jsonUrl + order;
+    }
+  	
+    var expLevel = ""
+    if (expLevel !== "") {
+    	expLevel = "&experienceLevel="
+    	jsonUrl = jsonUrl + expLevel;
+    }
+  
+    var companies = ""
+    if (companies !== "") {
+		var company = companies.split(',');
+		for (var k=0; k<company.length; k++) {
+			var jsonCompany = "&company[]="+company[k]
+			jsonUrl = jsonUrl + jsonCompany
+	}}
+      
+	var technologies = ""
+    if (technologies !== "") {
+		var technology = technologies.split(',');
+		for (var k=0; k<technology.length; k++) {
+			var jsonTechnology = "&technology[]="+technology[k]
+			jsonUrl = jsonUrl + jsonTechnology
+	}}
+  
+	var cities = ""
+    	if (cities == "World" || cities == "world") {
+		var jsonCity = "&city[]=Amsterdam&city[]=Poznan&city[]=Singapore&city[]=Sydney&city[]=Londyn&city[]=London&city[]=Paris&city[]=Sztokholm&city[]=Barcelona&city[]=San Francisco&city[]=Manchester"
+		jsonUrl = jsonUrl + jsonCity}
+  
+    if (cities !== "") {
+		var city = cities.split(',');
+		for (var k=0; k<city.length; k++) {
+			var jsonCity = "&city[]="+city[k]
+			jsonUrl = jsonUrl + jsonCity
+    }} 
+    
+
+  function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+console.log(getRandomInt(9999));
+  var offerList = jQuery('#offers-list');
+// console.log(blabla);   
+ // console.log(blabla.id);
+  offerList.attr('id',offerList.attr('id')+getRandomInt(9999));
+ //console.log(blabla);   
+  //console.log(blabla.id);
+  
+    jQuery.getJSON(jsonUrl, function (data) {
+    //var offerList = jQuery('#'+blabla.id);
+
+for(var i=0; i<data.length; i++) 
+	{
+	var offer = data[i];	 
+      offerList.append('<li class="offer-item net" style="">' +
+			'<div class="item-border" id="'+ offer.mainTechnology +'"></div>' +
+			'<a class="item" href="'+ offer.offerUrl+'" target="_blank">' +
+				'<div class="company-logo-container">' +
+					'<img class="company-logo" src="'+ offer.companyLogoUrl +'">' +
+				'</div>' +
+				'<div class="item-row">' +
+					'<div class="primary-line">' +
+						'<span class="title">'+ offer.title +'</span>' +
+						'<div class="flex-right">' +
+							'<span class="salary-row" id="salary-row'+ i +'">' +
+							
+							'</span>' +
+							'<span class="age new" id="age-new'+ i +'">' +
+							
+							'</span>' +
+						'</div>' +
+					'</div>' +
+					'<div class="secondary-line">' +
+						'<span class="company-info">' +
+							'<span class="company-name">' +
+								'<i class="material-icons company-icon">domain</i>'+ offer.companyName +'' +
+							'</span>' +
+							'<span class="company-address">' +
+								'<i class="material-icons marker-icon">place</i>'+ offer.city +', '+ offer.street +'' +
+							'</span>' +
+						'</span>' +
+						'<div class="tags" id="tags'+ i +'">' +
+						
+						'</div>' +
+					'</div>' +
+				'</div>' +
+			'</a>' +
+		'</li>')
+		
+		var now = moment()
+		var added = moment(offer.publishedAt);
+		
+		if (now.diff(added, 'days')!==0) {offerList.find('#age-new'+ i +'').append(now.diff(added, 'days')+"d ago")} 
+        else {offerList.find('#age-new'+ i +'').append("New")
+             offerList.find('#age-new'+ i +'').addClass("age-newer")
+             }
+		
+		if (offer.salaryTo) {
+			offerList.find('#salary-row'+ i +'').append('<span class="salary">'+ offer.salaryFrom +' - '+ offer.salaryTo +' '+ offer.salaryCurrency +'</span>');
+		}
+		
+		for (j=0; j<offer.skills.length; j++) {
+			offerList.find('#tags'+ i +'').append('<span class="tag">'+ offer.skills[j].name +'</span>');
+		}
+								
+	}
+
+if (data.length>0){offerList.css("display" , "block");}
+});
+

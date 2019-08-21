@@ -1,0 +1,71 @@
+S-Wyrażenia to podstawa języków rodziny Lisp. W tym wpisie przedstawię, jak napisać prosty parser S-Wyrażeń krok po kroku, czyli właściwie pokażę podstawę dla parsera Lispa. Można by użyć do tego celu generatora, ale prościej jest napisać parser samemu. Użyjemy do tego celu języka JavaScript.
+
+Jakub T. Jankiewicz. Programista Front-End z wieloletnim doświadczeniem, skupiający się na języku JavaScript. Ostatnio pracuje także w języku R. Autor bloga Głównie JavaScript. Autor kilku projektów Open Source m.in. jQuery Terminal, sysend.js czy LIPS. Pomaga także przy projekcie OpenClipart, który dostarcza darmowych (w Domenie Publicznej) grafik wektorowych w formacie SVG. W wolnym czasie zajmuje się hobbistycznie fotografią.
+Co to są S-Wyrażenia?
+Jeśli nie miałeś jeszcze styczności z językiem LISP to S-Wyrażenia wyglądają tak:
+Jest to format danych, gdzie wszystko składa się z atomów albo list otoczonych nawiasami (gdzie atomy są oddzielone spacjami).
+Dodatkowo S-Wyrażenia mogą mieć dodatkowe typy danych, dokładnie tak jak JSON czyli:
+
+liczby,
+symbole — które można dowolnie interpretować np. wartość "true" albo "t", może odpowiadać true z JavaScript,
+ciągi znaków.
+
+Kod lispa składa się z S-Wyrażeń, ale to nie jest wszystko do czego mogą służyć. Nadają się doskonale jako format wymiany danych.
+S-Wyrażenia ją np. używane jako zapis WASM, który można przeczytać. Prawdopodobnie ze względu na prostotę parsowania, oraz na to, że nie trzeba było wymyślać swojego własnego formatu.
+Można go np. użyć do komunikacji między serwerem a przeglądarką. Można ich używać zamiast np. JSON-a.
+Dodatkowo wyrażenie może mieć specjalny znak kropkę . , która tworzy parę.
+To para dwóch elementów (nie jestem pewien czy to także część S-Wyrażeń czy już języka LISP).
+Jest to alternatywny zapis struktury listy, który bardziej mówi jak dokładnie wyglądają dane i np. listę.
+Można przedstawić jako:
+Dzięki takiemu zapisowi można tworzyć dowolne drzewa binarne. W każdym razie my nie będziemy obsługiwać tego typu S-Wyrażeń, aby nie komplikować parsera.
+Tokenizer
+Najpierw musimy podzielić ciąg znaków na tokeny, czyli nawiasy, ciągi znaków oraz atomy. Tak działają np. niektóre generatory parserów (np. sławna para lex i yacc oraz flex i bison, ta druga para to wolne oprogramowanie, część projektu GNU).
+Najprościej jest to wykonać za pomocą wyrażeń regularnych.
+Najprostszy przykład to:
+i to prawie działa. Pierwszy problem to puste ciągi znaków, między dwoma dopasowaniami oraz na początku i końcu, czyli np. dla:
+mamy 5 znaków zamiast 2.
+Można to rozwiązać za pomocą funkcji filter na wynikowej liście (tablicy).
+Nie będziemy potrzebowali też spacji więc one także można usunąć:
+Drugi bardziej poważny problem to baz)) jako ostatni token, to przykład:
+Problemem jest wyrażenie \S+ , które dopasowuje zachłannie. Aby to naprawić należy użyć, takiego wyrażenia:
+czyli wszystko co nie jest nawiasem i białym znakiem (czyli to samo co \S+ tylko bez nawiasów).
+Zapiszmy nasz tokenizer jako funkcje:
+Nie musimy używać length , ponieważ pusty ciąg znaków także jest konwertowany do wartości boolean i ma wartość false.
+Ale co z ciągami znaków? Jeśli np. spróbujemy przetworzyć taki ciąg:
+(jest to funkcja w dialekcie Scheme języka LISP). Użyto tutaj szablonów ciągów znaków (ang. template literals), aby można było zapisać znaki nowej linii wewnątrz kodu.
+To co jest wewnątrz ciągu znaków nam się już rozsypie (czyli "funkcja square wywołanie (square 10) zwraca 100").
+Wyrażenie regularna dla ciągów znaków
+Należy dodać ciągi znaków jako wyjątek, najlepiej jako pierwszy element naszego wyrażenia regularnego.
+Wyrażenie, które dopasowuje się do ciągów znaków może wyglądać tak:
+A oto jak będzie wyglądało nasze wynikowe wyrażenie:
+Można by też dodać komentarze lispowe, ale ze względu na to, że nie jest to parser języka LISP, tylko S-Wyrażeń, nie będziemy dodawali komentarzy. Tak samo jak nie ma ich w formacje JSON (dodanie ich nie powinno być problemem).
+Teraz nasz tokenizer zwraca poprawny wynik:
+I to cały tokenizer.
+Parser
+Jako że budujemy drzewo, tworząc nasz parser możemy się posłużyć stosem (czyli LIFO – ang. Last In First Out).
+Aby w pełni zrozumieć działanie parsera dobrze jest wcześniej znać podstawowe struktury danych, tj. Listy jedno kierunkowe, drzewa binarne oraz Stos.
+Oto pierwsza wersja parsera.
+Funkcja tworzy tablicę z naszą strukturą w formie tablic. Jeśli będziemy parsowali więcej niż jedno S-Wyrażenie, będziemy mieli więcej elementów w tablicy:
+Mimo że nie obsługujemy kropki, czyli S-Wyrażeń w formie:
+Nie musimy tworzyć specjalnej struktury dla naszej sparsowanej listy, aby mieć poprawny Parser. (Taki parser może być np. podstawą jakiegoś interpretera Lispa). Dobrze jednak od razu mieć strukturę, w której będziemy przechowywać nasze S-Wyrażenia, będzie to konstruktor Pair. Z którego możemy zbudować drzewo S-Wyrażeń (czyli drzewo binarne). Umożliwi nam to tworzenie dowolnych drzew.
+Musimy mieć też coś, co będzie reprezentować pustą listę, zazwyczaj w języku LISP jest to nil.
+Możemy napisać funkcje, która konwertuje tablicę na tę strukturę:
+Aby dodać to do naszej funkcji parsera, wystarczy wstawić na końcu (oczywiście razem z return):
+Niestety jeżeli chciałbyś dodać później operator kropki, to do tworzenia pary musiałbyś już tworzyć strukturę ręcznie, wewnątrz parsera.
+Nie konwertujemy samej tablicy result, ponieważ jest to tylko kontener na S-Wyrażenia, które są w środku. Każdy element tej tablicy powinien być listą, więc możemy użyć funkcji Array::map.
+Sprawdźmy jak to działa.
+Wynikiem będzie taka struktura (jest to wynik JSON.stringify z wstawionymi wartościami nil).
+Warto jeszcze napisać funkcje toString dla obiektów typu Pair.
+Sprawdźmy jak to działa:
+Został nam jeszcze jeden problem, wynikowa struktura nie ma liczb, tylko wszystko jest ciągiem znaków:
+Parsowanie atomów
+Najpierw parowanie liczb, do tego celu użyjemy tych wyrażeń (znalezione gdzieś w sieci):
+Dalej parsowanie ciągów znaków. Nasze ciągi, są prawie takie same jak te z JSON-a, tylko z jednym wyjątkiem mogą mieć nowe linie (tak zazwyczaj jest w językach LISP). Aby użyć funkcjiJSON.parse można zamienić nową linie na slash i n czyli \n na \\n.
+Dzięki temu dostajemy za darmo, obsługę wszystkich znaków ucieczki np, \t oraz znaków Unicode. Zawsze warto jest korzystać z udogodnień języka, w którym pisany jest parser.
+Kolejnym elementem S-Wyrażeń są symbole, czyli dowolny ciąg nie będący ciągiem znaków (tj. bez cudzysłowów). Możemy utworzyć konstruktor LSymbol, aby odróżnić go od funkcji Symbol z języka JavaScript.
+Całość funkcji parsującej atomy może wyglądać tak:
+Nasz parser z dodaną funkcją parseAtom:
+Można także poprawić funkcje toString dla obiektów Pair, aby używała JSON.stringify dla ciągów znaków, aby odróżnić je od symboli:
+
+I oto cały parser. Pozostały nam jeszcze wartości true oraz false (oraz ewentualnie null). Zostawiam to jako ćwiczenie dla czytelnika.
+Artykuł został pierwotnie opublikowany na jcubic.pl. Autor grafiki: Jakub T. Jankiewicz, licencja CC-BY-SA. Grafika bazuje na schematach blokowych z książki Struktura i Interpretacja Programów Komputerowych (SICP), źródło na GitHub-ie.

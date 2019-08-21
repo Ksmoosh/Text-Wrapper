@@ -1,0 +1,68 @@
+Model serverless nieustannie zyskuje na popularności. I to nie tylko w teorii! W ostatnich latach napisano o nim niezliczoną liczbę tekstów, artykułów i przeróżnych poradników, a wszyscy liczący się dostawcy cloud oferują dziś usługi tego typu. AWS ma Lambdę, Microsoft oferuje Azure Functions, Google daje nam Cloud Functions, a Alibaba…
+
+Piotr Kalinowski. Cloud Architect w Chmurowisko. Zajmuje się architekturą oraz wytwarzaniem oprogramowania, w szczególności rozwiązani z zakresu ML/AI przede wszystkim w Amazon Web Services, Microsoft Azure, ale czasem też w Alibaba Cloud.
+No właśnie, chiński dostawca usług chmury publicznej nie pozostaje w tyle i również proponuje nam swoje rozwiązania serverless. Zapraszam Cię na krótką wycieczkę po Alibaba Function Compute!
+Czym jest Alibaba Function Compute?
+Function Compute to usługa typu FaaS (Function as a Service), dzięki której możesz wykonać daną funkcję, nie martwiąc się o serwer czy środowisko, na którym będzie uruchamiany nasz kod. Skupiasz się więc na implementacji rozwiązania, a nie na serwerach (stąd serverless).
+Usługa aktualnie obsługuje języki Python, JavaScript oraz Java. Co ważne, łatwo integruje się z innymi narzędziami dostępnymi w Alibaba Cloud. Możesz więc na przykład wywoływać swoje funkcje w momencie, gdy nowy plik pojawi się w usłudze Object Storage Service (OSS) albo gdy na Twojej bazie danych RDS zostanie wykonane jakieś specyficzne zapytanie. To wszystko pozwala Ci budować aplikacje sterowane zdarzeniami, tzw. event-driven services.
+Zbudujmy zatem aplikację Serverless w Alibaba Cloud!
+Żeby zaprezentować działanie usługi w praktyce, zbuduję prostą aplikację z wykorzystaniem Function Compute, która jako parametr będzie przyjmować URL do strony internetowej. Następnie zostanie uruchomiony kod, który odczytuje wszystkie pliki .jpg z podanej witryny i zapisuje je. W ten sposób stworzymy proste narzędzie do automatycznego pobierania wszystkich zdjęć spod zadanego adresu URL. Tego typu aplikacje są szczególnie przydatne, gdy chcemy pobrać dane z pewnej strony, ale nie ma API, które by to umożliwiało.
+Do stworzenia takiego rozwiązania użyjemy dwóch usług w Alibaba Cloud. Wspomnianej już wcześniej Function Compute oraz storage’u OSS, na którym będziemy zapisywać zdjęcia. Wystarczą więc zaledwie dwie usługi, których konfiguracja jest naprawdę prosta i, jak sam zaraz zobaczysz, błyskawiczna. Dzięki temu możemy skoncentrować się na implementacji naszego programu, a nie na konfiguracji infrastruktury czy środowiska. W tym przykładzie wykorzystam język programowania Python.
+Zatem do dzieła!
+Tworzenie Koszyka w Usłudze OSS
+Zanim zaczniemy tworzyć naszą funkcje, musimy najpierw stworzyć koszyk na zdjęcia w naszej usłudze. Usługa OSS służy do przechowywania plików w postaci obiektowej. Działa analogicznie do Amazon S3 czy Azure Blob Storage.
+Na początek stwórzmy więc nowy bucket chmurowiskophotos w regionie Frankfurt. W tym celu wybieramy [Create Bucket] i tworzymy nowy obiekt, jak na poniższym zrzucie ekranu:
+
+Tworzenie nowej usługi Function Compute
+Teraz możemy przejść do usługi. Wyszukujemy w panelu pozycję Function Compute, a po przejściu do nowego ekranu klikamy na przycisk [Create Service] oraz podajemy nazwę dla naszego nowego serwisu.
+
+Zatwierdzamy akcję i… gotowe!
+A czym właściwie jest nasza nowa usługa? Tak naprawdę to kontener na funkcje, dzięki któremu możemy je grupować. Pozwala nam on łatwiej organizować pracę i unikać bałaganu. Co więcej, w ramach jednej usługi funkcje mogą współdzielić zasoby.
+Informacje o usłudze Function Compute
+Po stworzeniu usługi zostaniemy przeniesieni do jej głównego okna ze statusem. Mamy tutaj dostępne wszystkie podstawowe informacje i czynności, które możemy wykonać. W szczególności interesuje nas lista istniejących funkcji (po lewej stronie) oraz możliwość dodania nowych.
+Co ciekawe, usługi w Function Compute mają możliwość wersjonowania. Polega to na tym, że gdy nasza aplikacja będzie gotowa, możemy ją opublikować, co wygeneruje kolejny numer jej wersji. Podczas wywołania funkcji możemy wskazać żądaną wersję usługi.
+Stwórzmy zatem nową funkcję, klikając znak plusa po lewej stronie. Dodanie funkcji składa się z kilku kroków, które musimy po kolei wykonać.
+
+1. Function Template
+W tym miejscu wskazujemy predefiniowany szablon kodu wykonującego naszą funkcję. Alibaba Cloud udostępnia zestaw gotowych funkcji, których możemy bezpośrednio użyć. Mogą one również służyć nam jako podstawa do budowy własnego rozwiązania. Mamy również możliwość wybrania pustej funkcji.
+W tym kroku wybrałem szablon image-crawler napisany w Pythonie.
+2. Configure Triggers
+W tym etapie wybieramy akcję, która będzie uruchamiała naszą funkcję. Obecnie do wyboru mamy:
+
+Object Storage 
+Log Service
+TimeTrigger
+CDN Events Trigger
+RDS Trigger
+HTTP Trigger
+TableStore Trigger
+MNS Topic Trigger
+
+Jak widać, możliwości jest sporo. Postawiłem na HTTP Trigger, na skutek czego zostanie utworzone proste REST API. API będzie wywoływane poprzez metodę POST bez autoryzacji. Nie jest to dobre rozwiązania produkcyjne, ale na potrzeby prezentacji możemy je zaakceptować:
+3. Configure function settings
+To tak naprawdę najistotniejsza część całej konfiguracji. Po pierwsze, podajemy w niej nazwę naszej funkcji, a po drugie, właśnie tutaj ją implementujemy.
+Jej kod możemy wysłać samodzielnie do chmury Alibaby albo napisać go w interaktywnym edytorze:
+
+Żeby kod działał, na wejściu musimy dostarczyć w nim metodę handler. To od niej zaczyna się wykonywanie kodu funkcji.
+W naszym przypadku metoda ta odczytuje adres URL z zawartości zapytania http. Następnie łączy się z danym adresem i szuka na stronie obrazków w formacie .jpg. Na końcu umieszcza je wszystkie we wskazanym koszyku w usłudze OSS.
+Nie będziemy zagłębiać się w szczegóły implementacyjne Pythona – zainteresowanych odsyłam do kodu na GitHubie.
+4. Configure Function Permissions
+W tej sekcji wskazujemy uprawnienia, które dostanie nasza funkcja. Jest to niezbędne, jeśli chcemy, aby mogła komunikować się z innymi usługami w Alibaba Cloud.
+Uprawnienia określa się poprzez role definiujące jakie operacje i na których zasobach mogą być wykonywane. W naszym przypadku musimy przypisać rolę umożliwiającą zapis plików w koszyku OSS. Na szczęście nie trzeba jej tworzyć ręcznie – pomoże nam w tym konsola Alibaba Cloud.
+
+5. Finał
+Po przejściu przez powyższe sekcje nadeszła pora na ostatni krok, czyli weryfikację ustawień. Sprawdzamy więc wprowadzone dane i kończymy tworzenie naszej funkcji.
+Function Compute – pora na ostateczny test!
+Nie pozostaje nam już nic innego, jak sprawdzenie czy nasza funkcja działa.
+Wybieramy ją z panelu po lewej, a następnie klikamy w zakładkę Code. U dołu strony pojawi się sekcja HTTP Trigger Debugging, która umożliwia przetestowanie kodu poprzez wysłanie zapytania http. Znajdziesz tu również URL do funkcji, więc tak naprawdę możesz użyć dowolnego klienta do testów.
+
+W treści zapytania definiujemy URL za pomocą formatu JSON, np.:
+a następnie wysyłamy zapytanie. W odpowiedzi powinniśmy dostać informację o liczbie pobranych zdjęć.
+Na końcu przejdźmy jeszcze do usługi OSS i sprawdźmy czy zdjęcia faktycznie wylądowały w naszym koszyku:
+
+Jak widać na powyższym zrzucie ekranu, wszystko poszło zgodnie z planem.
+Porozmawiajmy o pieniądzach
+Usługa Function Compute rozliczana jest w modelu pay-as-you-go, co oznacza, że płaci się wyłącznie za faktyczne zużycie zasobów. Na całkowity koszt tej usługi składają się trzy czynniki:
+Alibaba Cloud – warto czy nie?
+Zdaję sobie sprawę, że dla niektórych Alibaba Cloud to wciąż egzotyczne rozwiązanie. I w sumie specjalnie mnie to nie dziwi – w końcu w naszym kraju oficjalnego dystrybutora, jest nim ABC Data, firma ta ma dopiero od ubiegłego roku. Warto jednak mieć świadomość, że chiński gracz absolutnie nie odstaje od największych dostawców chmury publicznej. Przykładem, który to potwierdza, jest m.in. opisana wyżej usługa Function Compute, dzięki której z powodzeniem zaimplementujesz swoją serverlessową aplikację w chmurze Alibaby.
+I jak, dasz szansę temu rozwiązaniu?

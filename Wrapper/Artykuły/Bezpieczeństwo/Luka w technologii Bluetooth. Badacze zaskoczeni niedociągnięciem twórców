@@ -1,0 +1,26 @@
+Od momentu, w którym Bluetooth po raz pierwszy pojawił się na rynku, na zawsze zmienił sposób, w jaki się komunikujemy. To właśnie dzięki niemu możemy swobodnie słuchać muzyki czy rozmawiać przez telefon, bez obawy o długi kabel wleczący się za nami. Słuchawki Bluetooth sprawiają, że jesteśmy bezpieczniejsi w samochodzie, gdyż nie musimy używać rąk do odbierania połączeń. Ponadto, dzięki Bluetoothowi jesteśmy w stanie kontrolować różne sprzęty na odległość. Wspomaga on nas na niemal każdym kroku.
+Ze względu na wszechobecność urządzeń elektronicznych w codziennym życiu, ich bezpieczeństwo jest jedną z najbardziej istotnych kwestii dla naszego społeczeństwa. Jak podają statystyki, aż 31% organizacji doświadcza cyberataków każdego roku, a średni koszt wycieku danych to ponad 3,6 milionów dolarów. Nic więc w tym dziwnego, że gdy ostatnio wykryto luki w łączności Bluetootha, wśród jego użytkowników zapanowała lekka panika. 
+KNOB — czym dokładnie jest dana luka?
+Luka ta została zidentyfikowana zaledwie kilka dni temu przez badaczy cyberbezpieczeństwa podczas konferencji USENIX Security Symposium. Ze względu na jej charakter określili ją mianem KNOB (Key Negotiation of Bluetooth), pozwala ona bowiem na ingerencję w procesie szyfrowania połączenia, kradnąc kod szyfru i tym samym uzyskując dostęp do transmisji danych pomiędzy urządzeniami. 
+Forbes podkreślił, że zespół odpowiedzialny za odkrycie był “zaskoczony istnieniem tak fundamentalnego niedociągnięcia w 20-letnim, powszechnie stosowanym standardzie”. Urządzenia podatne na KNOB to przede wszystkim Bluetooth Classic od 1.0 aż po 5.1. Za jego pomocą hakerzy mogą uzyskać dostęp do takich danych osobistych jak jego lokalizacja, wiadomości, numery telefonu i pliki. 
+Jak podkreśla Ars Technica, ataki przeprowadzone za pomocą tej luki są wręcz nie do wykrycia dla aplikacji Bluetooth. Ponadto, KNOB wykorzystuje również słabość w standardzie Bluetootha, co oznacza, że na KNOB podatne jest każde urządzenie, które stosuje się do tej specyfikacji. Po badaniach przeprowadzonych na 14 różnych czipach Bluetootha stwierdzono, że wszystkie z nich są podatne na atak KNOB. 
+Kto jest narażony?
+Mimo, iż nie ma jeszcze oficjalnej listy urządzeń, na które ów luka może mieć wpływ, podejrzewa się, że wszelkie systemy stosujące chipy wytwarzane przez Qualcomm i ARM są narażone na potencjalne ataki. Do tych systemów zaliczają się między innymi iPhone X, AirPods i Samsung Galaxy S9.
+Jak właściwie działa Bluetooth
+Technologia Bluetootha zbudowana jest z dwóch elementów: software i hardware. Software odpowiada za wszelkie systemy kontrolne i systemy bezpieczeństwa, natomiast hardware, składające się z chipa, odpowiedzialne jest za komunikację z innymi urządzeniami elektronicznymi. Urządzenia parują się tylko raz, a szczegóły tego połączenia są zachowywane na przyszłość. Przynajmniej jedno z tych urządzeń musi być w trybie wykrywania, co oznacza, że będzie również wykrywalne dla innych urządzeń znajdujących się w zasięgu. Odległość ta wynosi od 10 do 100 metrów.
+System bezpieczeństwa
+Bezpieczeństwo połączeń odgrywa kluczową rolę w technologii Bluetootha, dlatego też Bluetooth SIG włożyło wiele wysiłku w budowę systemu bezpieczeństwa. Przede wszystkim stworzyli oni trzy tryby operacyjne, które pozwalają użytkownikom kontrolować widoczność ich urządzeń. Poza tym, wprowadzili oni również takie kroki jak weryfikacja, autoryzacja i kodowanie. Dzięki temu użytkownicy mają kontrolę nad tym, kto ma dostęp do ich urządzeń. 
+Jednak mimo tych wszystkich zabezpieczeń nadal zdarzają się luki w systemie bezpieczeństwa, które narażają Bluetooth na działanie osób trzecich. 
+Poprzednie problemy z Bluetoothem
+KNOB nie jest pierwszym problemem bezpieczeństwa, z jakim zmierzył się do tej pory Bluetooth. W 2003 roku A.I. Digital Ltd odkryło poważne niedociągnięcia, które mogły doprowadzić do utraty danych osobistych użytkowników Bluetootha. W 2004 roku Bluetooth zidentyfikował swojego pierwszego wirusa, a rok później wykryto tzw. “Lasco” — robaka komputerowego, który destabilizował urządzenia mobilne. W 2017 roku nad Bluetoothem zawisło widmo BlueBorne’a — hybrydowy malware pozwalający na przejęcie kontroli nad urządzeniem desktopowym. 
+Widać zatem, iż mimo wielu zabezpieczeń Bluetooth jest wciąż podatny na różnego rodzaju ataki. Miały one miejsce kiedyś, mają one miejsce teraz, i będa mieć miejsce w przyszłości. Hakerzy zawsze znajdą sposób, aby obejść zabezpieczenia. To naszym zadaniem jest nauczyć się jak się przed nimi bronić. 
+Jak bronić się przed tym zagrożeniami
+Wyłączaj Bluetootha za każdym razem kiedy kończysz z niego korzystać, a podczas użytkowania upewnij się, że masz włączony tryb niewykrywalny. Dzięki temu uniemożliwisz osobom trzecim wykrycie twojego urządzenia. Zawsze wiedz, gdzie znajdują się twoje urządzenia, a te zgubione lub skradzione natychmiast usuń z listy sparowanych urządzeń. Nie zwlekaj z aktualizacją oprogramowania — rozpocznij ją jak tylko będzie dostępna. 
+Źródła:
+
+lawtechnologytoday.org,
+forbes.com,
+techcrunch.com,
+komputerswiat.pl,
+researchgate.net,
+techwalla.com.

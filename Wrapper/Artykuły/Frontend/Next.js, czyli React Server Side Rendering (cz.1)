@@ -1,0 +1,104 @@
+Server Side Rendering (SSR) to metoda generowania zawartości strony internetowej od razu po stronie serwera. Dzięki temu, gdy przeglądarka otrzyma kod witryny na monitorze komputera momentalnie ukaże się jej cała treść. Dzięki SSR strona jest lepiej widoczna dla różnego rodzaju botów bądź crawlerów, co bardzo sprzyja SEO i indeksacji przez wyszukiwarki (Google, Bing itp.). Każde kliknięcie w link tworzy nowe zapytanie do serwera. Przy sporym ruchu użytkowników może to spowodować, iż serwer będzie miał problemy z wykonaniem żądanych operacji w krótkim czasie. Skutkiem będzie długie ładowanie się kolejnych podstron.
+
+Mateusz Anioła. W Merixstudio pełni rolę nie tylko Senior Frontend Developera, ale także Team Leadera całego działu. Dzięki swojemu doświadczeniu i umiejętnościom wzniósł już niejeden projekt na wyższy level. Obecnie jego praca koncentruje się na zarządzaniu zespołem, projektowaniu procesów i przede wszystkim tworzeniu wysokiej jakości aplikacji webowych. Na przerwach w pracy, a także poza nią zawzięcie buduje potęgę swoich karcianych stworów grając w Magic: The Gathering.
+
+Marcin Majewski. Pracuje jako Senior Frontend Developer w Merixstudio. Ma już na koncie ponad 6 lat doświadczenia w tworzeniu aplikacji webowych oraz gier. W swojej karierze zmagał się już z szeroką gamą różnych projektów z najróżniejszych branż. Po godzinach możecie spotkać go na korcie do squasha, z książką fantasy lub sci-fi albo oglądającego kolejny odcinek z serii Dragon Ball. 
+Jak to wygląda w React? Gdy używamy jakiegokolwiek frameworka bądź biblioteki do tworzenia Single Page Application (SPA) serwer zwraca tylko prosty kod HTML, który najczęściej posiada załączone style i skrypty JavaScript oraz jeden element div, do którego ów aplikacja jest wstrzykiwana. Odpowiedź z serwera jest bardzo szybka, ponieważ kod najczęściej posiada kilka bądź kilkanaście z góry zdefiniowanych linii.
+Używając routera wszystkie przekierowania w obrębie SPA powodują utworzenie nowego widoku tylko po stronie przeglądarki. W efekcie wygenerowanie strony przez serwer odbywa się tylko podczas pierwszego zapytania, kiedy chcemy na nią wejść. Problem pojawia się, gdy boty chcą sprawdzić jaka jest zawartość strony. Na przykład udostępniając stronę na Facebooku, jako post lub przez Messengera, link witryny nie otrzyma poprawnej miniaturki obrazu oraz nie będzie miał opisu i tytułu.
+
+Gdy strona posiada cały kod źródłowy wygenerowany po stronie serwera, bot potrafi odczytać jej zawartość i pokaże informacje takie jak tytuł, obrazek i opis. Idealne jest połączenie obu tych metod, czyli utworzenie całego kodu HTML zaraz przy wejściu na stronę internetową oraz obsługa linków i zmiana widoków poprzez router SPA. Tym właśnie zajmuje się next.js.
+Istnieje kilka alternatywnych rozwiązań, które można zastosować. Można stworzyć osobną stronę tylko dla botów i samemu serwować treść w odpowiednich tagach. Minusem tego rozwiązania jest nakład dodatkowej pracy jaką należy wykonać. Jeżeli treść jest dynamicznie generowana przez użytkowników serwisu trzeba zduplikować część logiki odpowiadającej za jej pobieranie oraz wyświetlanie. Innym rozwiązaniem jest użycie gotowych serwisów, które generują takie strony. Przykładem może być prerender.io, który jest proxy dla aplikacji. Jeżeli serwer wykryje, że stronę odwiedza bot, zostaje wysłane żądanie do serwisu o zwrócenie kodu HTML, który jest generowany na podstawie aplikacji otwartej przez Chrome po stronie ich serwera.
+Minusem powyższych rozwiązań jest to, że użytkownik na start nie dostanie strony, ale będzie to jakiś loader (jeżeli go zaimplementujemy), bądź pusta strona bez żadnej zawartości. Stanie się tak, ponieważ przekazany kod HTML do przeglądarki jest minimalistyczny pozbawiony jakiejkolwiek treści.
+Jeszcze innym rozwiązaniem może być własny serwer np. express i użycie wbudowanej metody w React import { renderToString } from “react-dom/server”, która zamienia kod aplikacji do stringa, po czym musi zostać on zwrócony jako odpowiedź naszego serwera na konkretny adres.
+Czym jest Next.js?
+Next.js to specjalny, minimalistyczny framework, który pozwala w łatwy sposób tworzyć aplikację React posiadającą obsługę renderowania po stronie serwera. Framework wykorzystuje takie biblioteki, jak wspomniany React, webpack oraz Babel.
+W tabeli poniżej znalazły się najważniejsze zalety i wady korzystania z frameworka.
+
+Jak działa Next.js?
+Framework ten posiada własny serwer w Node.js, który renderuje żądaną stronę, najpierw pobierając odpowiednie dane z API, a potem generuje jej kod HTML i zwraca do naszej przeglądarki. Dzięki temu po wejściu w kod źródłowy strony od razu widać całą jej zawartość. W efekcie wyszukiwarki mogą bez problemu indeksować aplikację.
+Start projektu
+Przejdźmy do części praktycznej. Aby zacząć pracę z Next.js, należy zainstalować kilka bardzo prostych programów:
+
+Na początku konieczna jest instalacja Node.js, polecamy wersję LTS.
+W naszym artykule będziemy również używać yarn package manager.
+
+Gdy masz już wszystko zainstalowane, możesz przystąpić do startu projektu. W linii poleceń, w katalogu, gdzie chcesz mieć kod, wpisz prostą komendę:
+Dzięki temu zostaną zainstalowane 3 rzeczy: Next.js, React oraz React-DOM. Następnie do pliku package.json dodaj kilka linijek, jak poniżej:
+Działanie tych elementów jest bardzo proste — po wpisaniu w konsoli yarn next zostanie uruchomiony serwer deweloperski.
+
+yarn build powoduje wygenerowanie wszystkich plików w wersji produkcyjnej,
+yarn start uruchamia serwer produkcyjny, który serwuje pliki utworzone poprzez wcześniejszą komendę.
+
+Następnie musisz stworzyć folder pages w głównym katalogu, gdzie zostały zainstalowane potrzebne paczki. W katalogu tym utwórz plik index.js i uzupełnij go taką treścią:
+Kolejny krok to wpisanie w konsoli yarn dev i przejście na adres http://localhost:3000 w przeglądarce.
+I tyle! Pod danym adresem powinien pojawić się pierwszy komponent, który został przygotowany przez Next.js i przesłany do przeglądarki jako HTML.
+Next.js posiada już gotową konfigurację, dzięki czemu nie musisz martwić się o znajomość webpacka czy innych, podobnych narzędzi.
+Istnieje również możliwość konfiguracji serwera deweloperskiego. W tym celu musisz stworzyć plik next.config.js, gdzie eksportujesz konfigurację jako zwykły obiekt:
+Bądź jako funkcję:
+Next.js nie wymusza żadnej struktury katalogów aplikacji oprócz 2 katalogów. Są to utworzone już pages oraz katalog static. W pierwszym wymienionym katalogu znajdują się główne pliki wejściowe aplikacji, każdy z nich będzie osobnym widokiem przypisanym do danego adresu URL. Stworzony plik jest dostępny poprzez wejście na naszą domenę. Jeżeli stworzysz plik contact.js, możesz sprawdzić jego zawartość pod adresem http://localhost:3000/contact.
+Katalog static, jak wskazuje sama nazwa, przechowuje statyczne pliki, które chcemy zamieścić na stronie. Są to na przykład grafiki albo pliki do ściągnięcia przez użytkowników. Podstawowa konfiguracja automatycznie udostępnia ten katalog przez serwer, dzięki czemu bez problemu są one dostępne pod adresem http://localhost:3000/static. Nie ma jednak możliwości wejścia w ten katalog, zobaczyć można tylko konkretne pliki.
+Podstawowe funkcjonalności
+CSS
+Domyślnie do obsługi CSS next.js używa styled-jsx. Dzięki temu wszystkie style zamieszone między tagami <style jsx></style> są wyizolowane dla danej witryny. Takie rozwiązanie sprawia, że nie musimy się przejmować nadpisaniem sobie poszczególnych styli. Są one generowane zarówno po stronie serwera, jak i klienta, dzięki czemu od razu po wejściu na portal widzimy odpowiedni układ graficzny.
+Oczywiście znajdą się zwolennicy i przeciwnicy takiego rozwiązania. Na szczęście w Next.js ten element jest również bardzo łatwo konfigurowalny, dlatego nie jesteś zobligowany do używania styled-jsx. Bez problemu możesz używać CSS-in-JS. Najprostszy jego przykład to style inline
+, ale nie ma żadnego problemu, aby wykorzystać np. Styled components. Równie łatwo można wykorzystać preprocesory CSS takie jak sass, less czy stylus.
+Aby zaprzęgnąć SASSa do projektu, należy doinstalować takie zależności @zeit/next-sass node-sass. Następnie trzeba stworzyć plik _document.js wewnątrz katalogu pages i uzupełnić go poniższą treścią:
+Po tym w pliku konfiguracyjnym next.js umieść następujący kod:
+Aby używać plików scss wewnątrz komponentów, wystarczy je po prostu zaimportować:
+W ten sposób utworzony został plik _document.js — jego dokładne działanie i przeznaczenie wyjaśnimy w dalszej części artykułu. Na ten moment jest on potrzebny po to, aby dołączyć zbudowany plik ze stylami do aplikacji. Next-sass łączy wszystkie style w jeden plik, który znajduje się w katalogu .next/static/style.css. Katalog jest wystawiany przez serwer jako /_next/static/style.css, dlatego trzeba go dodać ręcznie.
+Metatagi
+Wybór next.js oznacza, że zależy Ci na SEO aplikacji. Każdy, kto choć w najmniejszym stopniu zetknął się z pozycjonowaniem wie jak ważne są metatagi. Na szczęście nie ma żadnego problemu, żeby zdefiniować własne, osobne tytuły, słowa kluczowe czy opisy dla każdej strony. Służy do tego komponent Head dostępny bezpośrednio z nexta. Zaimportuj go za pomocą linijki import Head from ‘next/head’, a następnie w renderze komponentu wklej poniższy kod:
+Wszystko co znajduje się wewnątrz tego tagu zostaje przeniesione do <head> strony. Do każdego elementu dodano atrybut key, który służy temu, aby nie dodawać kolejnych elementów, ale je nadpisywać o ile na jednej stronie zostanie umieszczonych kilka takich komponentów.
+Lifecycle methods
+Podstawowe pliki stron zachowują się jak każdy inny komponent w React. Oznacza to, że one również posiadają lifecycle methods. Next.js dodał do nich dodatkową metodę, która nazywa się getInitialProps. Jest ona statyczna i asynchroniczna. Służy do pobierania danych po to, aby użytkownik po wejściu na stronę od razu miał dostęp do wszystkich informacji bez potrzeby dodatkowego ładowania danych z API. Zwraca też obiekt, który jest automatycznie przekazany jako props komponentu. GetInitialProps jest wykonywana zarówno przy pierwszym wejściu na stronę jak i przy każdym przejściu poprzez link.
+Przykład powyżej w przeglądarce da odpowiedź czy aplikacja została wyrenderowana najpierw po stronie serwera, czy wszystko zadziało się po stronie przeglądarki. Metody tej można również użyć przy stateless component.getInitialProps otrzymuje obiekt z wymienionymi poniżej własnościami:
+
+pathname — adres URL,
+query — query params z URL zamienione na obiekt,
+asPath — aktualny adres w przeglądarce (wraz z query params),
+req — obiekt HTTP request (tylko na serwerze),
+res — obiekt HTTP response (tylko na serwerze),
+jsonPageRes — obiekt Fetch Response (tylko po stronie przeglądarki),
+err — błędy, jeśli wystąpią podczas renderowania.
+
+Pobieranie danych
+Jak już wspomnieliśmy wcześniej getInitialProps służy do pobierania danych z API. Aby to zrobić, musimy skorzystać z async await funkcjonalności ES 2017, która wstrzymuje wykonywanie kodu JavaScript do momentu realizacji bieżącego zadania.
+W powyższym przykładzie pobieramy filmy z Batmanem, otrzymujemy JSONa z wynikami i przekazujemy je jako props bezpośrednio do metody render strony. Jak było wspomniane, wywołanie getInitialProps odbywa się i po stronie serwera, i klienta, więc należało tutaj użyć isomorphic-unfetch, aby bez problemu zastosować fetch. Jest to funkcja w przeglądarkach odpowiadająca za pobieranie danych ajaxem, ponieważ nie jest wspierana przez Node.
+Routing
+Jedną z podstawowych funkcjonalności na stronach internetowych jak i SPA jest przechodzenie między poszczególnymi podstronami. Korzystając z Reacta, trzeba posiłkować się React router lub innymi podobnymi rozwiązaniami. Next.js nas wyręcza i ma ten system wbudowany. Aby zdefiniować nowy routing, wystarczy stworzyć plik z kodem w katalogu pages i tyle. Aby przejść na inne strony, w obrębie serwisu wystarczy użyć gotowego komponentu Link.
+Wszystko co należy wykonać to w href komponentu podać interesujący nas adres URL. Dzięki temu po kliknięciu w link nastąpi automatyczne przeniesienie na podaną stronę. Można również podać dodatkowy atrybut as, który jest traktowany jako “ładny URL”, który zostanie użyty w pasku przeglądarki. Jest on użyteczny, gdy korzystamy z niestandardowego routingu, który omówimy później.
+Istnieje też możliwość przekazania obiektu { pathname: ‘/about’ } zamiast zwykłego tekstu do href .
+Link nie jest jedyną metodą przechodzenia do innych podstron. Są sytuacje, kiedy to programista musi wykonać przekierowanie po jakiejś akcji, na przykład gdy po wysłaniu formularza z logowaniem chce przenieść użytkownika do jego profilu. Next.js bez problemu sobie z tym radzi. Aby to zrobić, trzeba zaimportować Router z ‘next/router’, a następnie wywołać na nim funkcję push bądź replace — w taki sposób Router.push(‘/profil’). Wykorzystać ten kod można w każdym miejscu, np. onClick bądź wykonaniu się jakiegoś Promise. Tak samo jak przy Link, funkcje push i replace posiadają drugi parametr as. Jest też możliwość podania obiektu URL zamiast zwykłego stringa.
+Własne adresy i serwer
+Aby adresy były czytelne dla użytkowników, musisz o to zadbać. Domyślnie każdy URL jest odzwierciedleniem struktury plików w katalogu pages. Zdarza się, że nie jest to zbyt czytelne — szczególnie jeżeli opierasz się na dodatkowych parametrach takich jak slug artykułu. Wówczas adres wyglądałby mniej więcej tak:www.example.com/article?slug=przykladowy-tytul-artykulu. Dzięki niestandardowemu serwerowi do obsługi zapytań adres ten z łatwością można zastąpić takim:www.example.com/przykladowy-tytul-artykulu. Aby osiągnąć taki efekt, można użyć każdego serwera, który działa na Node.js (express, hapi, koa itp.). Po dokonaniu wyboru trzeba utworzyć plik server.js, w którym umieszcza się kod do obsługi zapytań.
+Powyższy przykład wykorzystuje express. 
+Na początku należy zaimportować serwer oraz next, a następnie dokonać wstępnej konfiguracji przez ustawienie tryb deweloperskiego lub produkcyjnego. Najważniejsze jest to, co znajduje się w app.prepere.
+Powyższy fragment odpowiada za odczytanie adresu. Następnie pod actualPage należy przypisać “fizyczną” ścieżkę do danej strony. W queryParams zapisz wszystkie parametry, jakie chcesz przekazać. W app.render trzeba przekazać request, response oraz nowo utworzone zmienne. Żeby aplikacja zaczęła korzystać z tego rozwiązania, należy jeszcze zmodyfikować plik package.json tak, aby wyglądał w ten sposób:
+Pierwotnie domyślny serwer był uruchamiany z next.js, teraz odpal nowo utworzony serwer. Aby uruchomić go w wersji produkcyjnej, dodaj odpowiednio ustawioną zmienną środowiskową, która została zdefiniowana na początku pliku.
+Jeżeli jakaś domyślna ścieżka Ci odpowiada, nie musisz już jej definiować.
+Dzięki temu fragmentowi kodu wszystkie adresy, które nie będą pasować do zdefiniowanych zmiennych zostaną obsłużone przez standardowe zachowanie next.js.
+Zmodyfikowany komponent App
+Jeśli strona posiada pewien układ, który chcesz mieć automatycznie ustawiony na każdej stronie czy też potrzebujesz pobrać dane z API przed wyrenderowaniem każdej strony, możesz w tym celu zmodyfikować komponent App. Aby to zrobić należy stworzyć plik ./pages/_app.js oraz, zgodnie z dokumentacją, wrzucić tam uproszczony kod komponentu App:
+Analizując kod łatwo zauważyć, że głównym zadaniem App jest opakowanie komponentu strony w Container oraz wykonanie getInitialProps i przekazanie wyniku tej funkcji jako props do komponentu strony. Właśnie z tego powodu getInitialProps jest metodą statyczną (w przeciwieństwie do metody prototypu, jak w przypadku innych metod klasy) — wykonuje się ją przed wyrenderowaniem samego komponentu.
+Nadpisanie komponentu App pozwala na rozszerzenie zadań, które powinny być wykonane przed wyrenderowaniem komponentu strony (np. sprawdzić czy użytkownik ma odpowiednie uprawnienia). Dodatkowo można komponent strony opakować w komponenty związane z jej layoutem (np. wyświetlać header zawsze nad komponentem).
+Powyższy kod to tylko uproszczona wersja tego, co tak naprawdę App w sobie zawiera. Polecamy sprawdzić i przeanalizować kod źródłowy tutaj:
+https://github.com/zeit/next.js/blob/canary/lib/app.js
+Na jego podstawie można wyciągnąć wiele wniosków odnośnie tego jak działa Next.js!
+Zmodyfikowany Document
+Aplikacje react’owe potrzebują pliku index.html, który posiada podstawową strukturę HTML oraz zawiera linki do styli i skryptów. Budując aplikację Next.js, takiego pliku nie trzeba tworzyć, ponieważ podczas pisania komponentów w pages nigdy nie zawiera się elementów html czy body. Jeśli jednak pojawi się potrzeba rozszerzenia podstawowej struktury HTML, można to zrobić poprzez dodanie nowego pliku ./pages/_document.js. Tworząc nowy komponent należy rozszerzyć komponent Document. Przykładowe zastosowanie możemy znaleźć w dokumentacji:
+Rozszerzając Document trzeba pamiętać o kilku obostrzeniach:
+
+Plik _document.js jest renderowany tylko i wyłącznie przez serwer;
+Wewnątrz Document nie możemy obsługiwać wydarzeń pochodzących od użytkownika (np. onClick);
+
+Komponenty, które znajdą się poza Main nie zostaną uruchomione — jeśli chcesz dodać jakieś stałe elementy aplikacji, takie jak header, to odpowiednim miejscem do tego jest rozszerzenie komponentu App.
+Własne strony błędów
+Przeglądając stronę internetową może się zdarzyć, że adres, który chcemy odwiedzić nie istnieje — czy to przez wpisanie błędnego adresu witryny, czy też niezaktualizowany odnośnik. Next.js przychodzi z pomocą i posiada wbudowany system błędów. Gdy odwiedzisz nieistniejący adres, otrzymasz gotową stronę błędu 404.
+
+Bardzo podobną stronę otrzymamy przy innych błędach. 
+Jak widać jest to prosty tekst na białym tle, który niekoniecznie może pasować do stylistyki aplikacji. Next.js posiada bardzo prosty mechanizm nadpisania tej strony, co da możliwość pełnej zmiany wyglądu.
+W tym celu należy utworzyć plik _error.js w głównym katalogu stron:
+Od tego momentu każdy błąd, który zostanie wygenerowany automatycznie przez Next.js będzie używać nowo utworzonej strony błędów.
+Można też pójść krok dalej i wyświetlić ten komunikat w danym momencie. Przykładem może być sytuacja, kiedy użytkownik wejdzie na przykład na artykuł, którego nie ma, ale pobierany jest poprzez slug przekazywany w adresie. Przy odpowiedniej konfiguracji dla serwera Next.js adres ten będzie istniał, ponieważ slug jest tylko parametrem nie mającym wpływu na stronę, która ma się wyświetlić. Należy wtedy zaimportować stronę błędu z next/error bądź, jeżeli utworzyliśmy własny plik, właśnie ten komponent. Następnie przy pobieraniu artykułu sprawdź jaki otrzymano kod odpowiedzi i na jego podstawie zostanie wyświetlona zawartość lub też błąd.
+
+Przeczytaliście pierwszą część artykułu, a w następnej, którą opublikujemy jeszcze w tym tygodniu, pokażemy, jak poprawnie zaimplementować uwierzytelnianie użytkownika w Next.js.

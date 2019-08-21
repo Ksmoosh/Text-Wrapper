@@ -1,0 +1,151 @@
+Zacznijmy od początku – czym właściwie jest Python? Jego twórca, Guido van Rossum, definiuje go jako: “zaawansowany język programowania, którego filozofia designu polega na czytelności kodu oraz syntaksie pozwalającym programistom wyrazić dane koncepcje w niewielkiej ilości linijek kodu.”
+
+Leandro Tk. Software Engineer w QuintoAndar. Inżynier oprogramowania, redaktor The Renaissance Developer oraz autor tekstów o programowaniu na Medium i freeCodeCamp. W tym artykule TK opowiada o swoim doświadczeniu z Pythonem i przedstawia jego strukturę i działanie w sposób niezwykle przystępny dla osób początkujących. Polecamy go każdemu, kto zastanawia się nad podjęciem nauki tego języka. Poniższy tekst został przetłumaczony za zgodą autora. 
+Pierwszym powodem, dla którego sam zacząłem uczyć się Pythona był fakt iż jest to w rzeczywistości piękny język programowania. Do nauki zachęcało też to, że pozwalał z łatwością kodować oraz wyrażać swoje myśli. 
+Kolejnym powodem był to, że Pythona możemy użyć w wieloraki sposób, np. do: nauki o danych, tworzenia stron internetowych oraz samouczenie się maszyn. Dodatkowo, ogromne serwisy jak Quora, Pinterest i Spotify używają Pythona, co mam nadzieję przekonało także i Ciebie do poznania tego języka. Co warto o nim wiedzieć na początku?
+Podstawy
+VARIABLES
+O zmiennych można myśleć jak o słowach, które przechowują jakąś wartość. 
+W Pythonie łatwo zdefiniować zmienną i ustawić wartość. Wyobraź sobie, że chcesz przechować liczbę “1” w zmiennej o nazwie “one”. Zróbmy to:
+Prawda, że proste? Właśnie przypisałeś wartość “1” do zmiennej “one”. 
+Możesz przypisać jakąkolwiek inną wartość do jakiejkolwiek innej zmiennej. Jak widać w powyższej tabeli, zmienna “two” przechowuje liczbę “2”, a “some_number” przechowuje 10,000.
+Poza liczbami możemy również użyć booleans (True / False), strings, float, i wiele innych typów danych.
+Control flow: Conditional statements
+“If” jest wyrażeniem używanym do ocenienia czy dany statement jest Prawdą, czy Fałszem. Jeśli jest to Prawda, zostanie wykonane to, co zostało zawarte w statement “if”. Na przykład:
+Ponieważ 2 jest większe niż 1, metoda “print” zostanie wykonana.
+Jeśli wyrażenie “if” jest fałszywe, w zamian zostanie wykonany statement “else”.
+Ponieważ 1 nie jest większe niż 2, kod zawarty w statement “else” został wykonany. 
+Możesz również użyć “elif” statement:
+Looping / Iterator
+W Pythonie możemy iterować w różny sposób. W tym artykule będę mówił o dwóch sposobach: while i for.
+While Looping: gdy stwierdzenie jest Prawdą, kod w bloku zostanie wykonany i wywoła numery od 1 do 10. 
+While loop potrzebuje “loop condition”. Jeśli pozostanie ono Prawdziwe to będzie się dalej iterowało. W tym przykładzie, kiedy num równa się 11, loop condition będzie False.
+Kolejny kawałek kodu, aby lepiej zrozumieć co mam na myśli:
+Loop condition jest True, więc nadal będzie się iterować, i aż do momentu, gdy przestawimy go na False.
+Jeśli chodzi o For Looping, musisz jedynie zaaplikować zmienną “num” do bloku, a “for” statement przeiteruje ją dla ciebie. Ten kod wydrukuje to samo co while code: od 1 do 10. 
+Proste, prawda? Zakres zaczyna się od elementu 1 aż do 11(10 to dziesiąty element). 
+List: Collection | Array | Data Structure
+Wyobraź sobie, że chcesz przechować liczbę 1 w zmiennej. Ale może teraz chcesz w niej przechować 2. I 3, 4, 5 …
+Czy jest jakiś inny sposób, aby przechować wszystkie liczby, jakie chcesz, ale nie w milionach zmiennych? Zgadłeś – jest na to inne rozwiązanie.
+Listto zbiór, który może zostać użyty do przechowywania listy wartości (jak na przykład wybrane przez ciebie liczby). Użyjmy go zatem:
+Jak widzisz, jest to naprawdę proste. Stworzyliśmy szereg i zapisaliśmy go do przechowania na my_integer. 
+Być może zapytasz: “Jak mogę otrzymać jakąś wartość z tego szeregu?” Jest to bardzo dobre pytanie. List zawiera koncepcję zwaną indeksem – pierwszy element otrzymuje index 0 (zero), drugi otrzymuje 1 itd.
+Aby uściślić, możemy przedstawić ten szereg i każdy element z jego indeksem. Pozwól, że to narysuję:
+
+Używając syntaksu Pythona, jest to równie łatwe do zrozumienia:
+Wyobraź sobie, że nie chcesz przechowywać liczb a jedynie strings, jak na przykład listę imion twoich krewnych. Moja wyglądałaby tak:
+Działa w ten sam sposób jak liczby. Nieźle, prawda?
+Właśnie nauczyliśmy się jak działają indeksy Lists. Za chwilę pokażę, jak możemy dodać element do struktury danych Lists.
+Najbardziej powszechna metoda dodawania nowych wartości do Listsnazywa się append. Zobaczmy jak działa:
+append jest bardzo prosty. Po prostu musisz zaaplikować element (np. “The Effective Engineer”) jako parametr append.
+No, ale wystarczy już o Lists. Pogadajmy o kolejnej strukturze danych.
+Dictionary: Key-Value Data Structure
+Teraz już wiemy, że Listssą indeksowane liczbami. Ale co jeśli nie chcemy użyć liczby jako indeks? Niektóre struktury danych, które chcemy użyć są numeryczne, string, lub też inne.
+Poświęćmy trochę czasu strukturze danych Dictionary, która jest zbiorem par key-value. Wygląda tak:
+Klucz jest indeksem wskazującym wartość. Jak możemy uzyskać dostęp do Dictionary value? Zgadłeś – używając key. Spróbujmy:
+Stworzyłem Dictionary o sobie samym. Moje imię, nickname, i narodowość. Te atrybuty to Dictionary. 
+Tak jak uczyliśmy się uzyskać dostęp do List za pomocą indeksu, tak i teraz możemy użyć indeksu, by uzyskać dostęp do wartości przechowywanej w Dictionary. 
+W tym przykładzie wydrukowałem frazę o sobie używając wszystkich wartości przechowanych w Dictionary. Całkiem proste, prawda?
+Kolejną fajną rzeczą o Dictionary jest to, że możemy użyć wszystkiego, co chcemy jako wartość. W stworzonym przeze mnie Dictionary chcę dodać klucz “wiek” oraz mój prawdziwy wiek w postaci liczby:
+Tu mamy parę key (wiek) value (24) używając string jako key i liczbę jako value. 
+Tak jak zrobiliśmy z Lists, nauczmy się jak dodawać elementy do Dictionary. Klucz wskazujący na wartość jest dużą częścią tego, czym jest Dictionary. Sprawdza się to również, gdy mowa o dodawaniu elementów:
+Potrzebujemy jedynie przypisać wartość do klucza Dictionary. Nic skomplikowanego, prawda?
+Iteration: Looping Through Data Structures:
+Jak nauczyliśmy się w podstawach Pythona, iteracja List jest bardzo prosta. My, developerzy Pythona, powszechnie używamy for looping. 
+Dla każdej książki na półce, wywołujemy metodę “print”. Całkiem proste i intuicyjne – taki jest zwyczajnie Python. 
+Dla hash data structure możemy również użyć for loop, ale zaaplikujemy key:
+To jest przykład jak można go użyć. Dla każdego key w Dictionary, możemy użyć print dla key oraz przypisanej do niego value.
+Kolejny sposób, aby to zrobić to użycie metody iteritems.
+Mimo, iż nazwaliśmy powyższe dwa parametry key i value, nie jest to potrzebne. Możemy nazwać je jak tylko chcemy. Spójrzmy:
+Można zobaczyć, że użyliśmy atrybutów jako parametr dla Dictionary key i działa tak jak powinno. Super!
+Klasy i obiekty
+Trochę teorii
+Obiekty to reprezentacja realnych obiektów, takich jak samochody, psy, lub rowery. Dzielą one dwie główne cechy: dane oraz zachowanie.
+Samochody mają dane, jak na przykład liczba kół, drzwi, oraz ilość miejsc siedzących. Wykazują one również zachowanie: mogą przyspieszyć, zatrzymać się, pokazać ile paliwa zostało oraz wiele innych.
+W programowaniu object-oriented dane identyfikujemy jako atrybuty, a zachowanie jako metody.
+Dane → Atrybuty i Zachowanie → Metody
+Klasa natomiast jest planem, według którego obiekty są tworzone. W prawdziwym świecie często istnieje wiele obiektów o takim samym typie, jak na przykład samochody. Wszystkie mają podobną konstrukcję (wszystkie mają silnik, koła, drzwi, itd.), choć mało które są identyczne.
+Python Object-Oriented Programming mode: ON
+Python, jako język programowania object-oriented, posiada dwie koncepcje: klasę i obiekt.
+Klasa jest planem, lub też modelem dla obiektu; pomaga ona zdefiniować atrybuty i zachowania (tak jak mówiliśmy o tym w sekcji poświęconej teorii). Na przykład, klasa pojazdów ma własne atrybuty, które definiują jakie obiekty są pojazdami. Ilość kół, pojemność zbiornika, ilość miejsc siedzących, i maksymalna prędkość to wszystko przykładowe atrybuty pojazdu. 
+Mając to na uwadze, spójrzmy na syntaks Pythona dla klas:
+Klasy definiujemy za pomocą class statement – i tyle. Proste, prawda? Obiekty to elementy klas. Element kreujemy poprzez nazwanie klas. 
+W tym przykładzie, car jest obiektem klasy Vehicle. 
+Pamiętajmy, że nasza klasa pojazdów ma cztery atrybuty: ilość kół, pojemność zbiornika, ilość miejsc siedzących, i maksymalna prędkość. Wszystkie te atrybuty ustawiliśmy tworząc obiekt pojazd. Definiujemy naszą klasę do otrzymania danych, kiedy zapoczątkuje je:
+Używamy metody init, nazywaną również metodą constructor, która pozwala nam na zdefiniowanie atrybutów w trakcie kreowania obiektów. Wyobraź sobie, że bardzo podoba nam się Tesla Model S i chcemy stworzyć tego rodzaju obiekt. Ma on cztery koła, działa na energię elektryczną, ma pięć miejsc siedzących, i maksymalną prędkość 250 km/h (155 mph). Stwórzmy zatem taki obiekt:
+Cztery koła + elektryczny “typ zbiornika” + pięć siedzeń + maksymalna prędkość 250 km/h.
+Wszystkie atrybuty są już ustawione. Ale jak możemy uzyskać dostęp do ich wartości? Za pomocą metody, znanej także jako zachowanie obiektu. Zastosujmy ją:
+Powyżej widzicie implementację dwóch metod: number_of_wheels i set_number_of_wheels. Nazywamy je getter i setter ponieważ temu pierwszemu zostaje przypisana wartość atrybutu, a ten drugi ustanawia nową wartość dla tego atrybutu. 
+W Pythonie możemy dokonać tego używając @property (decorators), aby zdefiniować getters i setters. Przyjrzyjmy się temu:
+Tych metod możemy również użyć jako atrybutów:
+Jest to trochę inne niż metody definiujące. Te metody działają jako atrybuty. Na przykład, kiedy ustawiamy nową liczbę kół, ustawiamy wartość 2 w number_of_wheels. Jest to jeden sposób na napisanie kodu pythonic getter i setter.
+Możemy jednak użyć metod do innych rzeczy, jak na przykład metoda “make_noise”. Spójrzmy na to:
+Kiedy stosujemy tą metodę, produkuje ona jedynie string “VRRRRUUUUM”.
+
+Encapsulation: Hiding Information
+Enkapsulacja to mechanizm, który zastrzega bezpośredni dostęp do danych oraz metod obiektów. Jednakże tym samym ułatwia wykonywanie działań na tych danych (metody obiektów).
+Cała wewnętrzna reprezentacja obiektu jest ukryta przed… Jedynie obiekt może komunikować się z jego wewnętrznymi danymi. 
+Jednak najpierw, musimy zrozumieć jak działają public i non-public  instance variables i metody.
+Public Instance Variables
+Dla klasy Pythona możemy zainicjować public instance variables w zakresie metody constructor. Przyjrzyjmy się temu:
+W zakresie metody constructor:
+Tu możemy zaaplikować wartość first_name jako argument do public instance variable.
+W zakresie klasy:
+W tym przypadku nie musimy aplikować first_name jako argumentu, a wszystkie obiekty instancji będą miały class attribute.
+Nauczyliśmy się właśnie, że możemy użyć public instance variables i class attributes. Kolejną interesującą rzeczą o części public jest to, iż możemy zarządzać wartościami zmiennych. Co mam przez to na myśli? Nasz object jest w stanie zarządzać wartością jego zmiennej: Get i Set wartości zmiennych. 
+Pamiętając o klasie Person chcemy ustawić kolejną wartość do zmiennej first_name:
+Jedyne, co musieliśmy zrobić to przestawić wartość (kaio) do first_name instance variable i to doprowadzi do zaktualizowania wartości. Możemy tak zrobić ponieważ jest to public variable. 
+Non-public Instance Variable
+Nie używamy tu takiego pojęcia jak “prywatny”, ponieważ żaden atrybut nie jest tak naprawdę prywatny w Pythonie (bez niepotrzebnego nadmiaru pracy) – PEP8
+ 
+Tak jak public instance variable, non-public instance variable  możemy zdefiniować w zakresie metody constructor lub klasy. Co do różnicy w syntaksie, dla non-public instance variables używaj podkreślnika ( _ ) przed variable name.
+“Private instance variables, do których nie można uzyskać dostępu prócz od środka obiektu nie istnieją w Pythonie. Jednakże, istnieje konwencja, którą stosuje większość kodu Python: nazwa poprzedzona podkreślnikiem ( e.g. _spam ) powinna być traktowana jako niepubliczna część API (bez względu na to, czy jest to funkcja, metoda, czy członek danych)” – Python Software Foundation
+Tu mamy przykład:
+Zauważyłeś zmienną email? Tak definiujemy non-public variable:
+Możemy uzyskać do tego dostęp i zaktualizować to. Non-public variables są tylko konwencją i powinny być traktowane jako niepubliczna część API. Stosujemy metodę, która pozwala nam działać od środka definicji klasy. Implementujemy dwie metody (email and update_email), aby lepiej to zrozumieć:
+Za pomocą tych metod możemy teraz zaktualizować i uzyskać dostęp do non-public variables. Spójrzmy:
+1. Zainicjowaliśmy nowy obiekt z first_name TK i email tk@mail.com
+2. Wydrukowaliśmy ten email poprzez uzyskanie dostępu do non-public variable 
+3. Próbowaliśmy ustawić nowy email w naszej klasie
+4. Musimy traktować non-public variable jako non-public część API
+5. Zaktualizowaliśmy non-public variable za pomocą instance method
+6. Sukces! Możemy to zaktualizować od środka naszej klasy z metoda pomocniczą (helper method)
+Public method
+Z public methods możemy również użyć ich spoza naszych klas:
+Przetestujmy to:
+Super, możemy tego używać bez najmniejszego problemu
+Non-public Method
+Jednakże z non-public methods nie jesteśmy w stanie tego zrobić. Zaimplementujmy tą samą klasę Person, ale teraz wraz z show_age non-public method używając podkreślnik  ( _ ). 
+A teraz spróbujemy nazwać non-public method naszym obiektem:
+Możemy uzyskać do tego dostęp i zaktualizować to. Non-public methods są tylko konwencją i powinny być traktowane jako niepubliczna część API. 
+Tutaj mamy przykład jak można to użyć:
+Mamy tu _get_age non-public method oraz show_age public method. show_age może być użyte przez nasz obiekt (spoza naszej klasy), a _get_age może zostać użyty tylko w zakresie definicji klasy (wewnątrz metody show_age). Jednakże powtórzę: jako konwencja.
+Encapsulation Summary
+Z encapsulation możemy zapewnić, że wewnętrzna reprezentacja obiektu jest ukryta przed światem zewnętrznym.
+Inheritance: zachowania i charakterystyka
+Niektóre obiekty dzielą pewne rzeczy: ich zachowanie i cechy. 
+Na przykład, ja odziedziczyłem pewne cechy i zachowanie po moim ojcu. Z cech odziedziczyłem jego oczy i włosy, a z zachowań jego brak cierpliwości i introwersje. W programowaniu zorientowanym wokół obiektu, klasy mogą odziedziczyć wspólne cechy (dane) i zachowania (metody) z innej klasy. 
+Spójrzmy na kolejny przykład i zastosujmy go w Pythonie. 
+Wyobraź sobie samochód. Numer kół, pojemność i maksymalna prędkość to wszystko atrybuty tego samochodu. Można powiedzieć, że klasa ElectricCar dziedziczy te same atrybuty, co klasa zwyczajnego Car.
+Nasza klasa Car:
+W Pythonie aplikujemy parent class do child class jako parametr. Klasa ElectricCar może odziedziczyć klasę naszego Car.
+To jest tak proste. Nie musimy stosować żadnej innej metody ponieważ ta klasa już ją ma (odziedziczoną po klasie Car). Udowodnijmy to:
+Pięknie.
+To wszystko!
+Nauczyliśmy się wiele rzeczy o podstawach Pythona:
+
+Jak działają zmienne Pythona
+Jak działa conditional statement Pythona
+Jak działa looping (while i for) Pythona
+Jak działa Lista: Collection | Array
+Dictionary key-value Collection
+Jak możemy iterować przez data structures
+Objects i Classes
+Atrybuty jako dane obiektów
+Metody jako zachowanie obiektów
+Używanie Python getters and setters oraz property decorator
+Enkapsulacja: ukrywanie informacji
+Dziedziczenie: zachowania i cechy
+
+Jeśli chciałbyś nauczyć się o nim więcej, wypróbuj One Month Python Bootcamp. Natomiast jeśli chciałbyś poczytać trochę więcej o mojej podróży, na której zgłębiałem tajniki programowania, zapraszam do czytania moich publikacji na The Renaissance Developer. Życzę miłej zabawy i uczcie się dalej!
+Mój Twitter i Github.

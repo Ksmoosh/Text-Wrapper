@@ -1,0 +1,47 @@
+Załóżmy, że mamy pewną aplikacje, o którą bardzo troszczymy się i robimy wszystko, żeby zapewnić jej jak najlepszą jakość kodu. Pokrycie go testami jednostkowymi jest jednym ze sposobów, którego możemy użyć, aby zabezpieczyć kod przed błędami. Dwoimy się i troimy, aż w końcu udaje się pokryć kod w 100%. Mamy pewność, że żaden bug nie wkradł się do naszej aplikacji! Ale czy na pewno?
+Łukasz Antkowiak. Backend Engineer w Collibra Polska. Od 2011 roku Java Developer w Volvo IT, później pracował jako Software engineer w Nokii. Przez lata był Consultantem w firmie Infusion. Od 2017 roku Java Software Developer w Siili Solutions Poland, a później Java Senior Developer w Sii Poland. Łukasz od ponad dwóch lat prowadzi bloga blog.lantkowiak.pl.
+Stwórzmy aplikacje, o którą zadbamy!
+Zacznijmy od zewnętrznego serwisu, który będziemy wstrzykiwać do naszej klasy.
+Teraz stwórzmy główną klasę naszej aplikacji:
+Jak widzimy, nie ma tutaj żadnego rocket science. Pobieramy z zewnętrznego serwisu dwie liczby, a następnie porównujemy je. Jeżeli pierwsza z nich jest większa to odejmujemy od niej drugą i otrzymaną liczbę zwracamy jako wynik. W przeciwnym przypadku jako rezultat zwracamy sumę dwóch pobranych liczb.
+Pora przetestować naszą aplikację
+Stwórzmy najpierw pomocniczą klasę, która będzie implementować interfejs naszego zewnętrznego serwisu.
+I teraz pierwsza metoda testowa:
+W powyższej metodzie testowej sprawdziliśmy pierwszy przypadek, czyli sytuację, gdzie pierwsza pobrana liczba z zewnętrznego serwisu jest większa od kolejnej.
+Teraz pora na drugi przypadek:
+Tutaj pokryliśmy drugi przypadek, czyli sytuacjęm, gdy druga liczba jest większa od pierwszej. Wygląda na to, że pokryliśmy wszystkie branche i nasz kod jest w pełni przetestowany, ale skąd mamy wiedzieć jak dobre są nasze testy jednostkowe?
+Testy mutacyjne
+Tutaj z pomocą przychodzą testy mutacyjne. Czym są ? To technika polegająca na wprowadzaniu małych i losowych zmian w kodzie naszej aplikacji. Zmiany te powinny zostać wykryte przez nasze testy jednostkowe. Jeżeli, któraś ze zmian nie została wykryta oznacza to, że nasze testy mogą nie być tak dobre jak nam się wydawało.
+Jakie zmiany?
+Poniżej lista z przykładowymi zmianami, które mogą zostać wprowadzone w naszym kodzie.
+
+Zmiana granicy w warunkach, np. > zostanie zmienione na >=, >= na >, itd.,
+Negacja warunków, np. == zostanie zmienione na !=, <= na >, itd.,
+Usunięcie warunków i zastąpienie ich stałą wartością, np. a > b zostanie zmienione na true,
+Zmiana operacji matematycznych, np. dodawanie zostanie zamienione na odejmowanie, a mnożenie na dzielenie,
+Zmiana wartości zmiennych na wartości defaultowe lub stałe, np. int zostanie ustawiony na 0 lub inną losową wartość,
+Zwrócenie null zamiast obiektu,
+Pominięcie wywołania metody typu void,
+
+Właśnie zapoznaliśmy się z przykładowymi modyfikacjami, które mogą zostać wprowadzone do aplikacji podczas testów mutacyjnych. Testy jednostkowe powinny być napisane w taki sposób, aby zmiany te spowodowały to, że nasze testy nie przejdą.
+Testy mutacyjne w praktyce
+Wróćmy teraz do naszego kodu, który napisaliśmy na początku i spróbujmy przeprowadzić testy mutacyjne. Z pomocą przyjdzie nam biblioteka PIT!
+Konfiguracja
+Konfiguracja i uruchomienie PIT są banalnie proste! Pierwsze co musimy zrobić to dodać plugin do naszego poma:
+Domyślnie wszystkie klasy z naszej aplikacji zostaną poddane testom mutacyjnym. Jeżeli chcemy to zmienić to możemy skonfigurować pakiety klas/testów, które będą wzięte pod uwagę.
+
+Uruchomienie
+Aby przeprowadzić testy mutacyjne wystarczy wywołać następujące polecenie:
+Gdy operacja zakończy się sukcesem zostanie wygenerowany raport z wynikami. Znajduje się on pod następującą ścieżką: target/pit-reports/yyyyMMddHHmm.
+Zmutujmy aplikację
+Pora wrócić do naszej aplikacji i wykonać na niej testy mutacyjne. Po zakończeniu testów otrzymamy wygenerowany raport.
+
+Możemy z niego wyczytać, że nasz kod jest w pełni pokryty przez nasze testy jednostkowe (Line Coverage). Możemy również zobaczyć trochę czerwonego koloru przy pokryciu mutacyjnych testów, a jak możemy się domyślać czerwony kolor nie oznacza nic dobrego.
+Po wklikaniu się trochę głębiej będziemy mogli zobaczyć poniższy ekran.
+
+Możemy na nim zobaczyć, która linia programu nie jest wystarczająco dobrze przetestowana, a poniżej listę mutacji, które zostały przeprowadzone w poszczególnych liniach kodu. Na zielono są zaznaczone mutacje, które zostały wykryte przez testy, natomiast na czerwono mutacje, które przeżyły i nasze testy ich nie wychwyciły.
+W naszym przypadku nie została wychwycona zmiana warunku w if’ie z > na >=. Czyli w tym przypadku został wykryty warunek brzegowy, który nie został sprawdzony w testach.
+Poprawy w takim razie nasz drugi test tak, aby pokrył warunek brzegowy.
+Po tej modyfikacji żadne mutacje nam nie straszne i nasze testy mutacyjne przejdą na zielono.
+Podsumowanie
+Dzisiaj zapoznaliśmy się z podstawami testów mutacyjnych. Testy te mogą nam pomóc w sprawdzeniu jak dobre są nasze testy jednostkowe. Sama koncepcja testów mutacyjnych nie jest niczym nowym, ale dopiero stosunkowo od niedawna jest używana w praktyce, ponieważ testy mutacyjne są dosyć kosztowne i wymagają sporej czasu procesora, żeby przeprowadzić wszystkie kombinacje mutacji i dopiero od niedawna nasze komputery są na tyle szybkie, żeby robić to w rozsądnym czasie

@@ -1,0 +1,27 @@
+Projektując aplikacje, które używają dokumentowej bazy danych CosmosDB bardzo często stajemy przed wyzwaniem oszacowania ich kosztu oraz ich późniejszej optymalizacji. Zadanie to nie jest trywialne. Jeśli chodzi o koszt to zawsze możemy użyć kalkulatora. Wystarczy, że podamy tam parametry rozwiązania (liczbę nowych dokumentów, odczytów …) oraz wgramy przykładowe dokumenty. Po uzupełnieniu tych informacji otrzymamy estymację kosztu rozwiązania.
+
+Michał Jankowski. Low Code Technical Practice Leader Technical Architect at Objectivity. Microsoft MVP Azure, an architect, designer, team leader and trainer. He began programming in the early ’90s from Basic and Assembler for 8-bit computers. During most of his career, he was delivering .NET platform targeted application for the world’s largest companies. Currently, he is specialising in the development of web applications and Azure environment.  In his free time he likes writing a technical blog.
+
+Na podstawie tych informacji możemy zastanowić się, czy chcemy skorzystać z bazy CosmosDB? Czy nas na nią stać, czy może chcemy pomyśleć nad innym rozwiązaniem? Jeśli zdecydujemy się na CosmosDB to z moich obserwacji wynika, że programiści nie mają najmniejszych problemów z wystartowaniem prac z perspektywy użycia bibliotek do komunikacji z bazą danych. Czasami trochę więcej czasu potrzeba na przejście na inne tory myślenia i zaprzestania traktowania bazy CosmosDB jako relacyjnej.
+Prędzej, czy później pojawia się potrzeba optymalizacji kosztów zapytań. Powody mogą być różne, a to przekraczamy budżet, a to któreś zapytania zaczynają działać zbyt wolno. Generalnie musimy coś zrobić z naszą bazą danych lub zapytaniami. W takich sytuacjach nigdy nie powinniśmy działać na oślep. Za każdym razem powinniśmy odnieść się do statystyk wykorzystania naszego systemu i z dużym prawdopodobieństwem zacząć optymalizację od najczęściej występujących zapytań.
+I w tym przypadku pojawia się drobna przeszkoda. Większość z nas jest przyzwyczajona do bardzo dokładnych statystyk, które są udostępniane przez Azure SQL:
+
+Analiza danych z Query Performance Insight pozwala na rozpoczęcie prac optymalizacyjnych w przypadku Azure SQL
+W przypadku CosmosDB nie jest już tak różowo… Dostępnych jest tylko kilka podstawowych charakterystyk. To co możemy sprawdzić pod kątem RU, to tylko ile jednostek RU zużywa nasza baza danych i czy nie przekracza limitu przydzielonego na partycję. Z tych danych ciężko jest wywnioskować, gdzie powinniśmy rozpocząć optymalizację. Możemy natomiast zobaczyć, czy dobrze dobraliśmy poziom RU do naszego rozwiązania.
+
+Chciałbym mieć możliwość monitorowania na poziomie każdego zapytania. Z możliwością podejrzenia dokładnie zapytania, które zostało wysłane do bazy danych, jak również na poziomie ogólnym, gdzie możemy zagregować dane na podstawie podanego typu. Tak abym mógł albo uzyskać informację o konkretnym zapytaniu:
+
+lub też w postaci tabelarycznej:
+
+Na podstawie tych danych możemy już spróbować zaplanować optymalizację naszych zapytań. Jak widzicie przechowujemy następujące dane:
+
+nazwę typu zapytania,
+czas zapytania,
+treść zapytania,
+nazwę kolekcji, której zapytanie dotyczy,
+koszt zapytania.
+
+Najważniejsze, że możemy te dane wyeksportować i przeanalizować je zgodnie z naszymi potrzebami.
+Aby to osiągnąć wystarczy napisać rozszerzenie do CosmosDB, które loguje dodatkowe parametry do Application Insights. Kod rozszerzenia wygląda następująco:
+Następnie wystarczy w momencie wywołania zapytania do CosmosDB wywołać logowanie.
+Dodatkowo wywołując zapytanie możemy ustawić jego nazwę, aby w przyszłości łatwo można było grupować informacje o zapytaniach tego samego typu.

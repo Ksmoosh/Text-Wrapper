@@ -5,6 +5,7 @@ import json
 import GloveMaker
 import os
 import re
+import KerasCategorization
 
 
 def create_socket(url):
@@ -28,8 +29,8 @@ def write_string_to_txt(text, filename):
         f.write(text)
 
 
-def save_articles(articles):
-    folderName = "Artykuły"
+def save_articles(articles, folder):
+    folderName = folder
     for article in articles:
         for category in article[0]:
             # exchange the '/' character in the name of a category, so it will not be mistaken for folder separator
@@ -111,7 +112,7 @@ if __name__ == '__main__':
             write_string_to_json(articlesSeparatedWords, 'articlesSepWords.json')
 
         write_string_to_json(articles, 'articles.json')
-        save_articles(articles)
+        save_articles(articles, "Artykuły")
 
     else:
         if create_glove:
@@ -124,3 +125,21 @@ if __name__ == '__main__':
         # as one may want to use their own vector in categorization
         if leave_program():
             exit(0)
+
+    # separated paragraphs to one string
+    art = []
+    for article in articles:
+        art.append("\n".join([text[0] for text in article[1]]))
+
+    predicted_categories = KerasCategorization.KerasModel(art).predicted_categories
+
+    # predicted categories assigned to articles, then saved in a folder
+    for i in range(len(articles)):
+        articles[i][0] = [predicted_categories[i]]
+
+    save_articles(articles, "Artykuły Klasyfikacja")
+
+
+
+
+
