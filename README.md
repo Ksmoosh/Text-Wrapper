@@ -1,3 +1,4 @@
+**Text Wrapper**
 Text Wrapper to program napisany w języku Python, który pobiera artykuły ze strony [justgeek.it](https://geek.justjoin.it), 
 a następnie zapisuje je lokalnie na komputerze, w folderach odpowiadających kategoriom przypisanym im na stronie.
 
