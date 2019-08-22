@@ -64,7 +64,7 @@ class KerasModel:
         else:
             self.model = self.load_model("model.json", "labels.json", "model.h5")
 
-            self.predicted_categories = self.categorize_articles(articles_to_predict)
+        self.predicted_categories = self.categorize_articles(articles_to_predict)
 
 
     def save_model(self, model_filename, labels_filename, weights_filename):
