@@ -14,7 +14,7 @@ modułów i reszty plików, wykonać poniższą komendę w terminalu projektowym
 
 Uaktualni ona pip o biblioteki użyte w projekcie.
 
-Aby nauczyć ponownie wektor słów należy wykonać poniższe kroki:
+Aby nauczyć ponownie wektor słów należy wykonać następujące kroki:
 1.  Włączyć terminal w folderze projektowym, następnie wykonać poniższą komendę, klonującą oficjalne repozytorium GloVe 
 >  $ git clone http://github.com/stanfordnlp/glove
 2.  Odpalić program oraz na zapytanie o ponowną naukę wektorów odpowiedzieć twierdząco, po stworzeniu korpusu do nauki wektorów program zada pytanie czy wyjść z programu; można odpowiedzieć twierdząco
