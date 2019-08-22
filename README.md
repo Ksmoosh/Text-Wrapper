@@ -20,6 +20,6 @@ Aby nauczyć ponownie wektor słów należy wykonać poniższe kroki:
 2.  Odpalić program oraz na zapytanie o ponowną naukę wektorów odpowiedzieć twierdząco, po stworzeniu korpusu do nauki wektorów program zada pytanie czy wyjść z programu; można odpowiedzieć twierdząco
 3.  Podmienic plik "demo.sh" będący wewnątrz sklonowanego repozytorium, na plik o tej samej nazwie znajdujący się w folderze "glove" wewnątrz repozytorium tego projektu
 4.  Wykonać poniższe komendy 
->  $ cd glove && make \n $ ./demo.sh
+>  $ cd glove && make <br/> $ ./demo.sh
 5.  Nowo utworzone wektory są gotowe do użycia w projekcie
 
