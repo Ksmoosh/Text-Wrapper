@@ -15,6 +15,7 @@ MAX_SEQUENCE_LENGTH = 1000
 MAX_NUM_WORDS = 20000
 EMBEDDING_DIM = 50
 VALIDATION_SPLIT = 0.2
+DIR_NAME = "Artykuły Baza"
 
 
 def process_articles():
@@ -24,17 +25,32 @@ def process_articles():
     articles = []  # list of text samples
     labels_index = {}  # dictionary mapping label name to numeric id
     labels = []  # list of label ids
-    for name in sorted(os.listdir("Artykuły")):
-        path = os.path.join("Artykuły", name)
+    for name in sorted(os.listdir(DIR_NAME)):
+        art_num_in_cat = 0
+        path = os.path.join(DIR_NAME, name)
         if os.path.isdir(path):
             label_id = len(labels_index)
             labels_index[name] = label_id
+            # only teach tags that have minimum of 20 articles
+            #  if len(sorted(os.listdir(path))) < 20:
+            #      continue
+            # print(path)
+            # print(len(sorted(os.listdir(path))))
             for fname in sorted(os.listdir(path)):
                 fpath = os.path.join(path, fname)
                 args = {} if sys.version_info < (3,) else {'encoding': 'utf-8'}
                 with open(fpath, **args) as f:
-                    articles.append(f.read())
+                    try:
+                        articles.append(f.read())
+                    except:
+                        print("Kodowanie")
+                        continue
                 labels.append(label_id)
+                art_num_in_cat += 1
+                # if more than 30 articles in one tag - break the loop; for balance in teaching dataset
+                # print(art_num_in_cat)
+                # if art_num_in_cat > 30:
+                #     break
 
     print('Found %s articles.' % len(articles))
     return articles, labels, labels_index
@@ -52,7 +68,7 @@ def teach_model_or_not():
 
 
 class KerasModel:
-    def __init__(self, articles_to_predict):
+    def __init__(self, articles_to_predict, labels_to_predict, titles_pred):
         if teach_model_or_not():
             self.embeddings_index = self.get_vectors()
             self.articles, self.labels, self.labels_index = process_articles()
@@ -64,7 +80,7 @@ class KerasModel:
         else:
             self.model = self.load_model("model.json", "labels.json", "model.h5")
 
-        self.predicted_categories = self.categorize_articles(articles_to_predict)
+        self.predicted_categories = self.categorize_articles(articles_to_predict, labels_to_predict, titles_pred)
 
 
     def save_model(self, model_filename, labels_filename, weights_filename):
@@ -186,7 +202,7 @@ class KerasModel:
         x = Conv1D(128, 5, activation='relu')(x)
         x = GlobalMaxPooling1D()(x)
         x = Dense(128, activation='relu')(x)
-        preds = Dense(len(self.labels_index), activation='softmax')(x)
+        preds = Dense(len(self.labels_index), activation='sigmoid')(x)
 
         model = Model(sequence_input, preds)
         model.compile(loss='categorical_crossentropy',
@@ -208,7 +224,7 @@ class KerasModel:
 
         return data
 
-    def categorize_articles(self, articles):
+    def categorize_articles(self, articles, labels, titles):
         categories = []
 
         Xnew = self.prepare_articles_for_prediction(articles)
@@ -218,8 +234,11 @@ class KerasModel:
             # get the index of a category which has maximum probability after prediction
             cat_index = np.where(ynew[i] == np.amax(ynew[i]))[0]
             # assign the index to dictionary of categories
+            # print(ynew[i])
             predicted_category = list(self.labels_index.keys())[list(self.labels_index.values()).index(cat_index)]
             categories.append(predicted_category)
-            # print("Predicted=%s" % predicted_category)
+            # print("Title = %s" % predicted_category)
+            # print(labels[i])
+            # print(titles[i])
 
         return categories

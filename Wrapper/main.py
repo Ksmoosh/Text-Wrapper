@@ -7,6 +7,21 @@ import os
 import re
 import KerasCategorization
 
+TAGS = ["ai", "backend", "bezpieczenstwo", "big-data", "devdebata", "e-commerce", "frontend", "growth-hacks",
+        "hardware", "hr", "hrakterna-sroda", "inside", "juniors", "kontakt", "live-streamy", "machine-learning",
+        "mobile", "news", "praca-w-it", "qa", "uncategorized", "ux-ui", "wywiady"]
+
+MAIN_PAGE = 'https://geek.justjoin.it'
+
+
+# Below are the constants for user to define if an update of articles in database is needed
+# WARNING - DOWNLOADING WHOLE DATABASE TAKES A LOT OF TIME
+# -> check both to True if you want to update the urls of articles to download and download them
+# -> check only UPDATE_DATABASE to True if you want to use the urls from .json file and update database from them
+# ------ DOWNLOADING URLS ~ 3-4 minutes
+# ------ DOWNLOADING DATABASE ~
+DOWNLOAD_ALL_URLS_FOR_DATABASE = False
+UPDATE_DATABASE = False
 
 def create_socket(url):
     return urllib.request.urlopen(urllib.request.Request(url,
@@ -18,8 +33,8 @@ def write_string_to_json(articleTXT, filename):
         json.dump(articleTXT, outfile)
 
 
-def open_json_to_string(articleTXT):
-    with open(articleTXT) as infile:
+def open_json_to_string(filename):
+    with open(filename) as infile:
         return json.load(infile)
 
 
@@ -35,6 +50,8 @@ def save_articles(articles, folder):
         for category in article[0]:
             # exchange the '/' character in the name of a category, so it will not be mistaken for folder separator
             category = re.sub(r'%s' % r'\/', "-", category)
+            # same in the name of an article
+            article[2] = re.sub(r'%s' % r'\/', "-", article[2])
             write_string_to_txt("\n".join([text[0] for text in article[1]]),
                                 folderName + os.sep + category + os.sep + article[2])
 
@@ -84,13 +101,40 @@ if __name__ == '__main__':
     articles = []  # list of articles in a form of [<category>, <text>, <title>]
     articlesSeparatedWords = []  # list of articles in a form of [<category>, <text from article with separated
     #                                                              words prepared for creating vector corpus>]
+
     if download:
-        sock = create_socket('https://geek.justjoin.it')
-        MainPage = URLlister.WrapperURLHelper(sock)
-        sock.close()
+        # download all urls from database of the web page
+        if DOWNLOAD_ALL_URLS_FOR_DATABASE is True and UPDATE_DATABASE is True:
+            articlesUrls = []
+            for tag in TAGS:
+                print(tag)
+                i = 1
+                while True:
+                    try:
+                        sock = create_socket(MAIN_PAGE + "/category/" + tag + "/page/" + str(i) + "/")
+                        [articlesUrls.append(url) for url in URLlister.WrapperURLHelper(sock).articlesUrls]
+                        sock.close()
+                    # try untill error like 404 page not found occur
+                    except urllib.error.HTTPError as e:
+                        print("pages = " + str(i))
+                        articlesUrls = list(dict.fromkeys(articlesUrls))
+                        break
+                    i += 1
+            write_string_to_json(articlesUrls, "articlesUrls.json")
+            print(len(articlesUrls))
+        # use .json file with previously downloaded urls of database
+        elif DOWNLOAD_ALL_URLS_FOR_DATABASE is False and UPDATE_DATABASE is True:
+            articlesUrls = open_json_to_string("articlesUrls.json")
+            print(len(articlesUrls))
+            print(articlesUrls)
+        # use urls only from the main page of the web page
+        else:
+            sock = create_socket(MAIN_PAGE)
+            articlesUrls = URLlister.WrapperURLHelper(sock).articlesUrls
+            sock.close()
 
         # iterate over all of the links to articles provided by URLlister
-        for i, url in enumerate(MainPage.articlesUrls):
+        for i, url in enumerate(articlesUrls):
             sock = create_socket(url)
 
             print(url)
@@ -108,11 +152,18 @@ if __name__ == '__main__':
 
             articles.append([article.articleCategories, article.articleText, article.articleTitle])
 
+            print(str(i) + "/" + str(len(articlesUrls)))
+
         if create_glove:
             write_string_to_json(articlesSeparatedWords, 'articlesSepWords.json')
 
         write_string_to_json(articles, 'articles.json')
-        save_articles(articles, "Artykuły")
+
+        if UPDATE_DATABASE is True:
+            file_name = "Artykuły Baza"
+        else:
+            file_name = "Artykuły"
+        save_articles(articles, file_name)
 
     else:
         if create_glove:
@@ -128,10 +179,14 @@ if __name__ == '__main__':
 
     # separated paragraphs to one string
     art = []
+    labels = []
+    titles = []
     for article in articles:
         art.append("\n".join([text[0] for text in article[1]]))
+        labels.append(article[0])
+        titles.append(article[2])
 
-    predicted_categories = KerasCategorization.KerasModel(art).predicted_categories
+    predicted_categories = KerasCategorization.KerasModel(art, labels, titles).predicted_categories
 
     # predicted categories assigned to articles, then saved in a folder
     for i in range(len(articles)):
