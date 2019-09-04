@@ -1,14 +1,8 @@
-a 11839
-w 7412
 pracy 5737
 więcej 4735
 aplikacji 3731
 temat 3541
 danych 2963
-to 2946
-nie 2791
-jak 2786
-na 2780
 firmy 2554
 możemy 2278
 dzięki 2245
@@ -18,11 +12,8 @@ wiele 2171
 bardziej 2081
 czas 1987
 czasu 1974
-jeśli 1959
-co 1945
 warto 1936
 przypadku 1868
-z 1854
 podczas 1784
 pracę 1772
 kilka 1763
@@ -32,7 +23,6 @@ osób 1613
 innych 1602
 firmie 1574
 czym 1530
-po 1506
 strony 1493
 google 1476
 dolarów 1474
@@ -48,7 +38,6 @@ osoby 1264
 projektu 1262
 zespołu 1260
 użytkowników 1230
-jest 1222
 zespół 1189
 in 1180
 umiejętności 1180
@@ -71,15 +60,12 @@ firma 1088
 typu 1073
 należy 1066
 com 1065
-i 1064
 pytanie 1064
 czego 1063
 przykład 1053
 zrobić 1053
-czy 1049
 wcześniej 1044
 software 1043
-do 1042
 szybko 1040
 problem 1034
 ktoś 1033
@@ -97,9 +83,7 @@ możliwość 953
 czasie 952
 natomiast 952
 pierwsze 950
-od 944
 var 939
-tak 935
 część 934
 cały 928
 gry 927
@@ -135,7 +119,6 @@ rozwój 813
 wiedzy 812
 lepiej 809
 class 806
-ci 799
 data 799
 uwagę 798
 problemy 795
@@ -145,7 +128,6 @@ czasem 791
 problemów 791
 programista 791
 php 789
-jeżeli 786
 pytania 781
 pierwszy 779
 tworzenia 775
@@ -160,7 +142,6 @@ siebie 762
 ludzie 760
 pracuje 759
 musimy 755
-dlatego 752
 miałem 752
 zarówno 751
 pracować 750
@@ -197,7 +178,6 @@ obecnie 677
 testy 675
 zależy 675
 dopiero 672
-dla 670
 taka 670
 wartości 670
 naszych 665
@@ -225,7 +205,6 @@ city 619
 jedną 618
 zazwyczaj 618
 części 616
-dlaczego 614
 produktu 612
 span 612
 raczej 610
@@ -239,13 +218,11 @@ będziemy 604
 informacje 604
 zbyt 603
 innymi 602
-o 602
 sporo 599
 doświadczenie 598
 drugiej 598
 takiej 598
 wartość 594
-ale 593
 jednego 592
 wersji 592
 jednej 591
@@ -266,7 +243,6 @@ k 567
 masz 567
 zostanie 567
 mówi 565
-jednak 563
 sobą 562
 kandydatów 560
 nadal 560
@@ -336,9 +312,6 @@ miejsca 482
 poziomie 482
 zajmuje 482
 jednocześnie 480
-jakie 478
-każdy 478
-kiedy 476
 razy 476
 zatem 475
 godzin 474
@@ -371,14 +344,11 @@ miesięcy 456
 nikt 456
 udział 456
 wykorzystać 456
-może 455
 pliku 454
-bardzo 450
 wiedzą 450
 stronę 449
 robi 448
 trudno 448
-można 446
 pierwszym 446
 udało 445
 ai 444
@@ -407,15 +377,12 @@ danej 429
 muszą 428
 python 428
 błędów 427
-ciebie 426
-teraz 424
 ruby 423
 błędy 421
 usługi 421
 studiów 420
 kurs 419
 możliwe 419
-gdy 418
 końcu 418
 offerlist 418
 proste 418
@@ -433,7 +400,6 @@ blockchain 407
 ramach 404
 końca 402
 szybciej 402
-za 402
 company 401
 języków 399
 jaką 399
@@ -457,7 +423,6 @@ mln 389
 ceo 388
 innego 388
 wpływ 388
-cię 386
 tworzyć 386
 developera 384
 e 384
@@ -485,9 +450,9 @@ najpierw 369
 new 369
 powinna 369
 stworzenie 369
-testowania 369
 fakt 368
 program 368
+testowania 368
 machine 367
 sprawia 367
 uczyć 367
@@ -504,7 +469,6 @@ node 361
 pamiętać 361
 poznać 361
 technologie 361
-aby 360
 danego 359
 czemu 358
 działać 358
@@ -519,7 +483,6 @@ wiemy 354
 development 351
 postaci 351
 funkcje 350
-mamy 350
 celem 349
 firmę 349
 kodzie 349
@@ -528,7 +491,6 @@ house 348
 kolejny 348
 mógł 348
 magento 348
-przy 348
 zostały 347
 aws 346
 programowaniem 346
@@ -537,7 +499,6 @@ sami 345
 potrafi 344
 ciężko 343
 pomaga 343
-wtedy 343
 zasadzie 343
 bądź 342
 same 342
@@ -559,12 +520,10 @@ jakość 332
 modelu 332
 prosty 332
 usług 332
-ja 331
 native 331
 pozyskał 331
 dużych 330
 http 329
-często 328
 pieniądze 328
 pythona 328
 engineer 327
@@ -604,8 +563,6 @@ stanowiska 314
 zaczyna 314
 bezpośrednio 313
 dobrym 312
-mimo 312
-są 312
 etapie 311
 latach 311
 pisać 311
@@ -615,12 +572,10 @@ zacząłem 311
 zwłaszcza 311
 analizy 310
 będę 310
-przez 310
 startupu 310
 trzech 310
 większości 310
 okazało 309
-mam 308
 niektóre 308
 została 308
 employer 307
@@ -635,7 +590,6 @@ serwisu 304
 zrozumieć 304
 chwilę 303
 spotkania 303
-wszystko 303
 kogoś 301
 miały 301
 okazji 301
@@ -646,7 +600,6 @@ wyniki 300
 faktycznie 299
 framework 299
 grę 298
-jako 298
 złotych 298
 pomóc 297
 bezpieczeństwa 296
@@ -694,7 +647,6 @@ programistą 283
 zobaczyć 283
 konferencji 282
 nową 282
-ten 282
 junior 281
 korzysta 281
 rozwiązaniem 281
@@ -711,7 +663,6 @@ zadaniem 279
 inteligencji 278
 szukać 278
 developerzy 277
-no 277
 pierwsza 277
 używać 276
 praktyce 275
@@ -789,11 +740,8 @@ zgodnie 254
 znajomość 254
 implementacji 253
 lepsze 253
-was 253
 całkiem 252
 product 252
-tutaj 252
-ty 252
 drugim 251
 miesiąc 251
 osiągnąć 251
@@ -802,8 +750,6 @@ startupów 251
 zarządzanie 251
 obsługi 250
 programu 250
-trzeba 250
-tym 250
 wybrać 249
 względem 249
 funkcja 248
@@ -823,9 +769,7 @@ przynajmniej 247
 chociaż 246
 dowiecie 246
 miesiące 246
-poza 246
 stworzenia 246
-jednym 245
 techniczne 245
 użyciu 245
 zmienia 245
@@ -833,7 +777,6 @@ biura 244
 biznes 244
 jaka 244
 pracowałem 244
-takie 244
 algorytm 243
 funkcję 243
 mówiąc 243
@@ -843,7 +786,6 @@ muszę 242
 prowadzi 242
 serwer 242
 działanie 241
-już 241
 testera 241
 age 240
 byłoby 240
@@ -858,13 +800,11 @@ rozmowę 238
 samych 238
 amazon 237
 pół 237
-przede 237
 chciał 236
 ciągle 236
 dodatkowe 236
 istotne 236
 join 236
-nawet 236
 osobiście 236
 skoro 236
 sprawdza 236
@@ -898,7 +838,6 @@ dostałem 230
 internetowych 230
 korzyści 230
 przejść 230
-ta 230
 tekstu 230
 bieżąco 229
 czymś 229
@@ -963,7 +902,6 @@ strona 219
 własnych 219
 częścią 218
 pieniędzy 218
-te 218
 znajdziemy 218
 blogu 217
 brzmi 217
@@ -1039,7 +977,6 @@ człowiek 204
 dana 204
 interesuje 204
 internecie 204
-jego 204
 liczyć 204
 linii 204
 sukces 204
@@ -1057,7 +994,6 @@ sprzedaży 202
 with 202
 braku 201
 budowanie 201
-czyli 201
 popularne 201
 wersję 201
 wiesz 201
@@ -1107,7 +1043,6 @@ kluczowe 195
 kompetencji 195
 ofertę 195
 prosta 195
-twój 195
 użytkownikom 195
 ważna 195
 zbudować 195
@@ -1132,8 +1067,6 @@ nadzieję 191
 paweł 191
 poprawnie 191
 rozwija 191
-sam 191
-zawsze 191
 microsoftu 190
 ofert 190
 określić 190
@@ -1173,7 +1106,6 @@ seniora 187
 tekst 187
 używa 187
 wejścia 187
-ile 186
 nauka 186
 polskich 186
 potrafią 186
@@ -1187,14 +1119,12 @@ reguły 185
 ułatwia 185
 ux 185
 związku 185
-bez 184
 dobrą 184
 istnieją 184
 kotlin 184
 oparciu 184
 prac 184
 wydajności 184
-dużo 183
 podstawowych 183
 wspólnie 183
 zasobów 183
@@ -1216,7 +1146,6 @@ pory 181
 qa 181
 robimy 181
 słowa 181
-tego 181
 uczenie 181
 grze 180
 komunikacja 180
@@ -1227,7 +1156,6 @@ wziąć 180
 książki 179
 nazwie 179
 obrazu 179
-tobie 179
 branża 178
 firmą 178
 karierę 178
@@ -1274,7 +1202,6 @@ połączenia 173
 różnice 173
 staż 173
 drodze 172
-jestem 172
 klienci 172
 pomimo 172
 stanów 172
@@ -1321,9 +1248,7 @@ mobile 168
 odpowiedni 168
 pojawiają 168
 przestrzeni 168
-taki 168
 własnego 168
-dziś 167
 jakimś 167
 kolegów 167
 wyszukiwania 167
@@ -1346,7 +1271,6 @@ json 165
 obraz 165
 pracodawców 165
 przykładu 165
-twoja 165
 wprowadzenie 165
 event 164
 kwestii 164
@@ -1363,22 +1287,18 @@ wyników 164
 doświadczonych 163
 javascriptu 163
 używając 163
-wam 163
-choć 162
 developerem 162
 maszyny 162
 mniejsze 162
 odpowiedzialność 162
 osobami 162
 struktury 162
-twoje 162
 widzimy 162
 wieloma 162
 wykonywania 162
 zrozumienie 162
 biorąc 161
 chciałem 161
-im 161
 item 161
 kroki 161
 max 161
@@ -1386,7 +1306,6 @@ pozytywnie 161
 uniknąć 161
 większej 161
 grach 160
-jeszcze 160
 stworzył 160
 tydzień 160
 wyzwań 160
@@ -1456,7 +1375,6 @@ zdjęcie 154
 inna 153
 komponentu 153
 konsoli 153
-my 153
 oto 153
 zatrudnienia 153
 bywa 152
@@ -1528,7 +1446,6 @@ sens 146
 sposobu 146
 szkolenia 146
 university 146
-bo 145
 cechy 145
 czasach 145
 decyzja 145
@@ -1552,7 +1469,6 @@ oparte 144
 ostatnim 144
 problemami 144
 san 144
-wśród 144
 wcale 144
 kilkanaście 143
 pracujesz 143
@@ -1578,7 +1494,6 @@ cech 141
 każdą 141
 korzystamy 141
 korzystania 141
-ma 141
 pomoże 141
 systemem 141
 technologicznych 141
@@ -1603,7 +1518,6 @@ utworów 139
 vr 139
 devops 138
 góry 138
-go 138
 informację 138
 konfiguracja 138
 lepszy 138
@@ -1626,7 +1540,6 @@ chociażby 136
 infrastruktury 136
 kultury 136
 największym 136
-ponieważ 136
 powodów 136
 world 136
 zajmować 136
@@ -1703,13 +1616,11 @@ miliona 129
 oceny 129
 odpowiedniej 129
 punkt 129
-tylko 129
 usługa 129
 wątpliwości 129
 znaków 129
 znam 129
 daną 128
-dobrze 128
 mówić 128
 marketingu 128
 opcji 128
@@ -1754,14 +1665,11 @@ wspomniałem 126
 wszędzie 126
 zajęcia 126
 branding 125
-być 125
 gracza 125
-jeden 125
 każdemu 125
 obiekty 125
 osobie 125
 pasjonat 125
-przed 125
 style 125
 tomasz 125
 typescript 125
@@ -1796,7 +1704,6 @@ stanach 123
 szereg 123
 takimi 123
 techniki 123
-tu 123
 ułatwić 123
 uda 123
 większym 123
@@ -1807,13 +1714,11 @@ chciałbyś 122
 chcielibyśmy 122
 filmu 122
 forma 122
-nic 122
 opinii 122
 pakiet 122
 potrzebują 122
 sprawić 122
 strukturę 122
-właśnie 122
 windows 122
 wyglądało 122
 zajmują 122
@@ -1933,7 +1838,6 @@ absolwent 114
 aktualizacji 114
 divante 114
 dynamicznie 114
-gdzie 114
 getrandomint 114
 gotowy 114
 idea 114
@@ -1972,7 +1876,6 @@ chcąc 112
 czynności 112
 game 112
 implementacja 112
-jaki 112
 konkretnym 112
 kryptowalut 112
 mail 112
@@ -1988,7 +1891,6 @@ przedmiotów 112
 przestrzeń 112
 rodzaj 112
 szukają 112
-więc 112
 wyglądają 112
 wyniku 112
 zaczęło 112
@@ -2022,7 +1924,6 @@ ekspertów 110
 krakowie 110
 logo 110
 lokalizacji 110
-mój 110
 macie 110
 maciej 110
 marki 110
@@ -2054,7 +1955,6 @@ tematem 109
 widzisz 109
 zapewnia 109
 zdarzeń 109
-ze 109
 zmiennych 109
 zostałem 109
 dom 108
@@ -2084,7 +1984,6 @@ darmo 107
 dodaje 107
 filmy 107
 fragment 107
-ich 107
 polskim 107
 potencjał 107
 poważnie 107
@@ -2190,7 +2089,6 @@ niedługo 102
 obowiązki 102
 ograniczenia 102
 org 102
-pod 102
 telefon 102
 tygodnie 102
 udostępnia 102
@@ -2209,7 +2107,6 @@ kontekstu 101
 liczy 101
 menu 101
 miałeś 101
-nasz 101
 podobny 101
 pozostałe 101
 prywatnie 101
@@ -2249,7 +2146,6 @@ brakowało 99
 branżę 99
 django 99
 miejscem 99
-nasze 99
 news 99
 poniższy 99
 powstała 99
@@ -2276,7 +2172,6 @@ trudniej 98
 wdrożyć 98
 wysokiej 98
 zasoby 98
-dzisiaj 97
 głównego 97
 halo 97
 infoshare 97
@@ -2294,9 +2189,7 @@ pojawił 97
 programming 97
 sklep 97
 skutecznie 97
-także 97
 twórca 97
-we 97
 wersje 97
 widoku 97
 wyborem 97
@@ -2349,7 +2242,6 @@ pójść 95
 pr 95
 spośród 95
 stworzone 95
-tam 95
 technical 95
 wynagrodzeń 95
 zwiększyć 95
@@ -2419,7 +2311,6 @@ zweryfikować 92
 aspektów 91
 atmosfera 91
 bazą 91
-było 91
 byliśmy 91
 czystego 91
 else 91
@@ -2451,7 +2342,6 @@ interakcji 90
 kilkoma 90
 konkurencji 90
 krajach 90
-kto 90
 kubernetes 90
 mniejszych 90
 mocy 90
@@ -2494,7 +2384,6 @@ okiem 89
 osiągnięcia 89
 płaci 89
 słowo 89
-sama 89
 security 89
 stałe 89
 type 89
@@ -2814,10 +2703,8 @@ kariera 78
 koncepcji 78
 liceum 78
 najważniejsza 78
-ok 78
 próby 78
 przydaje 78
-również 78
 ręcznie 78
 relokacji 78
 umowę 78
@@ -2874,7 +2761,6 @@ wyobrazić 77
 zawodowo 77
 zdaje 77
 attr 76
-był 76
 center 76
 czytanie 76
 dowiedziałem 76
@@ -2918,11 +2804,9 @@ zmienił 76
 zrobi 76
 banku 75
 bootcamp 75
-były 75
 członek 75
 dniach 75
 domyślnie 75
-gdyby 75
 instalacji 75
 jóźwiak 75
 klientowi 75
@@ -2966,7 +2850,6 @@ ddd 74
 dołączył 74
 dokonać 74
 efektem 74
-inne 74
 kolorów 74
 lepszą 74
 ogromna 74
@@ -2994,7 +2877,6 @@ współpracowników 74
 wykorzystują 74
 angielsku 73
 blockchainie 73
-coraz 73
 danii 73
 dotrzeć 73
 dowiedz 73
@@ -3004,12 +2886,10 @@ frameworkiem 73
 frontendu 73
 fundusz 73
 grafika 73
-jedna 73
 kiedykolwiek 73
 kontener 73
 mikroserwisy 73
 neurosys 73
-nigdy 73
 obszaru 73
 opisać 73
 opowiedzieć 73
@@ -3091,7 +2971,6 @@ psa 71
 rozbudowane 71
 rozszerzenia 71
 serwery 71
-skąd 71
 stronach 71
 wyświetla 71
 wysiłku 71
@@ -3106,7 +2985,6 @@ abstrakcji 70
 adresu 70
 agata 70
 aspekt 70
-będzie 70
 byś 70
 chciałabym 70
 czasów 70
@@ -3260,7 +3138,6 @@ ewentualnie 67
 facto 67
 info 67
 inicjatywy 67
-jej 67
 kobiet 67
 komunikować 67
 konfigurację 67
@@ -3331,7 +3208,6 @@ wyglądały 66
 zaczniemy 66
 zamawiania 66
 zlecenia 66
-albo 65
 ciekawą 65
 dłuższego 65
 dawno 65
@@ -3352,7 +3228,6 @@ najlepsza 65
 nazwać 65
 niby 65
 nierzadko 65
-nowe 65
 obszarach 65
 oczekuje 65
 opcję 65
@@ -3410,7 +3285,6 @@ swego 64
 szkolenie 64
 tests 64
 twoją 64
-u 64
 unikać 64
 uważają 64
 warstwę 64
@@ -3438,7 +3312,6 @@ konferencja 63
 level 63
 małym 63
 meet 63
-moja 63
 musiała 63
 największej 63
 oczekiwać 63
@@ -3568,7 +3441,6 @@ skomplikowanych 61
 sprzedaż 61
 szkoli 61
 testowaniem 61
-tobą 61
 ubera 61
 uruchamiania 61
 what 61
@@ -3585,7 +3457,6 @@ compose 60
 damian 60
 dbanie 60
 dodatek 60
-dwa 60
 działy 60
 dzisiejszych 60
 efektywnie 60
@@ -3716,7 +3587,6 @@ konsekwencji 58
 kotlinie 58
 leczenia 58
 mające 58
-mogą 58
 mogłaby 58
 natywne 58
 niedawna 58
@@ -3750,7 +3620,6 @@ sprawdzają 58
 trafić 58
 trafiła 58
 tworzył 58
-wasze 58
 webowej 58
 widzą 58
 wspomniane 58
@@ -3848,7 +3717,6 @@ londyn 56
 miasto 56
 narzędziami 56
 następujące 56
-nasza 56
 naturalne 56
 obecnym 56
 ogromnej 56
@@ -3894,8 +3762,6 @@ bloku 55
 brakiem 55
 budżetu 55
 budujemy 55
-była 55
-chce 55
 devdebaty 55
 dodania 55
 dostarczania 55
@@ -4032,7 +3898,6 @@ mediów 53
 mentor 53
 mierzyć 53
 minuty 53
-moje 53
 napisana 53
 niezależne 53
 obawy 53
@@ -4081,7 +3946,6 @@ autorstwa 52
 awansu 52
 bootcampie 52
 budując 52
-coś 52
 computer 52
 dawna 52
 dostawców 52
@@ -4129,7 +3993,6 @@ stresu 52
 szukasz 52
 technicznymi 52
 termin 52
-testerem 52
 there 52
 twórcą 52
 twarz 52
@@ -4186,7 +4049,6 @@ odpowiedział 51
 ograniczeń 51
 ograniczyć 51
 okulary 51
-one 51
 organizacje 51
 pełna 51
 perspektywę 51
@@ -4208,6 +4070,7 @@ sprzedawać 51
 stawki 51
 storage 51
 szybszy 51
+testerem 51
 trustisto 51
 umie 51
 włączyć 51
@@ -4257,7 +4120,6 @@ martwić 50
 marzeń 50
 mniejszy 50
 możliwością 50
-musi 50
 niski 50
 opartej 50
 over 50
@@ -4592,7 +4454,6 @@ czasowych 46
 dając 46
 day 46
 developers 46
-dość 46
 docenienia 46
 dostarczenie 46
 drogie 46
@@ -4658,7 +4519,6 @@ wielkość 46
 wniosków 46
 wordpress 46
 wrażenia 46
-wy 46
 wykorzystywany 46
 wynikami 46
 wysokość 46
@@ -4701,9 +4561,7 @@ naukowe 45
 negatywnie 45
 niewielu 45
 noc 45
-np 45
 obsłudze 45
-on 45
 opcją 45
 opencv 45
 opisany 45
@@ -4982,7 +4840,6 @@ amsterdam 42
 automatycznego 42
 barcelona 42
 brałem 42
-by 42
 chciałeś 42
 chmura 42
 ciekawego 42
@@ -5119,7 +4976,6 @@ formularza 41
 forum 41
 gorąco 41
 hoc 41
-ii 41
 imię 41
 intensywnie 41
 internetowa 41
@@ -5160,7 +5016,6 @@ plikach 41
 podobną 41
 poinformował 41
 pokażemy 41
-ponad 41
 porównując 41
 pora 41
 poruszać 41
@@ -5278,14 +5133,12 @@ rozwiązywaniu 40
 słowem 40
 shift 40
 spodem 40
-sposób 40
 spostrzeżeniami 40
 staraliśmy 40
 struktur 40
 stu 40
 szefem 40
 szeroki 40
-takich 40
 technika 40
 teorię 40
 tools 40
@@ -5506,7 +5359,6 @@ mastera 38
 miałby 38
 monitorować 38
 mysql 38
-nad 38
 najciekawszych 38
 newer 38
 newest 38
@@ -5715,7 +5567,6 @@ wrażliwych 37
 września 37
 wskazówki 37
 wsparciem 37
-www 37
 wyborów 37
 wybranym 37
 wykształcenie 37
@@ -5872,7 +5723,6 @@ using 36
 usprawnienie 36
 włączając 36
 walczyć 36
-wami 36
 widząc 36
 wielkiego 36
 wierzy 36
@@ -6234,7 +6084,6 @@ interakcję 33
 interakcje 33
 introduction 33
 ionic 33
-jedno 33
 kamery 33
 kartce 33
 kata 33
@@ -6269,7 +6118,6 @@ obiektami 33
 obsłużyć 33
 odbył 33
 okularów 33
-oni 33
 operator 33
 optymalizacja 33
 opublikujemy 33
@@ -6279,8 +6127,6 @@ otwartą 33
 otwartość 33
 otwartym 33
 ownera 33
-owszem 33
-pan 33
 pandas 33
 panel 33
 parametrami 33
@@ -6427,7 +6273,6 @@ karta 32
 kolejkę 32
 komentarzu 32
 kształt 32
-które 32
 któregoś 32
 kwalifikacyjnej 32
 ludzki 32
@@ -6673,7 +6518,6 @@ stabilna 31
 stacji 31
 stosunek 31
 stworzonych 31
-swoje 31
 szacunek 31
 szansy 31
 szukałeś 31
@@ -7249,7 +7093,6 @@ pułapki 28
 publicznego 28
 różnorodność 28
 rad 28
-raz 28
 rb 28
 rdzeni 28
 realizacja 28
@@ -7379,7 +7222,6 @@ konfiguracją 27
 konkurencją 27
 koszta 27
 krystian 27
-który 27
 latami 27
 layer 27
 linkiem 27
@@ -7558,7 +7400,6 @@ znalazła 27
 zrozumieniu 27
 zurychu 27
 zyskuje 27
-aż 26
 aktualizacje 26
 aktualizuje 26
 amerykański 26
@@ -7897,7 +7738,6 @@ mentoring 25
 mierzy 25
 migrację 25
 miszczyszyn 25
-mnie 25
 modne 25
 moimi 25
 monolitu 25
@@ -8162,7 +8002,6 @@ look 24
 lyrebird 24
 mówienie 24
 mózgów 24
-mają 24
 match 24
 metrów 24
 mieszkać 24
@@ -8177,7 +8016,6 @@ nagrania 24
 najbliższej 24
 największego 24
 napisaniu 24
-nasi 24
 następujących 24
 naturalna 24
 niżej 24
@@ -8282,7 +8120,6 @@ szerokim 24
 szerszy 24
 szkoleniu 24
 szwecji 24
-tę 24
 teście 24
 testowej 24
 testuje 24
@@ -8456,7 +8293,6 @@ medyczna 23
 medycznych 23
 meteor 23
 międzynarodowa 23
-mi 23
 miast 23
 mike 23
 minął 23
@@ -8607,7 +8443,6 @@ transparentności 23
 trudnym 23
 trwała 23
 tworzącej 23
-tych 23
 uczestnictwa 23
 udostępnienia 23
 udziałów 23
@@ -9124,7 +8959,6 @@ odpowiedzialną 21
 odsłon 21
 oferować 21
 oglądają 21
-około 21
 określamy 21
 określoną 21
 olbrzymią 21
@@ -9135,7 +8969,6 @@ opisaliśmy 21
 opisana 21
 opisem 21
 opowiemy 21
-oraz 21
 otrzymaliśmy 21
 otrzymuję 21
 otwarcia 21
@@ -9413,7 +9246,6 @@ książkach 20
 któraś 20
 kupujący 20
 kwotą 20
-lecz 20
 libra 20
 licencja 20
 linijce 20
@@ -9611,7 +9443,6 @@ szkocji 20
 szukaj 20
 szymon 20
 tłumaczył 20
-też 20
 technikum 20
 tenantid 20
 terminu 20
@@ -9769,7 +9600,6 @@ image 19
 indiach 19
 inicjalizacji 19
 innowacyjnego 19
-inny 19
 interaktywne 19
 interesowałem 19
 interesującego 19
@@ -10432,8 +10262,6 @@ włączeniu 18
 włączony 18
 władzę 18
 wartościach 18
-wasz 18
-wasza 18
 webstorm 18
 weekendy 18
 wektorów 18
@@ -10706,7 +10534,6 @@ odsetek 17
 ogląda 17
 określeniem 17
 olbrzymi 17
-ona 17
 opłacić 17
 opracowane 17
 oryginalnego 17
@@ -10720,7 +10547,6 @@ pensją 17
 perspektyw 17
 phpa 17
 pipeline 17
-pl 17
 playstation 17
 plemionach 17
 poświęcają 17
@@ -12006,7 +11832,6 @@ trade 15
 trafne 15
 trello 15
 trudniejsza 15
-twoi 15
 typach 15
 użyliśmy 15
 używanego 15
@@ -12227,7 +12052,6 @@ drive 14
 drony 14
 drukarki 14
 dwadzieścia 14
-dwie 14
 dyplom 14
 dystrybucją 14
 działającym 14
@@ -12859,7 +12683,6 @@ atut 13
 australian 13
 automatu 13
 autonomię 13
-będą 13
 backendowych 13
 backlogu 13
 baron 13
@@ -13915,16 +13738,13 @@ japonia 12
 javascriptowych 12
 jawności 12
 jeżdżą 12
-jedynie 12
 jedzeniem 12
-jemu 12
 jork 12
 kędzierski 12
 karkołomne 12
 kiepskim 12
 kierownictwem 12
 kierujemy 12
-kilku 12
 kit 12
 klatki 12
 kodilli 12
@@ -14036,7 +13856,6 @@ niebo 12
 nieobecności 12
 nieuniknione 12
 nieznany 12
-nim 12
 niskopoziomowe 12
 niszowa 12
 niszowych 12
@@ -14594,7 +14413,6 @@ alto 11
 ambicja 11
 analitykami 11
 analogiczne 11
-ani 11
 animacja 11
 apka 11
 aplikacyjnego 11
@@ -14788,7 +14606,6 @@ hrowcem 11
 iban 11
 idę 11
 identity 11
-iii 11
 ikon 11
 immutable 11
 implementując 11
@@ -14970,7 +14787,6 @@ obliczeniową 11
 obliczeniowych 11
 obniżają 11
 obniżyć 11
-obok 11
 obowiązkowe 11
 obrazka 11
 obsługiwanych 11
@@ -15730,7 +15546,6 @@ dostanę 10
 dostawcą 10
 dotarł 10
 dozą 10
-dr 10
 drzwiami 10
 dublin 10
 ducha 10
@@ -17324,7 +17139,6 @@ mniejszymi 9
 mnożenie 9
 mobilność 9
 moda 9
-moi 9
 monitory 9
 montażu 9
 morzu 9
@@ -18681,7 +18495,6 @@ izolację 8
 językowymi 8
 jadę 8
 jadł 8
-jakby 8
 jakościowych 8
 japońskie 8
 jarosław 8
@@ -20650,7 +20463,6 @@ metrykach 7
 mgnieniu 7
 mięśni 7
 międzyludzkich 7
-miał 7
 miarą 7
 michigan 7
 midów 7
@@ -20711,7 +20523,6 @@ najwyraźniej 7
 nakładka 7
 należący 7
 należytą 7
-nam 7
 namieszać 7
 napięty 7
 napisała 7
@@ -21506,7 +21317,6 @@ telefonach 7
 telekomunikacyjne 7
 telewizora 7
 tematycznie 7
-temu 7
 tencent 7
 terminach 7
 testerska 7
@@ -22347,7 +22157,6 @@ dźwiękiem 6
 dacie 6
 dająca 6
 dającym 6
-daleko 6
 danielem 6
 dashdash 6
 datree 6
@@ -22928,7 +22737,6 @@ krzysiek 6
 kształci 6
 kształtów 6
 kształtują 6
-która 6
 któregokolwiek 6
 kuluarach 6
 kupili 6
@@ -23178,7 +22986,6 @@ narazić 6
 naruszenia 6
 narzucić 6
 nasłuchiwał 6
-nas 6
 następstwem 6
 nastały 6
 nasycony 6
@@ -24591,7 +24398,6 @@ więzienia 6
 widocznych 6
 wieść 6
 wieści 6
-wie 6
 wiedźmińska 6
 wiedźmin 6
 wiedźminem 6
@@ -24793,7 +24599,6 @@ wzmacnia 6
 wzmocnieniem 6
 wzrósł 6
 xeinaemm 6
-xi 6
 xxx 6
 yukihiro 6
 złośliwych 6
@@ -25268,7 +25073,6 @@ bundla 5
 bundler 5
 byłaś 5
 byłym 5
-byli 5
 bylibyśmy 5
 byty 5
 całkowitą 5
@@ -26269,7 +26073,6 @@ nasycenie 5
 naszkicować 5
 natężeniu 5
 natknęliście 5
-natychmiast 5
 natychmiastowym 5
 natywnymi 5
 naukowcami 5

@@ -24,6 +24,9 @@ def right_word(w):
 class BagOfWords:
     def __init__(self, article):
         self.stopWords = open_json_to_string("stopwords-pl.json")
+        # print(self.stopWords)
+        # if "Aby" in self.stopWords:
+        #     print("dziala")
         self.article = article
         self.articleExtracted = []
         self.words_extraction(self.article)
@@ -33,7 +36,7 @@ class BagOfWords:
         articleParagraphed = []
         for paragraph in article:
             words = re.sub("[^\w]", " ", paragraph).split()
-            articleParagraphed.append([w.lower() for w in words if w not in self.stopWords and right_word(w)])
+            articleParagraphed.append([w.lower() for w in words if w.lower() not in self.stopWords and right_word(w)])
         # join sentences separated in different lists to one list of strings for whole article
         self.articleExtracted = [j for sub in articleParagraphed for j in sub]
 

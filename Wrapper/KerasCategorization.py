@@ -5,23 +5,23 @@ import json
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
-from keras.layers import Dense, Input, GlobalMaxPooling1D
-from keras.layers import Conv1D, MaxPooling1D, Embedding
-from keras.models import Model, model_from_json
+from keras.layers import Dense, Input, GlobalMaxPooling1D, Activation
+from keras.layers import Conv1D, MaxPooling1D, Embedding, Dropout
+from keras.models import Model, model_from_json, Sequential
 from keras.initializers import Constant
 
 
 MAX_SEQUENCE_LENGTH = 1000
-MAX_NUM_WORDS = 20000
+MAX_NUM_WORDS = 200
 EMBEDDING_DIM = 50
-VALIDATION_SPLIT = 0.2
+VALIDATION_SPLIT = 0.22
 DIR_NAME = "Artykuły Baza"
 
 
 def process_articles():
     # prepare text samples and their labels
     print('Processing articles dataset')
-
+    articles_names = []
     articles = []  # list of text samples
     labels_index = {}  # dictionary mapping label name to numeric id
     labels = []  # list of label ids
@@ -31,26 +31,18 @@ def process_articles():
         if os.path.isdir(path):
             label_id = len(labels_index)
             labels_index[name] = label_id
-            # only teach tags that have minimum of 20 articles
-            #  if len(sorted(os.listdir(path))) < 20:
-            #      continue
-            # print(path)
-            # print(len(sorted(os.listdir(path))))
             for fname in sorted(os.listdir(path)):
                 fpath = os.path.join(path, fname)
                 args = {} if sys.version_info < (3,) else {'encoding': 'utf-8'}
                 with open(fpath, **args) as f:
                     try:
-                        articles.append(f.read())
+                        articles_names.append(fname)
+                        articles.append(fname + f.read())
                     except:
-                        print("Kodowanie")
+                        print("Problem z kodowaniem w artykule")
                         continue
                 labels.append(label_id)
                 art_num_in_cat += 1
-                # if more than 30 articles in one tag - break the loop; for balance in teaching dataset
-                # print(art_num_in_cat)
-                # if art_num_in_cat > 30:
-                #     break
 
     print('Found %s articles.' % len(articles))
     return articles, labels, labels_index
@@ -120,7 +112,7 @@ class KerasModel:
         print('Indexing word vectors.')
 
         embeddings_index = {}
-        with open("glove" + os.sep + "vectors.txt") as f:
+        with open("glove" + os.sep + "vectors.txt", 'r', encoding='utf-8') as f:
             for line in f:
                 values = line.split()
                 word = values[0]
@@ -188,7 +180,6 @@ class KerasModel:
 
         return embedding_layer
 
-
     def train_model(self):
         print('Training model.')
 
@@ -197,12 +188,16 @@ class KerasModel:
         embedded_sequences = self.embedding_layer(sequence_input)
         x = Conv1D(128, 5, activation='relu')(embedded_sequences)
         x = MaxPooling1D(5)(x)
+        x = Dropout(0.2)(x)
         x = Conv1D(128, 5, activation='relu')(x)
         x = MaxPooling1D(5)(x)
+        x = Dropout(0.2)(x)
         x = Conv1D(128, 5, activation='relu')(x)
         x = GlobalMaxPooling1D()(x)
+        x = Dropout(0.2)(x)
         x = Dense(128, activation='relu')(x)
-        preds = Dense(len(self.labels_index), activation='sigmoid')(x)
+        # x = Dropout(0.5)(x)
+        preds = Dense(len(self.labels_index), activation='exponential')(x)
 
         model = Model(sequence_input, preds)
         model.compile(loss='categorical_crossentropy',
@@ -211,7 +206,7 @@ class KerasModel:
 
         model.fit(self.x_train, self.y_train,
                   batch_size=32,
-                  epochs=10,
+                  epochs=11,
                   validation_data=(self.x_val, self.y_val))
 
         return model
@@ -226,6 +221,7 @@ class KerasModel:
 
     def categorize_articles(self, articles, labels, titles):
         categories = []
+        articles = [titles[i] + articles[i] for i in range(len(articles))]
 
         Xnew = self.prepare_articles_for_prediction(articles)
         ynew = self.model.predict(Xnew)

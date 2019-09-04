@@ -19,7 +19,7 @@ MAIN_PAGE = 'https://geek.justjoin.it'
 # -> check both to True if you want to update the urls of articles to download and download them
 # -> check only UPDATE_DATABASE to True if you want to use the urls from .json file and update database from them
 # ------ DOWNLOADING URLS ~ 3-4 minutes
-# ------ DOWNLOADING DATABASE ~
+# ------ DOWNLOADING DATABASE ~ 18 minutes
 DOWNLOAD_ALL_URLS_FOR_DATABASE = False
 UPDATE_DATABASE = False
 
@@ -54,6 +54,8 @@ def save_articles(articles, folder):
             article[2] = re.sub(r'%s' % r'\/', "-", article[2])
             write_string_to_txt("\n".join([text[0] for text in article[1]]),
                                 folderName + os.sep + category + os.sep + article[2])
+            # write only to one category
+            break
 
 
 def create_corpus():
@@ -144,7 +146,7 @@ if __name__ == '__main__':
 
             sock.close
 
-            if create_glove == 1:
+            if create_glove == 1 and UPDATE_DATABASE is True:
                 bag = GloveMaker.BagOfWords([text[0] for text in article.articleText])
                 articlesSeparatedWords.append([article.articleCategories, bag.articleExtracted])
 
@@ -154,7 +156,7 @@ if __name__ == '__main__':
 
             print(str(i) + "/" + str(len(articlesUrls)))
 
-        if create_glove:
+        if create_glove == 1 and UPDATE_DATABASE is True:
             write_string_to_json(articlesSeparatedWords, 'articlesSepWords.json')
 
         write_string_to_json(articles, 'articles.json')
@@ -166,11 +168,11 @@ if __name__ == '__main__':
         save_articles(articles, file_name)
 
     else:
-        if create_glove:
+        if create_glove == 1:
             articlesSeparatedWords = open_json_to_string("articlesSepWords.json")
         articles = open_json_to_string("articles.json")
 
-    if create_glove:
+    if create_glove == 1:
         GloveMaker.Glove(articlesSeparatedWords)
         # ask about leaving program if previously checked to create glove vector,
         # as one may want to use their own vector in categorization
