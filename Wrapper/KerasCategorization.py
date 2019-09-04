@@ -5,9 +5,9 @@ import json
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
-from keras.layers import Dense, Input, GlobalMaxPooling1D, Activation
+from keras.layers import Dense, Input, GlobalMaxPooling1D
 from keras.layers import Conv1D, MaxPooling1D, Embedding, Dropout
-from keras.models import Model, model_from_json, Sequential
+from keras.models import Model, model_from_json
 from keras.initializers import Constant
 
 
@@ -25,24 +25,28 @@ def process_articles():
     articles = []  # list of text samples
     labels_index = {}  # dictionary mapping label name to numeric id
     labels = []  # list of label ids
-    for name in sorted(os.listdir(DIR_NAME)):
-        art_num_in_cat = 0
-        path = os.path.join(DIR_NAME, name)
-        if os.path.isdir(path):
-            label_id = len(labels_index)
-            labels_index[name] = label_id
-            for fname in sorted(os.listdir(path)):
-                fpath = os.path.join(path, fname)
-                args = {} if sys.version_info < (3,) else {'encoding': 'utf-8'}
-                with open(fpath, **args) as f:
-                    try:
-                        articles_names.append(fname)
-                        articles.append(fname + f.read())
-                    except:
-                        print("Problem z kodowaniem w artykule")
-                        continue
-                labels.append(label_id)
-                art_num_in_cat += 1
+    try:
+        for name in sorted(os.listdir(DIR_NAME)):
+            art_num_in_cat = 0
+            path = os.path.join(DIR_NAME, name)
+            if os.path.isdir(path):
+                label_id = len(labels_index)
+                labels_index[name] = label_id
+                for fname in sorted(os.listdir(path)):
+                    fpath = os.path.join(path, fname)
+                    args = {} if sys.version_info < (3,) else {'encoding': 'utf-8'}
+                    with open(fpath, **args) as f:
+                        try:
+                            articles_names.append(fname)
+                            articles.append(fname + f.read())
+                        except:
+                            print("Problem z kodowaniem w artykule")
+                            continue
+                    labels.append(label_id)
+                    art_num_in_cat += 1
+    except:
+        print("Błąd przy czytaniu bazy danych dla nauki klasyfikatora! Czy pobrane zostały artykuły do bazy?")
+        exit(0)
 
     print('Found %s articles.' % len(articles))
     return articles, labels, labels_index
@@ -73,7 +77,6 @@ class KerasModel:
             self.model = self.load_model("model.json", "labels.json", "model.h5")
 
         self.predicted_categories = self.categorize_articles(articles_to_predict, labels_to_predict, titles_pred)
-
 
     def save_model(self, model_filename, labels_filename, weights_filename):
         # serialize model to JSON
@@ -124,14 +127,14 @@ class KerasModel:
 
     def vectorize_text(self):
         # vectorize the text samples into a 2D integer tensor
-        tokenizer = Tokenizer(num_words=MAX_NUM_WORDS) #<-
-        tokenizer.fit_on_texts(self.articles) #<-
-        sequences = tokenizer.texts_to_sequences(self.articles) #<-
+        tokenizer = Tokenizer(num_words=MAX_NUM_WORDS)
+        tokenizer.fit_on_texts(self.articles)
+        sequences = tokenizer.texts_to_sequences(self.articles)
         word_index = tokenizer.word_index
 
         print('Found %s unique tokens.' % len(word_index))
 
-        data = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH) #<-
+        data = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH)
         self.labels = to_categorical(np.asarray(self.labels))
 
         print('Shape of data tensor:', data.shape)
@@ -155,7 +158,6 @@ class KerasModel:
 
         return x_train, y_train, x_val, y_val
 
-
     def create_embedding_matrix(self):
         print('Preparing embedding matrix.')
 
@@ -171,7 +173,7 @@ class KerasModel:
                 embedding_matrix[i] = embedding_vector
 
         # load pre-trained word embeddings into an Embedding layer
-        # note that we set trainable = False so as to keep the embeddings fixed
+        # trainable = False so as to keep the embeddings fixed
         embedding_layer = Embedding(num_words,
                                     EMBEDDING_DIM,
                                     embeddings_initializer=Constant(embedding_matrix),

@@ -159,13 +159,22 @@ if __name__ == '__main__':
         if create_glove == 1 and UPDATE_DATABASE is True:
             write_string_to_json(articlesSeparatedWords, 'articlesSepWords.json')
 
-        write_string_to_json(articles, 'articles.json')
+        # saving articles in json for later use in classification
+        # -> do not save a whole database
+        if UPDATE_DATABASE is False:
+            write_string_to_json(articles, 'articles.json')
 
+        # saving articles in txt format in right folders
         if UPDATE_DATABASE is True:
             file_name = "Artykuły Baza"
         else:
             file_name = "Artykuły"
         save_articles(articles, file_name)
+
+        # after saving a whole database, overwrite database articles
+        # to articles that were lately downloaded from the main page
+        if UPDATE_DATABASE is True:
+            articles = open_json_to_string("articles.json")
 
     else:
         if create_glove == 1:
