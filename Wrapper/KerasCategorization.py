@@ -10,7 +10,6 @@ from keras.layers import Conv1D, MaxPooling1D, Embedding, Dropout
 from keras.models import Model, model_from_json
 from keras.initializers import Constant
 
-
 MAX_SEQUENCE_LENGTH = 1000
 MAX_NUM_WORDS = 200
 EMBEDDING_DIM = 50
@@ -65,11 +64,12 @@ def teach_model_or_not():
 
 class KerasModel:
     def __init__(self, articles_to_predict, labels_to_predict, titles_pred):
-        if teach_model_or_not():
-            self.embeddings_index = self.get_vectors()
-            self.articles, self.labels, self.labels_index = process_articles()
-            self.data, self.word_index = self.vectorize_text()
-            self.x_train, self.y_train, self.x_val, self.y_val = self.split_data()
+        self.if_teach = teach_model_or_not()
+        self.embeddings_index = self.get_vectors()
+        self.articles, self.labels, self.labels_index = process_articles()
+        self.data, self.word_index = self.vectorize_text()
+        self.x_train, self.y_train, self.x_val, self.y_val = self.split_data()
+        if self.if_teach:
             self.embedding_layer = self.create_embedding_matrix()
             self.model = self.train_model()
             self.save_model("model.json", "labels.json", "model.h5")
@@ -141,7 +141,6 @@ class KerasModel:
         print('Shape of label tensor:', self.labels.shape)
 
         return data, word_index
-
 
     def split_data(self):
         # split the data into a training set and a validation set
@@ -227,6 +226,13 @@ class KerasModel:
 
         Xnew = self.prepare_articles_for_prediction(articles)
         ynew = self.model.predict(Xnew)
+
+        if not self.if_teach:
+            self.model.compile(loss='categorical_crossentropy',
+                               optimizer='rmsprop',
+                               metrics=['acc'])
+            scores = self.model.evaluate(self.x_val, self.y_val)
+            print("Accuracy = " + str(scores[1] * 100) + "%")
 
         for i in range(len(Xnew)):
             # get the index of a category which has maximum probability after prediction
